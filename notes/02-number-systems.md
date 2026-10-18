@@ -67,7 +67,21 @@ Each letter is **one digit**. Worked: `3C₁₆` = 3 × 16 + **12** = 48 + 12 = 
 
 </details>
 
-> **Apply:** 123 → hex. (Remainders 10–15 become A–F.)
+**Same method for hex: divide by 16 instead of 2.** Any remainder from 10 to 15 becomes a letter.
+
+Worked: **300 → hex**
+
+| 300 ÷ 16 | rem | |
+|---|---|---|
+| 18 | 12 → **C** | ↑ LSB |
+| 1 | 2 → **2** | |
+| 0 | 1 → **1** | MSB |
+
+Read up: **12C₁₆**. Check: 1 × 256 + 2 × 16 + 12 = 300 ✓
+
+Stuck on ÷16? Take the easy route: decimal → binary (÷2), then group in 4s (section 3).
+
+> **Apply:** 123 → hex.
 <details><summary>Answer</summary>
 
 123 ÷ 16 = 7 r **11 = B**, 7 ÷ 16 = 0 r **7**. Read up: **7B₁₆**.
@@ -91,7 +105,17 @@ Each letter is **one digit**. Worked: `3C₁₆` = 3 × 16 + **12** = 48 + 12 = 
 
 **Trap:** the fraction pads on the **right**. `.00101` → `.0010 1000` = **.28**, not .25.
 
-Hex digits: A=10, B=11, C=12, D=13, E=14, F=15. Know 0–F as 4 bits cold.
+Each hex digit is exactly 4 bits. This table is the whole trick:
+
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---|---|---|---|---|---|---|
+| 0000 | 0001 | 0010 | 0011 | 0100 | 0101 | 0110 | 0111 |
+| **8** | **9** | **A** (10) | **B** (11) | **C** (12) | **D** (13) | **E** (14) | **F** (15) |
+| 1000 | 1001 | 1010 | 1011 | 1100 | 1101 | 1110 | 1111 |
+
+Build any one from the weights 8 4 2 1: D = 13 = 8 + 4 + 1 → `1101`.
+
+Worked: **11010110₂ → hex.** Split it `1101 0110` → D, 6 → **D6₁₆**.
 
 > **Apply:** 1011.1₂ → hex.
 <details><summary>Answer</summary>
