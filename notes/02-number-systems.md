@@ -2,19 +2,63 @@
 
 Lecture 2, slides 4–18 and 22–25 · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=02)
 
-Every question here is one of three moves: **weights** (into decimal), **divide / multiply** (out of decimal), **group bits** (binary ↔ octal / hex).
+---
+
+## 0. The one idea behind all of it
+
+A **base** is how many digit symbols you have.
+
+| Name | Base | Digits | Place values, right to left |
+|---|---|---|---|
+| Decimal | 10 | 0–9 | 1, 10, 100, 1000 … |
+| Binary | 2 | 0, 1 | 1, 2, 4, 8, 16 … |
+| Octal | 8 | 0–7 | 1, 8, 64, 512 … |
+| Hex | 16 | 0–9, **A B C D E F** | 1, 16, 256, 4096 … |
+
+**Each place is worth base × the place to its right.** That's all a number system is.
+
+You already do this in decimal without thinking:
+
+`472` = 4 × **100** + 7 × **10** + 2 × **1**
+
+Hex runs out of single digits after 9, so it uses letters:
+
+| A | B | C | D | E | F |
+|---|---|---|---|---|---|
+| 10 | 11 | 12 | 13 | 14 | 15 |
+
+They just keep counting after 9. Each letter is **one digit**.
+
+Every question in this topic is one of three moves:
+
+| From → to | Move | Section |
+|---|---|---|
+| anything → decimal | multiply each digit by its place value, add | 1 |
+| decimal → anything | divide the whole part, multiply the fraction | 2, 3 |
+| binary ↔ octal / hex | group the bits | 4 |
 
 ---
 
-## 1. Into decimal: add the weights
+## 1. Into decimal: digit × place value, then add
 
-**Rule:** each place is worth base<sup>position</sup>. Left of the point: 0, 1, 2 … Right: −1, −2 …
+**Rule:** write the place values above the digits, multiply, add.
+Left of the point the powers go 0, 1, 2 … Right of the point they go −1, −2 …
+
+**Binary.** Each digit is 0 or 1, so just add the place values under every 1.
 
 ![Place values](../docs/svg/place-value.svg)
 
 | 2⁷ | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ | . | 2⁻¹ | 2⁻² | 2⁻³ |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 | . | 0.5 | 0.25 | 0.125 |
+
+**Octal.** Place values 64, 8, 1.
+
+`157₈` = 1 × 64 + 5 × 8 + 7 × 1 = 64 + 40 + 7 = **111**
+
+**Hex.** Place values 256, 16, 1. Swap any letter for its number first.
+
+`3C₁₆` = 3 × 16 + **12** × 1 = 48 + 12 = **60**
 
 > **Apply:** 1011.101₂ = ?
 <details><summary>Answer</summary>
@@ -23,89 +67,96 @@ Every question here is one of three moves: **weights** (into decimal), **divide 
 
 </details>
 
-**Hex and octal use the same rule, with a different base.**
-
-| Base | Digits | Place values (right to left) |
-|---|---|---|
-| Octal (8) | 0–7 | 1, 8, 64 … |
-| Hex (16) | 0–9, then **A=10 B=11 C=12 D=13 E=14 F=15** | 1, 16, 256 … |
-
-Each letter is **one digit**. Worked: `3C₁₆` = 3 × 16 + **12** = 48 + 12 = **60**.
-
 > **Apply:** 2F₁₆ = ?
 <details><summary>Answer</summary>
 
-2 × 16 + 15 = **47**
+F = 15. 2 × 16 + 15 = **47**
+
+</details>
+
+> **Apply:** 64₈ = ?
+<details><summary>Answer</summary>
+
+6 × 8 + 4 = **52**
 
 </details>
 
 ---
 
-## 2. Out of decimal: divide the whole part, multiply the fraction
+## 2. Decimal → any base: the whole part
 
-**Rule:**
-- Whole part: divide by the base, keep remainders, read them **upward** (last one = MSB).
-- Fraction: multiply by the base, keep the whole-number parts, read them **downward**.
+**Rule:** divide by the base. Write down the remainder. Divide the answer again. Stop at 0. Read the remainders **upward**.
 
-![Lecture method, 41.6875](../img/02/s10.png)
+![Dividing 41 by 2](../docs/svg/div-ladder.svg)
 
-| 41 ÷ 2 | rem | | 0.6875 × 2 | bit |
-|---|---|---|---|---|
-| 20 | 1 ↑ LSB | | 1.375 | 1 ↓ first |
-| 10 | 0 | | 0.75 | 0 |
-| 5 | 0 | | 1.5 | 1 |
-| 2 | 1 | | 1.0 | 1 stop |
-| 1 | 0 | | | |
-| 0 | 1 MSB | | | |
-
-41.6875 = **101001.1011₂**
+**Why upward?** Dividing by the base chops off the **last** digit as the remainder. In decimal: 472 ÷ 10 = 47 rem **2**, and 2 is the last digit of 472. So your first remainder is the rightmost digit (LSB), and you build the number right to left.
 
 > **Apply:** 25 → binary.
 <details><summary>Answer</summary>
 
-25→12 r1, 12→6 r0, 6→3 r0, 3→1 r1, 1→0 r1. Read up: **11001**.
+25 ÷ 2 = 12 r **1**, 12 ÷ 2 = 6 r **0**, 6 ÷ 2 = 3 r **0**, 3 ÷ 2 = 1 r **1**, 1 ÷ 2 = 0 r **1**. Read up: **11001**.
+Check: 16 + 8 + 1 = 25 ✓
 
 </details>
 
-**Same method for hex: divide by 16 instead of 2.** Any remainder from 10 to 15 becomes a letter.
+**Same method for hex or octal.** Divide by 16 or 8 instead. In hex, a remainder from 10 to 15 becomes its letter.
 
-Worked: **300 → hex**
+![Dividing 300 by 16](../docs/svg/div16-ladder.svg)
 
-| 300 ÷ 16 | rem | |
-|---|---|---|
-| 18 | 12 → **C** | ↑ LSB |
-| 1 | 2 → **2** | |
-| 0 | 1 → **1** | MSB |
-
-Read up: **12C₁₆**. Check: 1 × 256 + 2 × 16 + 12 = 300 ✓
-
-Stuck on ÷16? Take the easy route: decimal → binary (÷2), then group in 4s (section 3).
+Check: 1 × 256 + 2 × 16 + 12 = 300 ✓
 
 > **Apply:** 123 → hex.
 <details><summary>Answer</summary>
 
-123 ÷ 16 = 7 r **11 = B**, 7 ÷ 16 = 0 r **7**. Read up: **7B₁₆**.
+123 ÷ 16 = 7 r **11 → B**, 7 ÷ 16 = 0 r **7**. Read up: **7B₁₆**.
+Check: 7 × 16 + 11 = 123 ✓
 
 </details>
 
-> **Apply:** 0.15625 → hex.
+> **Apply:** 41 → octal.
 <details><summary>Answer</summary>
 
-0.15625 × 16 = 2.5 → **2**, 0.5 × 16 = 8.0 → **8**. Answer **0.28₁₆**.
+41 ÷ 8 = 5 r **1**, 5 ÷ 8 = 0 r **5**. Read up: **51₈**.
+Check: 5 × 8 + 1 = 41 ✓
 
 </details>
 
 ---
 
-## 3. Binary ↔ octal / hex: group outward from the point
+## 3. Decimal → any base: the fraction part
 
-**Rule:** groups of **3** (octal) or **4** (hex), starting at the point and going **outward**. Pad zeros only at the **outer ends**.
+**Rule:** multiply the fraction by the base. The whole number that pops out (left of the point) is the next digit. Keep only the fraction and repeat. Stop at 0. Read the digits **downward**.
 
-![Grouping 1111011.00101](../docs/svg/hex-grouping.svg)
+![Multiplying 0.6875 by 2](../docs/svg/mul-ladder.svg)
 
-**Trap:** the fraction pads on the **right**. `.00101` → `.0010 1000` = **.28**, not .25.
+**Why downward?** Multiplying by the base pushes the **first** digit after the point over to the left of the point. In decimal: 0.375 × 10 = **3**.75, and 3 is the first digit of .375. So your first result is the digit right after the point.
 
-Each hex digit is exactly 4 bits. This table is the whole trick:
+> **Apply:** 0.375 → binary.
+<details><summary>Answer</summary>
+
+0.375 × 2 = **0**.75, 0.75 × 2 = **1**.5, 0.5 × 2 = **1**.0 → stop. Read down: **0.011₂**.
+Check: 0.25 + 0.125 = 0.375 ✓
+
+</details>
+
+**Hex: multiply by 16.** `0.15625`: × 16 = **2**.5, then 0.5 × 16 = **8**.0 → stop. Answer **0.28₁₆**.
+
+> **Apply:** 0.6875 → hex.
+<details><summary>Answer</summary>
+
+0.6875 × 16 = **11**.0 → **B**, and the fraction is 0, so stop. Answer **0.B₁₆**.
+
+</details>
+
+**Watch out:** some fractions never reach 0 (0.1 in binary goes on forever). Stop after however many digits the question asks for.
+
+**Number with both parts?** Do the whole part and the fraction separately, then join them with the point: 41.6875 = 101001 . 1011 = **101001.1011₂**.
+
+---
+
+## 4. Binary ↔ hex / octal: group the bits
+
+**Why it works:** 16 = 2⁴, so one hex digit is **exactly 4 bits**. 8 = 2³, so one octal digit is **exactly 3 bits**. You never need decimal in between.
 
 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|---|---|---|---|---|---|---|
@@ -113,14 +164,24 @@ Each hex digit is exactly 4 bits. This table is the whole trick:
 | **8** | **9** | **A** (10) | **B** (11) | **C** (12) | **D** (13) | **E** (14) | **F** (15) |
 | 1000 | 1001 | 1010 | 1011 | 1100 | 1101 | 1110 | 1111 |
 
-Build any one from the weights 8 4 2 1: D = 13 = 8 + 4 + 1 → `1101`.
+You don't need to memorise this table. Build any row from the place values 8 4 2 1: D = 13 = 8 + 4 + 1 → `1101`. Octal uses only the last three: 4 2 1.
 
-Worked: **11010110₂ → hex.** Split it `1101 0110` → D, 6 → **D6₁₆**.
+**Rule:** start at the point and group **outward**: 4s for hex, 3s for octal. If the end group is short, pad it with zeros on the **outside**.
+
+Worked: `11010110₂ → hex`. Split into `1101 0110` → D, 6 → **D6₁₆**.
+
+Worked: `101001₂ → octal`. Split into `101 001` → 5, 1 → **51₈**. (That's 41, same as section 2 ✓)
+
+![Grouping 1111011.00101](../docs/svg/hex-grouping.svg)
+
+**Trap:** the fraction pads on the **right**. `.00101` → `.0010 1000` = **.28**, not .25. If you pad on the left, you change the value.
+
+**Going back:** write each hex digit as 4 bits (or each octal digit as 3).
 
 > **Apply:** 1011.1₂ → hex.
 <details><summary>Answer</summary>
 
-1011 = **B**. Fraction `.1` → `.1000` = **8**. Answer **B.8₁₆**.
+1011 = **B**. Fraction `.1` → pad right → `.1000` = **8**. Answer **B.8₁₆**.
 
 </details>
 
@@ -139,17 +200,18 @@ Worked: **11010110₂ → hex.** Split it `1101 0110` → D, 6 → **D6₁₆**.
 
 <details><summary>Answer</summary>
 
-123 → 1111011 (from 64+32+16+8+2+1).
-0.15625 × 2: 0.3125 → 0, 0.625 → 0, 1.25 → 1, 0.5 → 0, 1.0 → 1. So .00101.
+Whole part, ÷ 2: 123 → 61 r1 → 30 r1 → 15 r0 → 7 r1 → 3 r1 → 1 r1 → 0 r1. Read up: **1111011**.
+Fraction, × 2: 0.3125 → **0**, 0.625 → **0**, 1.25 → **1**, 0.5 → **0**, 1.0 → **1**. Read down: **.00101**.
 
 **1111011.00101₂**
 
-Hex by grouping (diagram above): **7B.28₁₆**. Check: 7×16 + 11 = 123 ✓, 2/16 + 8/256 = 0.15625 ✓
+Hex by grouping (diagram in section 4): `0111 1011 . 0010 1000` → **7B.28₁₆**.
+Check: 7 × 16 + 11 = 123 ✓, 2/16 + 8/256 = 0.15625 ✓
 
 </details>
 
 **Traps**
-- Remainders read **up**, fraction bits read **down**.
+- Whole part: remainders read **up**. Fraction: digits read **down**.
 - Pad the fraction on the **right**.
 - Octal ↔ hex: go through binary.
-- Always check by converting back.
+- Always check by converting back to decimal.

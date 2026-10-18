@@ -609,6 +609,51 @@ def numbers():
     save(s, "wheel4")
 
 
+def ladder(name, title, rows, head, up, result, note):
+    """rows: (left text, digit). up=True → read remainders bottom-up."""
+    n = len(rows)
+    H = 70 + n * 44 + 70
+    s = Svg(520, H, title)
+    s.text(30, 30, head, size=16, anchor="start", weight="bold")
+    col = COL["blue"][0] if up else COL["green"][0]
+    for i, (lt, d) in enumerate(rows):
+        y = 56 + i * 44
+        s.text(30, y + 28, lt, size=18, anchor="start")
+        s.rect(300, y + 4, 50, 34, stroke=col, fill=col + "18", rx=6)
+        s.text(325, y + 29, d, size=20, weight="bold", color=col)
+    y0, y1 = 64, 56 + (n - 1) * 44 + 34
+    if up:
+        s.arrow([(380, y1), (380, y0)], color=col, width=3)
+        s.text(392, y0 + 12, "1st remainder = LSB", size=12, anchor="start", color=MUTED)
+        s.text(392, y1 - 4, "last remainder = MSB", size=12, anchor="start", color=MUTED)
+        s.text(392, y1 + 12, "(write this one first)", size=12, anchor="start", color=MUTED)
+        s.text(392, (y0 + y1) / 2 + 5, "read UP", size=16, anchor="start", weight="bold", color=col)
+    else:
+        s.arrow([(380, y0), (380, y1)], color=col, width=3)
+        s.text(392, y0 + 12, "1st bit after the point", size=12, anchor="start", color=MUTED)
+        s.text(392, (y0 + y1) / 2 + 5, "read DOWN", size=16, anchor="start", weight="bold", color=col)
+    s.text(30, H - 40, result, size=22, anchor="start", weight="bold")
+    s.text(30, H - 14, note, size=13, anchor="start", color=MUTED)
+    save(s, name)
+
+
+def ladders():
+    ladder("div-ladder", "41 to binary by dividing by 2",
+           [("41 ÷ 2 = 20  rem", "1"), ("20 ÷ 2 = 10  rem", "0"), ("10 ÷ 2 = 5   rem", "0"),
+            ("5 ÷ 2 = 2    rem", "1"), ("2 ÷ 2 = 1    rem", "0"), ("1 ÷ 2 = 0    rem", "1")],
+           "Whole part: keep dividing by 2", True, "41 = 101001₂",
+           "stop when you reach 0, then read the remainders bottom to top")
+    ladder("mul-ladder", "0.6875 to binary by multiplying by 2",
+           [("0.6875 × 2 = 1.375", "1"), ("0.375 × 2 = 0.75", "0"),
+            ("0.75 × 2 = 1.5", "1"), ("0.5 × 2 = 1.0", "1")],
+           "Fraction part: keep multiplying by 2", False, "0.6875 = 0.1011₂",
+           "the box is the whole number you got; carry on with only the fraction; stop at 0")
+    ladder("div16-ladder", "300 to hex by dividing by 16",
+           [("300 ÷ 16 = 18  rem", "C"), ("18 ÷ 16 = 1    rem", "2"), ("1 ÷ 16 = 0     rem", "1")],
+           "Same thing in hex: divide by 16", True, "300 = 12C₁₆",
+           "remainder 12 is written C  (A=10 B=11 C=12 D=13 E=14 F=15)")
+
+
 if __name__ == "__main__":
-    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers()
+    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders()
     print("ok", len(os.listdir(OUT)))
