@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DE Lock-In</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>DE Lock-In</h1>
+    <button class="theme" type="button" id="theme">Light / dark</button>
+  </header>
+  <p class="lede">Digital Electronics mid-term, Lectures 1 to 10. Learn it by doing it.</p>
+
+  <h2>How to use it</h2>
+  <ol class="steps">
+    <li><b>Notes first.</b> Each idea is a short rule, a diagram, then a question. Answer on paper before you open the answer.</li>
+    <li><b>Then the quiz.</b> Fill K-maps, type expressions, pick answers. It checks your working and tells you why.</li>
+    <li><b>Then mix it.</b> The mixed drill throws topics at you in random order, like the exam.</li>
+  </ol>
+
+  <h2>Topics</h2>
+  <div class="topics" id="topics"></div>
+
+  <h2>Mixed drill</h2>
+  <div class="mix">
+    <div class="pick" id="pick"></div>
+    <label>Questions <select id="mixn" class="btn ghost"><option>10</option><option selected>15</option><option>25</option><option>40</option></select></label>
+    <button class="btn primary" type="button" id="mixgo">Start mixed drill</button>
+  </div>
+  <p class="tiny">Scores stay in this browser only.</p>
+</div>
+<script src="quiz.js"></script>
+<script src="page.js"></script>
+</body>
+</html>

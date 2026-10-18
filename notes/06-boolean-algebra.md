@@ -1,246 +1,114 @@
-# Topic 6 — Gates, truth tables, Boolean algebra
+# 06 · Gates and Boolean algebra
 
-Slide exercises: simplify x'y' + xyz + x'y
+Lecture 4, slides 2–13 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=06)
 
-Slides: Lecture 4, pages 2 to 13
+Every expression is a circuit. **Shorter expression = fewer gates** = cheaper and faster.
 
----
-
-## The big idea
-
-Each bit can be true (1) or false (0).
-
-We combine bits with **AND**, **OR** and **NOT**.
-
-That gives **Boolean algebra**: maths with only 0 and 1.
-
-<br>
-
-Why we care:
-
-Every expression becomes a circuit of gates.
-
-A **shorter** expression = **fewer gates** = cheaper, less power, usually faster.
+Notation: `x'` = NOT x · `xy` = x AND y · `x + y` = x OR y.
 
 ---
 
-**How to use these notes:**
-When you see 🧠, stop.
-Answer it on paper first.
-Then click to check.
+## 1. The gates
 
----
+![Logic gates](../docs/svg/gates.svg)
 
-## 1. The three basic operations
+**Careful:** in Boolean algebra **1 + 1 = 1**. OR is not adding.
 
-![Basic operations](../img/06/s8.png)
-
-**How to read this diagram:**
-
-Three columns: AND, OR, NOT.
-
-Each one shows how you write it, its truth table, and its gate symbol.
-
-<br>
-
-| Operation | Write | Output is 1 when… | Gate shape |
-|---|---|---|---|
-| **AND** | xy or x·y | **both** inputs are 1 | flat back, round front |
-| **OR** | x + y | **at least one** input is 1 | curved back, pointy front |
-| **NOT** | x' | the input is 0 | triangle with a bubble |
-
-<br>
-
-**Careful:** in Boolean algebra, 1 + 1 = **1**. OR is not normal adding.
-
-<br>
-
-### 🧠 Check
-x = 1, y = 0. Find xy, x + y and y'.
-
+> **Apply:** x = 1, y = 0. Find xy, x + y, (xy)', x ⊕ y.
 <details><summary>Answer</summary>
 
-xy = 1 · 0 = **0**
-
-x + y = 1 + 0 = **1**
-
-y' = **1**
+xy = **0** · x + y = **1** · (xy)' = **1** · x ⊕ y = **1** (they differ)
 
 </details>
 
 ---
 
-## 2. Truth tables
+## 2. Expression → truth table
 
-![Expression to truth table](../img/06/s7.png)
+**Rule:** n inputs → **2ⁿ rows** in binary order (000, 001 … 111). Put each row into the expression.
 
-**How to read this diagram:**
-
-Left: the expression f = (x + y')z + x' worked out for every input.
-
-Right: the results collected into a truth table.
-
----
-
-### 📐 Rule 1: building a truth table
-
-**Step 1.** n inputs → **2ⁿ rows**.
-
-**Step 2.** List the inputs in **binary order**: 000, 001, 010, … 111.
-
-**Step 3.** Put each row's values into the expression. Write the output.
-
-**Use it when:**
-Going from an expression to a truth table. This direction is always easy.
-
-**The other direction** (table → expression) has many answers. Topics 7 and 8 deal with that.
-
----
-
-<br>
-
-### 🧠 Check
-How many rows does a truth table with 4 inputs have?
-
+> **Apply:** fill the table for f = (x + y')z + x' (slide 7).
 <details><summary>Answer</summary>
 
-2⁴ = **16** rows.
+| xyz | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
+|---|---|---|---|---|---|---|---|---|
+| f | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 1 |
+
+When x = 0, x' = 1 so f = 1. When x = 1, f = (1)z = z.
 
 </details>
 
 ---
 
-## 3. Expressions become circuits
-
-![Circuits](../img/06/s9.png)
-
-**How to read this diagram:**
-
-Left: (x + y')z + x' drawn as gates.
-
-Right: x'y' + xyz + x'y drawn as gates.
-
-Each operation in the expression becomes one gate.
-
-<br>
-
-"Better" circuits are:
-- **cheaper:** fewer gates
-- **faster:** fewer gates between input and output
-
----
-
-## 4. The axioms ⭐
-
-![Axioms](../img/06/s11.png)
-
-These are the rules of Boolean algebra. **Learn them.**
-
-The numbers match the slides. Use them to name each step.
+## 3. The axioms you use
 
 | Law | OR form | AND form |
 |---|---|---|
-| Identity | 1. x + 0 = x | 2. x · 1 = x |
-| Null | 3. x + 1 = 1 | 4. x · 0 = 0 |
-| Idempotent | 5. x + x = x | 6. x · x = x |
-| Complement | 7. x + x' = 1 | 8. x · x' = 0 |
-| Involution | 9. (x')' = x | |
-| Commutative | 10. x + y = y + x | 11. xy = yx |
-| Associative | 12. x + (y + z) = (x + y) + z | 13. x(yz) = (xy)z |
-| Distributive | 15. **x + yz = (x + y)(x + z)** | 14. x(y + z) = xy + xz |
-| DeMorgan | 16. (x + y)' = x'y' | 17. (xy)' = x' + y' |
+| Identity / null | x + 0 = x · **x + 1 = 1** | x·1 = x · x·0 = 0 |
+| Idempotent | **x + x = x** | **x·x = x** |
+| Complement | x + x' = 1 | x·x' = 0 |
+| Distributive | **x + yz = (x + y)(x + z)** | x(y + z) = xy + xz |
+| De Morgan | (x + y)' = x'y' | (xy)' = x' + y' |
 
-<br>
+**Three shortcuts** (follow from the axioms):
 
-**The weird ones** (not true in normal algebra):
-- **3.** x + 1 = 1
-- **5 and 6.** x + x = x and x · x = x
-- **15.** x + yz = (x + y)(x + z). This one does most of the work in simplifications.
+| Name | Rule |
+|---|---|
+| Absorption | **x + xy = x** |
+| — | **x + x'y = x + y** |
+| Consensus | **xy + x'z + yz = xy + x'z** |
 
----
+**De Morgan in one line:** to complement a whole group, flip every letter **and** swap AND ↔ OR.
+(ab + c)' = (a' + b')c'
 
-### 📐 Rule 2: DeMorgan's law
-
-$$(x + y)' = x'\,y' \qquad\qquad (xy)' = x' + y'$$
-
-**What it means:**
-To complement a whole expression: **flip every letter, and swap AND ↔ OR.**
-
-**Use it when:**
-You see a bar over a whole group. Also in Topic 9 for NAND and NOR.
-
-**Example:** (ab + c)' = (ab)' · c' = (a' + b') c'
-
----
-
-### 📐 Rule 3: three shortcuts (follow from the axioms, not on the slides)
-
-| Name | Rule | Why it's true |
-|---|---|---|
-| Absorption | x + xy = x | if x = 1, both sides are 1. If x = 0, both sides are 0. |
-| — | x + x'y = x + y | use axiom 15: (x + x')(x + y) = 1 · (x + y) |
-| Consensus | xy + x'z + yz = xy + x'z | the yz term is always covered by the other two |
-
-**Use it when:**
-Simplifying by hand. They save several steps. Topic 8 uses consensus.
-
----
-
-<br>
-
-### 🧠 Check
-Simplify a + ab.
-
+> **Apply:** simplify a + ab, then x + x'y.
 <details><summary>Answer</summary>
 
-Absorption: **a**
+a + ab = **a** (absorption). x + x'y = **x + y**.
 
-Long way: a · 1 + ab = a(1 + b) = a · 1 = a (axioms 2, 14, 3, 2).
+</details>
+
+> **Apply:** complement (x + y'z).
+<details><summary>Answer</summary>
+
+Flip letters, swap operators: **x'(y + z')**.
 
 </details>
 
 ---
 
-## 5. Worked simplification (slide 12)
+## 4. Worked simplification (slide 12)
 
-![Worked example](../img/06/s12.png)
+**x'y' + xyz + x'y**
 
-$$x'y' + xyz + x'y$$
-
-| Step | Expression | Rule |
+| Step | Expression | Why |
 |---|---|---|
-| 1 | x'(y' + y) + xyz | distributive (14): x'y' + x'y = x'(y' + y) |
-| 2 | x' · 1 + xyz | axiom 7: y' + y = 1 |
-| 3 | x' + xyz | axiom 2: x' · 1 = x' |
-| 4 | (x' + x)(x' + yz) | distributive (15) |
-| 5 | 1 · (x' + yz) | axiom 7 |
-| 6 | **x' + yz** | axiom 2 |
+| 1 | x'(y' + y) + xyz | factor out x' |
+| 2 | x' + xyz | y' + y = 1 |
+| 3 | **x' + yz** | x' + x·A = x' + A |
 
-<br>
+![Same function, fewer gates](../docs/svg/simplify-circuit.svg)
 
-**Tip:** steps 3 to 6 are just the shortcut x' + xA = x' + A, with A = yz.
+> **Apply:** simplify AB + A(B + C) + B(B + C).
+<details><summary>Answer</summary>
 
-<br>
+= AB + AB + AC + B + BC = AB + AC + B + BC.
+AB and BC are absorbed by B: = **B + AC**.
 
-![Two circuits](../img/06/s13.png)
-
-**How to read this diagram:**
-
-Top: the original circuit. Bottom: the simplified one.
-
-Same truth table, far fewer gates.
+</details>
 
 ---
 
-## Method: any "simplify" question
+## Exam drill
 
-1. **Look for a common factor** and pull it out (14). Often this gives (y + y') = 1.
-2. **Kill the 1s and 0s** with axioms 1 to 4 and 7, 8.
-3. **Look for x + x'y → x + y** and **x + xy → x**.
-4. **Bar over a group?** Use DeMorgan first.
-5. **Name each step** with its axiom number. Examiners like that.
-6. **Check** with a quick truth table if you're unsure. Or use a K-map (Topic 8).
+**1.** Simplify xy + x'z + yz. **2.** Simplify (x + y)(x + y'). **3.** Prove (x + y)(x + z) = x + yz with a truth table or the axioms.
 
----
+<details><summary>Answer</summary>
 
-Next: [End-of-topic test](../questions/06-boolean-algebra.md)
+1. Consensus: **xy + x'z**.
+2. Distributive backwards: x + yy' = x + 0 = **x**.
+3. Expand: xx + xz + xy + yz = x(1 + z + y) + yz = **x + yz** ✓
+
+</details>
+
+**Method:** factor → kill 1s and 0s → look for x + x'y and x + xy → De Morgan any bar over a group → check with a K-map (Topic 8).

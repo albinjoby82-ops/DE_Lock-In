@@ -1,30 +1,26 @@
-# DE Lock-In — Digital Electronics: from Gate to System
+# DE Lock-In
 
-Start at **[TOPICS.md](TOPICS.md)** (progress tracker). Cheat sheet: **[cheat-sheet.md](cheat-sheet.md)**. Confusing bits I asked about: **[my-questions.md](my-questions.md)**.
+Digital Electronics mid-term (Lectures 1–10), learnt by **doing**, not reading.
 
-Covers the **mid-term**: Lectures 1 to 10 (Dr. Ruijia Liu).
+**▶ [Open the quiz site](https://albinjoby82-ops.github.io/DE_Lock-In/)** · [Topic tracker](TOPICS.md) · [Cheat sheet](cheat-sheet.md) · [My questions](my-questions.md)
 
-## Reading style (dyslexia-friendly)
-- One idea per line. Short sentences.
-- Big rules and equations on their own line.
-- Lots of space between sections.
-- Few brackets, little italics, no long bullet points.
+## How to use it
+
+1. **Read a topic's notes.** Each idea is: one short **rule** → a **diagram** → an **Apply** question. Answer on paper before opening the answer.
+2. **Do that topic's quiz.** Click to fill K-maps and truth tables, type expressions, trace circuits. It checks your working (Boolean answers are tested on every row, and must be minimal) and shows why.
+3. **Mixed drill.** Random questions across topics, like the real exam.
+4. Got confused? Add it to [my-questions.md](my-questions.md).
 
 ## Notation (same as the slides)
-| Write | Means | Say |
-|---|---|---|
-| x' | NOT x (a bar over x on the slides) | "x bar" or "not x" |
-| xy or x·y | x AND y | "x and y" |
-| x + y | x OR y | "x or y" |
-| x ⊕ y | x XOR y | "x xor y" |
-| Σm(…) | sum of minterms | "sum of m" |
-| ΠM(…) | product of maxterms | "product of M" |
 
-## How each topic is built
-- `notes/NN-topic.md`: slide diagrams + short explanation, with **🧠 check questions inline** (answer before opening).
-- `questions/NN-topic.md`: end-of-topic test with
-  1. the **slide exercises** ("Try now" and "Exercises" slides), and
-  2. **midterm-style questions in other formats** (true/false, MCQ, explain, calculation, design), because the midterm won't just copy the slides.
-- **Every new rule or method gets a 📐 box:** what each symbol means, *why* it works, **"use it when…"**, and when it does NOT apply.
-- **Rule:** every answer and method used in the questions is taught in that topic's notes (or an earlier one), and the answer cites the notes section (§). Nothing appears in an answer that isn't in the notes.
-- Every worked answer in this repo was checked against a full truth table.
+`x'` = NOT x · `xy` = x AND y · `x + y` = x OR y · `x ⊕ y` = XOR · `Σm(…)` sum of minterms · `ΠM(…)` product of maxterms
+
+## Repo map
+
+```
+notes/NN-topic.md   the 12 topics (rule → diagram → apply question)
+docs/               the quiz site (GitHub Pages): data/NN.js = each topic's questions
+docs/svg/           every drawn diagram (built by tools/build_svg.py)
+img/                the few lecture slide crops still used
+tools/check.py      re-checks every quiz answer, K-map minimality and every link
+```

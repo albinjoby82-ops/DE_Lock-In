@@ -20,7 +20,7 @@ Each division by 2 strips off the **rightmost** bit first. So the first remainde
 
 Each multiply by 2 pulls out the **leftmost** fraction bit first. So the first one goes right after the point, and you read down.
 
-📍 Notes: [02 §4](notes/02-number-systems.md)
+📍 Notes: [02 §2](notes/02-number-systems.md)
 
 ---
 
@@ -36,4 +36,4 @@ So Y = S'I₀ + SI₁.
 
 If an exam question states its own convention, follow that.
 
-📍 Notes: [12 §2](notes/12-multiplexers.md)
+📍 Notes: [12 §1](notes/12-multiplexers.md)

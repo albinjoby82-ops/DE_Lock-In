@@ -1,385 +1,122 @@
-# Topic 2 — Number systems: binary, octal, hex, conversions
+# 02 · Number systems
 
-Slide exercises: 123.15625 → binary, 123.15625 → hex
+Lecture 2, slides 4–18 and 22–25 · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=02)
 
-Slides: Lecture 2, pages 4 to 18 and 22 to 25
-
----
-
-## The big idea
-
-A computer is made of switches.
-
-A switch has only two states: open or closed.
-
-So computers count with just two symbols: **0** and **1**.
-
-That's **binary**.
-
-<br>
-
-Every conversion in this topic is one of two moves:
-1. **Divide and multiply** by the base (decimal → anything).
-2. **Group bits** (binary → octal or hex).
+Every question here is one of three moves: **weights** (into decimal), **divide / multiply** (out of decimal), **group bits** (binary ↔ octal / hex).
 
 ---
 
-**How to use these notes:**
-When you see 🧠, stop.
-Answer it on paper first.
-Then click to check.
+## 1. Into decimal: add the weights
+
+**Rule:** each place is worth base<sup>position</sup>. Left of the point: 0, 1, 2 … Right: −1, −2 …
+
+![Place values](../docs/svg/place-value.svg)
+
+| 2⁷ | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ | . | 2⁻¹ | 2⁻² | 2⁻³ |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 | . | 0.5 | 0.25 | 0.125 |
+
+> **Apply:** 1011.101₂ = ?
+<details><summary>Answer</summary>
+
+8 + 2 + 1 + 0.5 + 0.125 = **11.625**
+
+</details>
+
+> **Apply:** 2F₁₆ = ? (F = 15)
+<details><summary>Answer</summary>
+
+2 × 16 + 15 = **47**
+
+</details>
 
 ---
 
-## 1. What a number really means
+## 2. Out of decimal: divide the whole part, multiply the fraction
 
-![Decimal number](../img/02/s5.png)
+**Rule:**
+- Whole part: divide by the base, keep remainders, read them **upward** (last one = MSB).
+- Fraction: multiply by the base, keep the whole-number parts, read them **downward**.
 
-**How to read this diagram:**
+![Lecture method, 41.6875](../img/02/s10.png)
 
-Top row: the digits of 162.375.
-
-Middle row: the **weight** of each position. Powers of 10.
-
-Bottom line: multiply each digit by its weight, then add.
-
-<br>
-
-Positions to the **left** of the point are 0, 1, 2, …
-
-Positions to the **right** are −1, −2, −3, …
-
-This is called a **positional** number system.
-
----
-
-### 📐 Rule 1: value of a number in base B
-
-$$\text{value} = \sum \text{digit} \times B^{\text{position}}$$
-
-| Symbol | Means |
-|---|---|
-| B | the **base**: how many symbols there are (10 for decimal, 2 for binary) |
-| digit | one symbol of the number |
-| position | 0, 1, 2 … left of the point. −1, −2 … right of the point. |
-
-**Why it works:**
-Each position is worth B times the one to its right.
-
-**Use it when:**
-You need to convert **any base → decimal**.
-
----
-
-## 2. Binary
-
-![Binary number](../img/02/s8.png)
-
-Same idea. Base 2. Only the symbols 0 and 1.
-
-Each binary digit is called a **bit**.
-
-<br>
-
-**Example from the slide:**
-
-1101.01₂ = 8 + 4 + 0 + 1 + 0 + 0.25 = **13.25**
-
-<br>
-
-**Names:**
-- **MSB** = most significant bit. The leftmost one, worth the most.
-- **LSB** = least significant bit. The rightmost one.
-
-<br>
-
-**Learn these by heart:**
-
-| 2⁰ | 2¹ | 2² | 2³ | 2⁴ | 2⁵ | 2⁶ | 2⁷ | 2⁸ |
-|---|---|---|---|---|---|---|---|---|
-| 1 | 2 | 4 | 8 | 16 | 32 | 64 | 128 | 256 |
-
-| 2⁻¹ | 2⁻² | 2⁻³ | 2⁻⁴ | 2⁻⁵ |
+| 41 ÷ 2 | rem | | 0.6875 × 2 | bit |
 |---|---|---|---|---|
-| 0.5 | 0.25 | 0.125 | 0.0625 | 0.03125 |
-
-<br>
-
-### 🧠 Check
-Convert 1011.101₂ to decimal.
-
-<details><summary>Answer</summary>
-
-8 + 0 + 2 + 1 + 0.5 + 0 + 0.125
-
-= **11.625**
-
-</details>
-
----
-
-## 3. Octal and hex
-
-Binary is hard for humans to read.
-
-**Octal** (base 8) and **hex** (base 16) are short ways to write binary.
-
-<br>
-
-![Table](../img/02/s18.png)
-
-**How to read this table:**
-
-Each row is the same number written four ways.
-
-<br>
-
-**Hex needs 16 symbols**, so after 9 it uses letters:
-
-| A | B | C | D | E | F |
-|---|---|---|---|---|---|
-| 10 | 11 | 12 | 13 | 14 | 15 |
-
-**Know 0 to 15 in 4-bit binary cold.** For example 1010 = A, 1111 = F.
-
-<br>
-
-### 🧠 Check
-What is 1101 in hex? What is C in binary?
-
-<details><summary>Answer</summary>
-
-1101 = 8 + 4 + 1 = 13 = **D**
-
-C = 12 = **1100**
-
-</details>
-
----
-
-## 4. Decimal → binary
-
-![Conversion method](../img/02/s10.png)
-
-**How to read this diagram:**
-
-Left half: the **whole number** part, 41. Divide by 2 again and again.
-
-Right half: the **fraction** part, 0.6875. Multiply by 2 again and again.
-
-The arrows show which way to read the answer.
-
----
-
-### 📐 Rule 2: decimal → base B
-
-**Step 1.** Split into a whole part and a fraction part.
-
-**Step 2. Whole part:** divide by B. Write down the remainder. Repeat until you reach 0.
-
-Read the remainders **bottom-up**. The last remainder is the MSB.
-
-**Step 3. Fraction part:** multiply by B. Write down the whole-number part. Keep the fraction. Repeat until the fraction is 0.
-
-Read the whole parts **top-down**.
-
-**Step 4.** Join them with a point.
-
-<br>
-
-**Why it works:**
-
-![Why integer](../img/02/s11.png)
-
-Each divide strips off the **rightmost** digit, so the first remainder is the LSB.
-
-![Why fraction](../img/02/s12.png)
-
-Each multiply pulls out the **leftmost** fraction digit, so the first one sits right after the point.
-
-**Use it when:**
-Converting decimal to binary, octal (B = 8) or hex (B = 16).
-
-**Watch out:**
-Some fractions never reach 0. Then stop after the number of bits the question asks for.
-
----
-
-**Worked example: 41.6875 → binary**
-
-| Whole part | Remainder |
-|---|---|
-| 41 ÷ 2 = 20 | 1 ← LSB |
-| 20 ÷ 2 = 10 | 0 |
-| 10 ÷ 2 = 5 | 0 |
-| 5 ÷ 2 = 2 | 1 |
-| 2 ÷ 2 = 1 | 0 |
-| 1 ÷ 2 = 0 | 1 ← MSB |
-
-Read upward: **101001**
-
-<br>
-
-| Fraction | × 2 | Whole part |
-|---|---|---|
-| 0.6875 | 1.375 | 1 ← first after point |
-| 0.375 | 0.75 | 0 |
-| 0.75 | 1.5 | 1 |
-| 0.5 | 1.0 | 1 ← fraction is 0, stop |
-
-Read downward: **.1011**
-
-<br>
+| 20 | 1 ↑ LSB | | 1.375 | 1 ↓ first |
+| 10 | 0 | | 0.75 | 0 |
+| 5 | 0 | | 1.5 | 1 |
+| 2 | 1 | | 1.0 | 1 stop |
+| 1 | 0 | | | |
+| 0 | 1 MSB | | | |
 
 41.6875 = **101001.1011₂**
 
-<br>
-
-### 🧠 Check
-Convert 13 to binary.
-
+> **Apply:** 25 → binary.
 <details><summary>Answer</summary>
 
-13 ÷ 2 = 6 r 1
-6 ÷ 2 = 3 r 0
-3 ÷ 2 = 1 r 1
-1 ÷ 2 = 0 r 1
+25→12 r1, 12→6 r0, 6→3 r0, 3→1 r1, 1→0 r1. Read up: **11001**.
 
-Read upward: **1101**
+</details>
+
+> **Apply:** 123 → hex. (Remainders 10–15 become A–F.)
+<details><summary>Answer</summary>
+
+123 ÷ 16 = 7 r **11 = B**, 7 ÷ 16 = 0 r **7**. Read up: **7B₁₆**.
+
+</details>
+
+> **Apply:** 0.15625 → hex.
+<details><summary>Answer</summary>
+
+0.15625 × 16 = 2.5 → **2**, 0.5 × 16 = 8.0 → **8**. Answer **0.28₁₆**.
 
 </details>
 
 ---
 
-## 5. Decimal → octal or hex directly
+## 3. Binary ↔ octal / hex: group outward from the point
 
-![Octal conversion](../img/02/s17.png)
+**Rule:** groups of **3** (octal) or **4** (hex), starting at the point and going **outward**. Pad zeros only at the **outer ends**.
 
-Same Rule 2, with B = 8 or 16.
+![Grouping 1111011.00101](../docs/svg/hex-grouping.svg)
 
-<br>
+**Trap:** the fraction pads on the **right**. `.00101` → `.0010 1000` = **.28**, not .25.
 
-**41.6875 → octal:**
+Hex digits: A=10, B=11, C=12, D=13, E=14, F=15. Know 0–F as 4 bits cold.
 
-41 ÷ 8 = 5 r **1**. 5 ÷ 8 = 0 r **5**. Read up: **51**.
-
-0.6875 × 8 = 5.5 → **5**. 0.5 × 8 = 4.0 → **4**. Read down: **.54**.
-
-41.6875 = **51.54₈**
-
-<br>
-
-**For hex, a remainder of 10 to 15 becomes a letter.**
-
-123 ÷ 16 = 7 r 11 → **B**. 7 ÷ 16 = 0 r **7**. Read up: **7B**.
-
-<br>
-
-### 🧠 Check
-Convert 0.15625 to hex.
-
+> **Apply:** 1011.1₂ → hex.
 <details><summary>Answer</summary>
 
-0.15625 × 16 = 2.5 → **2**
+1011 = **B**. Fraction `.1` → `.1000` = **8**. Answer **B.8₁₆**.
 
-0.5 × 16 = 8.0 → **8**
+</details>
 
-Answer: **0.28₁₆**
+> **Apply:** 3A₁₆ → binary, then → octal.
+<details><summary>Answer</summary>
+
+3 = 0011, A = 1010 → **111010₂**. Group in 3s: 111 010 → **72₈**.
 
 </details>
 
 ---
 
-## 6. Binary → octal or hex: grouping
+## Exam drill (the slide exercise)
 
-![Grouping](../img/02/s14.png)
-
-**How to read this diagram:**
-
-Top line: the bits split into groups of **3**. Each group becomes one octal digit.
-
-Bottom line: the same bits in groups of **4**. Each group becomes one hex digit.
-
----
-
-### 📐 Rule 3: binary → octal or hex
-
-**Step 1.** Start at the point.
-
-**Step 2.** Group bits going **outward** from the point. 3 bits for octal, 4 for hex.
-
-**Step 3.** Pad with zeros at the **outer ends only**.
-- Whole part: add zeros on the **left**.
-- Fraction part: add zeros on the **right**.
-
-**Step 4.** Swap each group for its digit.
-
-**Why it works:**
-8 = 2³ and 16 = 2⁴. So each octal digit is exactly 3 bits, and each hex digit is exactly 4 bits.
-
-**Use it when:**
-Going between binary and octal or hex, either way.
-
-**Hex or octal → binary:** do it backwards. Write each digit as 4 (or 3) bits.
-
----
-
-**Worked example from the slide:**
-
-10110001101011.111100000110₂
-
-Octal: 010 110 001 101 011 . 111 100 000 110 = **26153.7406₈**
-
-Hex: 0010 1100 0110 1011 . 1111 0000 0110 = **2C6B.F06₁₆**
-
-<br>
-
-**⚠️ The trap: pad the fraction on the RIGHT.**
-
-![Hex from binary](../img/02/s25.png)
-
-1111011.00101 → 0111 1011 . 0010 **1**000 = **7B.28**
-
-Not 7B.25. If you pad on the left you get the wrong digit.
-
-<br>
-
-### 🧠 Check
-Convert 1011.1₂ to hex.
+**Convert 123.15625 to binary and to hex.**
 
 <details><summary>Answer</summary>
 
-Whole part: 1011 = **B**
+123 → 1111011 (from 64+32+16+8+2+1).
+0.15625 × 2: 0.3125 → 0, 0.625 → 0, 1.25 → 1, 0.5 → 0, 1.0 → 1. So .00101.
 
-Fraction: .1 → pad on the right → .1000 = **8**
+**1111011.00101₂**
 
-Answer: **B.8₁₆**
-
-</details>
-
-<br>
-
-### 🧠 Check
-A memory dump shows the byte FF. What is it in binary?
-
-<details><summary>Answer</summary>
-
-F = 1111, so FF = **11111111**
-
-One byte = 8 bits = two hex digits.
+Hex by grouping (diagram above): **7B.28₁₆**. Check: 7×16 + 11 = 123 ✓, 2/16 + 8/256 = 0.15625 ✓
 
 </details>
 
----
-
-## Method: any conversion question
-
-1. **Into decimal?** Use Rule 1: digit × weight, add up.
-2. **Out of decimal?** Use Rule 2: divide the whole part, multiply the fraction.
-3. **Between binary and octal or hex?** Use Rule 3: group outward from the point.
-4. **Between octal and hex?** Go through binary.
-5. **Check** your answer by converting back to decimal.
-
----
-
-Next: [End-of-topic test](../questions/02-number-systems.md)
+**Traps**
+- Remainders read **up**, fraction bits read **down**.
+- Pad the fraction on the **right**.
+- Octal ↔ hex: go through binary.
+- Always check by converting back.

@@ -1,383 +1,111 @@
-# Topic 9 — Don't cares, NAND-NAND and NOR-NOR
+# 09 · Don't cares, NAND-NAND and NOR-NOR
 
-Slide exercises: Lecture 6, slides 14 and 15
+Lecture 6, all · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=09)
 
-Slides: Lecture 6, all
-
----
-
-## The big idea
-
-Two upgrades to K-maps:
-
-1. **Don't cares:** some inputs never happen. We can pick their output to make bigger groups.
-2. **NAND and NOR only:** real chips prefer these gates. We can build any SOP from just NANDs, and any POS from just NORs.
+Two upgrades: **don't cares** make bigger K-map blocks, and **NAND / NOR only** circuits are what real chips prefer.
 
 ---
 
-**How to use these notes:**
-When you see 🧠, stop.
-Answer it on paper first.
-Then click to check.
+## 1. Don't cares (x)
 
----
+An input that never happens, or whose output doesn't matter, gets an **x**.
 
-## 1. Don't care terms
+**Rule:** treat x as **1** if it makes a block bigger. Otherwise treat it as 0 and ignore it. You **never** have to cover an x.
 
-![Don't cares](../img/09/s3.png)
+![x used as 0](../docs/svg/dc-before.svg) ![x used as 1](../docs/svg/dc-after.svg)
 
-Sometimes an input combination **never happens**.
+Σm(0, 2, 3, 4, 7) + d(6): **F = C' + B** instead of three terms.
 
-Or it happens, but **we don't care** what the output is.
-
-We mark that cell with an **x**. It's a wild card.
-
----
-
-### 📐 Rule 1: using don't cares
-
-**Treat an x as a 1** if it lets you make a **bigger** group.
-
-**Treat an x as a 0** if it doesn't help. Then just leave it out.
-
-You **never** have to cover an x.
-
-**Why it works:**
-The output on that row doesn't matter. So pick whichever value gives the simpler circuit.
-
-**Use it when:**
-The question gives d(…) or marks cells with x.
-
-**Watch out:**
-Don't add a group just to cover an x. Only the 1s must be covered.
-
----
-
-## 2. Worked example (slide 4)
-
-![Don't care example](../img/09/s4.png)
-
-**How to read this diagram:**
-
-Same map both times. The x is at cell 6 (row 11, column 0).
-
-Top: x left as 0. Bottom: x used as 1.
-
-<br>
-
-| AB \ C | 0 | 1 |
-|---|---|---|
-| **00** | 1 | 0 |
-| **01** | 1 | 1 |
-| **11** | **x** | 1 |
-| **10** | 1 | 0 |
-
-<br>
-
-**x as 0** (top map): three groups of 2.
-
-F = A'C' + BC + B'C'
-
-<br>
-
-**x as 1** (bottom map): two groups of 4.
-
-Whole column C = 0 (cells 0, 2, 6, 4): → **C'**
-
-Rows 01 and 11 (cells 2, 3, 6, 7): → **B**
-
-**F = C' + B**
-
-Much simpler.
-
-<br>
-
-### 🧠 Check
-Why is F = C' + B allowed, even though it outputs 1 on cell 6?
-
+> **Apply:** F(A, B, C) = Σm(1, 3) + d(5, 7). Minimum SOP?
 <details><summary>Answer</summary>
 
-Cell 6 is a don't care. Its output doesn't matter, so 1 is fine.
+Use both x's: column C = 1 is a block of 4 → **F = C**.
 
 </details>
 
 ---
 
-## 3. NAND and NOR gates
+## 2. Why NAND and NOR?
 
-![NAND and NOR](../img/09/s5.png)
+CMOS transistor counts (n inputs):
 
-| Gate | Output | Truth |
-|---|---|---|
-| **NAND** | (AB)' | 0 only when **both** inputs are 1 |
-| **NOR** | (A + B)' | 1 only when **both** inputs are 0 |
-
-The **bubble** on the output means "NOT".
-
----
-
-## 4. Why NAND and NOR?
-
-![Transistor counts](../img/09/s6.png)
-
-They are **faster** and use **fewer transistors**.
-
----
-
-### 📐 Rule 2: CMOS transistor counts
-
-| Gate (n inputs) | Transistors |
-|---|---|
-| NAND | **2n** |
-| NOR | **2n** |
-| AND | **2n + 2** |
-| OR | **2n + 2** |
-| NOT (inverter) | **2** |
-
-| Symbol | Means |
-|---|---|
-| n | number of inputs to the gate |
-
-**Why AND and OR cost 2 more:**
-In CMOS, an AND is built as a NAND followed by an inverter. The inverter adds 2.
-
-![CMOS](../img/09/s7.png)
-
-**Use it when:**
-"How many transistors…" questions, or explaining why NAND/NOR are preferred.
-
----
-
-<br>
-
-### 🧠 Check
-How many transistors in a 3-input NAND? A 3-input AND?
-
-<details><summary>Answer</summary>
-
-NAND: 2 × 3 = **6**
-
-AND: 2 × 3 + 2 = **8**
-
-</details>
-
----
-
-## 5. Why NAND-NAND works
-
-![NAND as OR](../img/09/s8.png)
-
-By DeMorgan:
-
-$$(AB)' = A' + B'$$
-
-So a NAND gate is the same as **an OR gate with inverted inputs**.
-
-<br>
-
-![Equivalent](../img/09/s9.png)
-
-**How to read this diagram:**
-
-Left: a NAND. Right: an OR with bubbles on its inputs.
-
-They're the same gate, drawn two ways.
-
-<br>
-
-![Two inverters](../img/09/s10.png)
-
-**How to read this diagram:**
-
-Top: a normal AND-OR circuit.
-
-Middle: two bubbles added on each middle wire. Two NOTs cancel, so nothing changes.
-
-Bottom: each AND + its bubble = a NAND. The OR with bubbled inputs = a NAND.
-
-**All NANDs.** This is **NAND-NAND logic**.
-
----
-
-## 6. Single letters into the output gate
-
-![Single literal](../img/09/s11.png)
-
-**What if a single letter, E, goes straight into the OR?**
-
-It has no first-level gate, so it doesn't get the extra bubble.
-
-But the output NAND still inverts it.
-
-**So you must feed in E' instead.**
-
----
-
-## 7. The NAND-NAND procedure ⭐
-
-![NAND-NAND](../img/09/s12.png)
-
----
-
-### 📐 Rule 3: NAND-NAND
-
-**Step 1.** Find the **minimum SOP** (K-map).
-
-**Step 2.** Draw the AND-OR circuit.
-
-**Step 3.** Replace **every** gate with a **NAND**. Keep the wiring.
-
-**Step 4.** Any **single letter** going straight into the output gate: **complement it**.
-
-**Why it works:** §5 and §6.
-
-**Use it when:**
-"Implement with two-level NAND" or "NAND gates only".
-
----
-
-## 8. The NOR-NOR procedure
-
-![NOR-NOR](../img/09/s13.png)
-
----
-
-### 📐 Rule 4: NOR-NOR
-
-**Step 1.** Find the **minimum POS** (K-map, grouping 0s).
-
-**Step 2.** Draw the OR-AND circuit.
-
-**Step 3.** Replace **every** gate with a **NOR**. Keep the wiring.
-
-**Step 4.** Any **single letter** going straight into the output gate: **complement it**.
-
-**Why it works:**
-Same idea, flipped. By DeMorgan, (A + B)' = A'B'. So a NOR is an AND with inverted inputs.
-
-**Use it when:**
-"Implement with two-level NOR" or "NOR gates only".
-
----
-
-<br>
-
-### 🧠 Check
-You have F = AB + C. Build it with NANDs.
-
-<details><summary>Answer</summary>
-
-Gate 1: NAND(A, B) = (AB)'
-
-C is a single letter at the output, so complement it: C'.
-
-Output: NAND(gate 1, C') = ((AB)' · C')'
-
-Check by DeMorgan: = AB + C ✓
-
-</details>
-
----
-
-## 9. Worked example: NAND-NAND (slide 14)
-
-![Slide 14](../img/09/s14.png)
-
-**Simplify F = A'B'C + AC' + ACD + ACD' and build it with two-level NANDs.**
-
-<br>
-
-**Step 1. Minimise.**
-
-Algebra: ACD + ACD' = AC. Then AC + AC' = A.
-
-So F = A + A'B'C = **A + B'C** (shortcut x + x'y = x + y).
-
-<br>
-
-Or by K-map: the 1s are cells 2, 3 and 8 to 15.
-
-| AB \ CD | 00 | 01 | 11 | 10 |
+| NAND | NOR | AND | OR | NOT |
 |---|---|---|---|---|
-| **00** | 0 | 0 | 1 | 1 |
-| **01** | 0 | 0 | 0 | 0 |
-| **11** | 1 | 1 | 1 | 1 |
-| **10** | 1 | 1 | 1 | 1 |
+| **2n** | **2n** | 2n + 2 | 2n + 2 | 2 |
 
-Rows 11 and 10 (group of 8): **A**
+AND = NAND + inverter, so it costs 2 more. NAND and NOR are smaller **and** faster.
 
-Cells 3, 2, 11, 10 (wraps top to bottom): B = 0, C = 1 → **B'C**
+> **Apply:** transistors in a 3-input NAND? A 3-input AND?
+<details><summary>Answer</summary>
 
-<br>
+NAND 2 × 3 = **6**. AND 6 + 2 = **8**.
 
-**Steps 2 to 4. Build.**
-
-Gate 1: NAND(B', C) = (B'C)'
-
-A is a single letter at the output gate → feed in **A'**.
-
-Output: NAND(A', gate 1)
-
-<br>
-
-**Check:** (A' · (B'C)')' = A + B'C ✓
+</details>
 
 ---
 
-## 10. Worked example: NOR-NOR (slide 15)
+## 3. The trick: De Morgan turns gates inside out
 
-![Slide 15](../img/09/s15.png)
+![NAND = bubbled OR](../docs/svg/demorgan-gates.svg)
 
-**Simplify F = AC' + ACD' + ABD and build it with two-level NORs.**
+A NAND **is** an OR with inverted inputs. So in an AND-OR circuit, add two bubbles on each middle wire (they cancel). Every gate becomes a NAND.
 
-<br>
+---
 
-**Step 1. Minimise the POS.**
+## 4. NAND-NAND recipe (from SOP)
 
-The 1s are cells 8, 9, 10, 12, 13, 14, 15. That's every A = 1 cell except 11.
+1. Minimum **SOP** (K-map, use don't cares).
+2. Draw AND → OR.
+3. Swap **every** gate for **NAND**. Same wires.
+4. A **single letter** going straight into the output gate: **complement it**.
 
-| AB \ CD | 00 | 01 | 11 | 10 |
-|---|---|---|---|---|
-| **00** | 0 | 0 | 0 | 0 |
-| **01** | 0 | 0 | 0 | 0 |
-| **11** | 1 | 1 | 1 | 1 |
-| **10** | 1 | 1 | **0** | 1 |
+![AND-OR to NAND-NAND](../docs/svg/nand-transform.svg)
+
+Why step 4: a lone letter has no first-level gate, so it misses its bubble. The output NAND would flip it.
+
+## 5. NOR-NOR recipe (from POS)
+
+Same four steps, but start from the minimum **POS** (group the 0s), draw OR → AND, swap every gate for **NOR**, complement lone letters.
+
+> **Apply:** build F = AB + C from NANDs only.
+<details><summary>Answer</summary>
+
+Gate 1 = NAND(A, B). C is a lone letter → feed **C'**. Output = NAND(gate 1, C').
+Check: ((AB)' · C')' = AB + C ✓
+
+</details>
+
+---
+
+## Exam drill (slides 14 and 15)
+
+**1.** Simplify F = A'B'C + AC' + ACD + ACD' and build it with two-level NANDs.
+
+<details><summary>Answer</summary>
+
+![K-map](../docs/svg/k4-nand.svg)
+
+**F = A + B'C** → NAND(B', C), then NAND(**A'**, gate 1).
+
+![NAND circuit](../docs/svg/nand-slide14.svg)
+
+</details>
+
+**2.** Simplify F = AC' + ACD' + ABD and build it with two-level NORs.
+
+<details><summary>Answer</summary>
 
 Group the 0s:
 
-Rows 00 and 01 (cells 0 to 7): A = 0 → **(A)**
+![K-map of 0s](../docs/svg/k4-nor.svg)
 
-Cells 3 and 11 (column CD = 11, wraps top to bottom): B = 0, C = 1, D = 1 → **(B + C' + D')**
+**F = A(B + C' + D')** → NOR(B, C', D'), then NOR(**A'**, gate 1).
 
-**F = A(B + C' + D')**
+![NOR circuit](../docs/svg/nor-slide15.svg)
 
-(The SOP would be AB + AC' + AD'. Longer.)
+</details>
 
-<br>
-
-**Steps 2 to 4. Build.**
-
-Gate 1: NOR(B, C', D') = (B + C' + D')'
-
-A is a single letter at the output gate → feed in **A'**.
-
-Output: NOR(A', gate 1)
-
-<br>
-
-**Check:** (A' + (B + C' + D')')' = A · (B + C' + D') ✓
-
----
-
-## Method: "implement with NAND / NOR only"
-
-1. **NAND?** Get the minimum **SOP**. **NOR?** Get the minimum **POS**.
-2. **Use don't cares** if there are any. x = 1 only if it grows a group.
-3. **Draw** the two-level circuit (AND-OR or OR-AND).
-4. **Swap every gate** for NAND (or NOR).
-5. **Complement single letters** going straight into the output gate.
-6. **Check** with DeMorgan.
-
----
-
-Next: [End-of-topic test](../questions/09-dont-cares-nand-nor.md)
+**Traps**
+- NAND ← SOP. NOR ← POS. Don't mix them up.
+- Complement the **lone letters** at the output gate.
+- An x never has to be covered.
