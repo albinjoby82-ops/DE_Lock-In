@@ -23,7 +23,16 @@ Every question here is one of three moves: **weights** (into decimal), **divide 
 
 </details>
 
-> **Apply:** 2F₁₆ = ? (F = 15)
+**Hex and octal use the same rule, with a different base.**
+
+| Base | Digits | Place values (right to left) |
+|---|---|---|
+| Octal (8) | 0–7 | 1, 8, 64 … |
+| Hex (16) | 0–9, then **A=10 B=11 C=12 D=13 E=14 F=15** | 1, 16, 256 … |
+
+Each letter is **one digit**. Worked: `3C₁₆` = 3 × 16 + **12** = 48 + 12 = **60**.
+
+> **Apply:** 2F₁₆ = ?
 <details><summary>Answer</summary>
 
 2 × 16 + 15 = **47**
