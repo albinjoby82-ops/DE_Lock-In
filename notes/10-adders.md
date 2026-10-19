@@ -134,3 +134,13 @@ It's the full adder's carry: Σm(3, 5, 6, 7) → **F = XY + XZ + YZ**. Three 2-i
 </details>
 
 **Traps:** C₃…C₀ of a multiplier are product bits, not carries · CLA P uses XOR, G uses AND · subtract = invert **and** carry-in 1.
+
+---
+
+## Test yourself
+
+**▶ [Topic 10 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=10)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 09 + 10](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=09,10&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [11 · Decoders and encoders](11-decoders-encoders.md)

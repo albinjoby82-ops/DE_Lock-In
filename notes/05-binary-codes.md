@@ -72,3 +72,13 @@ The 1 is at position 5 → value **6**.
 ---
 
 **Summary: 4 in each code** · binary 0100 · BCD 0100 · Gray 0110 · one-hot 00001000
+
+---
+
+## Test yourself
+
+**▶ [Topic 05 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=05)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 04 + 05](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=04,05&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [06 · Gates and Boolean algebra](06-boolean-algebra.md)

@@ -89,3 +89,13 @@ A = 1 → rows 4–7. B'C → rows 1 and 5. f = **Σm(1, 4, 5, 6, 7)**.
 - Minterm: 0 → barred. Maxterm: 0 → **plain**. They're opposite.
 - Σm list + ΠM list = every row, once.
 - Number the rows from **0**.
+
+---
+
+## Test yourself
+
+**▶ [Topic 07 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=07)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 06 + 07](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=06,07&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [08 · Karnaugh maps ⭐](08-karnaugh-maps.md)

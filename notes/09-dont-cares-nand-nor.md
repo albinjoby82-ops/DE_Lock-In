@@ -109,3 +109,13 @@ Group the 0s:
 - NAND ← SOP. NOR ← POS. Don't mix them up.
 - Complement the **lone letters** at the output gate.
 - An x never has to be covered.
+
+---
+
+## Test yourself
+
+**▶ [Topic 09 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=09)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 08 + 09](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=08,09&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [10 · Adders, subtractors, multipliers](10-adders.md)

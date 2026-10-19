@@ -112,3 +112,13 @@ AB and BC are absorbed by B: = **B + AC**.
 </details>
 
 **Method:** factor → kill 1s and 0s → look for x + x'y and x + xy → De Morgan any bar over a group → check with a K-map (Topic 8).
+
+---
+
+## Test yourself
+
+**▶ [Topic 06 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=06)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 05 + 06](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=05,06&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [07 · SOP, POS, minterms and maxterms](07-minterms-maxterms.md)

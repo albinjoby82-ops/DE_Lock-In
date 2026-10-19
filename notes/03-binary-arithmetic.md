@@ -106,3 +106,13 @@ Shift left 1 place = × 2. Shift right 1 place = ÷ 2.
 - Line the bits up on the **right**.
 - 1 + 1 + 1 = 11, not 10.
 - Check every answer in decimal. It takes 10 seconds.
+
+---
+
+## Test yourself
+
+**▶ [Topic 03 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=03)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 02 + 03](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=02,03&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [04 · Signed numbers and overflow](04-signed-numbers.md)

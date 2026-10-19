@@ -215,3 +215,13 @@ Check: 7 × 16 + 11 = 123 ✓, 2/16 + 8/256 = 0.15625 ✓
 - Pad the fraction on the **right**.
 - Octal ↔ hex: go through binary.
 - Always check by converting back to decimal.
+
+---
+
+## Test yourself
+
+**▶ [Topic 02 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=02)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 01 + 02](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=01,02&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [03 · Binary arithmetic](03-binary-arithmetic.md)

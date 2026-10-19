@@ -68,3 +68,12 @@ Fewest transistors, shortest delay. A ripple-carry adder is cheap but **slow**: 
 ---
 
 Admin: labs 30%, assignments 30%, exams 40% (mid-term **10%**, final 30%).
+
+---
+
+## Test yourself
+
+**▶ [Topic 01 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=01)** (answers checked as you go, **New numbers** for fresh practice)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [02 · Number systems](02-number-systems.md)

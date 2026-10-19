@@ -108,3 +108,13 @@ Active-low: **S = AND(D₀, D₃, D₅, D₆)**, **C = AND(D₀, D₁, D₂, D�
 </details>
 
 **Traps:** active-high → Σm and OR · active-low → ΠM and AND · X is the MSB of the decoder input.
+
+---
+
+## Test yourself
+
+**▶ [Topic 11 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=11)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 10 + 11](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=10,11&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [12 · Multiplexers and demultiplexers](12-multiplexers.md)

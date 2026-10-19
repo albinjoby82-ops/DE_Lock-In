@@ -127,3 +127,13 @@ A carry out of the left end is **not** overflow (−2 + 7 had a carry and was fi
 - Pad positives with 0s to the full bit count **before** negating.
 - 1's: end-around carry. 2's: drop the carry.
 - Overflow is about the **sign bits**, not the carry out.
+
+---
+
+## Test yourself
+
+**▶ [Topic 04 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=04)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 03 + 04](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=03,04&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+Next: [05 · Binary codes](05-binary-codes.md)

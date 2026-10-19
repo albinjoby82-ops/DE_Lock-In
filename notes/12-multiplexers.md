@@ -109,3 +109,13 @@ Selects ABC, data in terms of D. Pairs (0,1)→D, (2,3)→D, (4,5)→D', (6,7)�
 </details>
 
 **Traps:** n variables need only n − 1 selects · always pair on the **last** variable · select 0 → input 0.
+
+---
+
+## Test yourself
+
+**▶ [Topic 12 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=12)** (answers checked as you go, **New numbers** for fresh practice)  
+[Mixed quiz: topics 11 + 12](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=11,12&n=15)  
+[All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
+
+That's the last topic. Do the [cheat sheet](../cheat-sheet.md) the night before.
