@@ -24,11 +24,14 @@ window.QUIZ_REFS = {
  },
  "04": {
   "file": "04-signed-numbers",
-  "1": "1-three-ways-to-make-5-4-bits-5--0101",
-  "2": "2-reading-a-negative-number",
-  "3": "3-ranges-n-bits-sign-bit-included",
-  "4": "4-adding-signed-numbers",
-  "5": "5-overflow-walk-round-the-wheel",
+  "0": "0-the-problem-this-topic-solves",
+  "1": "1-signed-magnitude-a-sign-bit-stuck-on-the-front",
+  "2": "2-1s-complement-flip-every-bit",
+  "3": "3-2s-complement--the-one-computers-actually-use",
+  "4": "4-reading-a-bit-pattern-any-system",
+  "5": "5-ranges-biggest-and-smallest",
+  "6": "6-adding-and-subtracting",
+  "7": "7-overflow-the-answer-doesnt-fit",
   "exam drill": "exam-drill-slide-exercises"
  },
  "05": {
