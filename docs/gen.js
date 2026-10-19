@@ -319,16 +319,22 @@
         tbl(null, rows) + p("Answer <b>" + n + "</b>. Check: " + a + " × " + b + " = " + a * b + " ✓") };
   };
   G.bdiv = function () {
-    var d = ri(3, 13), q = ri(5, 15), r = ri(0, d - 1), n = d * q + r, N = bin(n), D = bin(d), steps = [], cur = 0, qs = "";
+    var d = ri(3, 13), q = ri(5, 15), r = ri(0, d - 1), n = d * q + r, N = bin(n), D = bin(d), steps = [], cur = 0, qs = "", brought = "";
     for (var i = 0; i < N.length; i++) {
-      cur = cur * 2 + +N[i];
+      cur = cur * 2 + +N[i]; brought += N[i];
       var fits = cur >= d;
-      if (qs || fits) steps.push([bin(cur), fits ? "yes → <b>1</b>, subtract " + D : "no → <b>0</b>"]);
-      if (fits) { qs += "1"; cur -= d; } else if (qs) qs += "0";
+      if (!qs && !fits) continue;                       // keep bringing bits down until it first fits
+      var after = fits ? cur - d : cur;
+      steps.push([brought, bin(cur), fits ? "yes" : "no", "<b>" + (fits ? 1 : 0) + "</b>",
+        fits ? bin(cur) + " − " + D + " = " + bin(after) : bin(after)]);
+      qs += fits ? "1" : "0"; cur = after; brought = "";
     }
+    steps[steps.length - 1][4] += " ← <b>remainder</b>";
     return { type: "multi", q: "<code>" + N + " ÷ " + D + "</code>", fields: [{ label: "quotient", ans: bins(q.toString(2)) }, { label: "remainder", ans: bins(bin(r)) }],
-      why: p("Bring down one bit at a time. Each step asks only: does " + D + " fit?") + tbl(["so far", "does " + D + " fit?"], steps) +
-        p("Quotient <b>" + q.toString(2) + "</b>, remainder <b>" + bin(r) + "</b>. Check: " + n + " ÷ " + d + " = " + q + " r " + r + " ✓") };
+      why: p("Bring bits down one at a time. Each step asks only: does " + D + " fit? Yes → write 1 and subtract. No → write 0 and carry it on.") +
+        tbl(["bring down", "so far", "fits?", "quotient bit", "left over"], steps) +
+        p("Quotient = the quotient bits top to bottom: <b>" + q.toString(2) + "</b>. Remainder = what's left over when no bits are left: <b>" + bin(r) + "</b>.") +
+        p("Check: " + d + " × " + q + " + " + r + " = " + n + " ✓") };
   };
 
   /* ================================================ 04 */
