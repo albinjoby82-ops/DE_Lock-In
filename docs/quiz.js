@@ -200,6 +200,7 @@
       });
       tb.appendChild(tr);
     });
+    var saved = null;
     t.appendChild(tb); wrap.appendChild(t);
     wrap.appendChild(el("p", { class: "tiny" }, "Click a cell: empty (= 0) → 1" + (q.dc && q.dc.length ? " → x" : "") + ". Small number = minterm."));
     return {
@@ -215,9 +216,15 @@
         });
         return bad;
       },
+      hide: function () {
+        if (!saved) return;
+        Object.keys(saved).forEach(function (m) { var b = cells[m]; b.setAttribute("data-v", saved[m]); b.querySelector(".v").textContent = saved[m]; b.classList.remove("bad", "good"); });
+        saved = null;
+      },
       reveal: function () {
+        saved = {};
         Object.keys(cells).forEach(function (m) {
-          m = +m; var b = cells[m];
+          m = +m; var b = cells[m]; saved[m] = b.getAttribute("data-v") || "";
           var want = q.ones.indexOf(m) >= 0 ? "1" : ((q.dc || []).indexOf(m) >= 0 ? "x" : "");
           b.setAttribute("data-v", want); b.querySelector(".v").textContent = want;
         });
@@ -249,6 +256,7 @@
       tb.appendChild(tr);
     }
     t.appendChild(tb);
+    var saved = null;
     var wrap = el("div", { class: "tt-wrap" }); wrap.appendChild(t);
     wrap.appendChild(el("p", { class: "tiny" }, "Click an output cell to set it 1, click again for 0."));
     return {
@@ -262,7 +270,13 @@
         });
         return bad;
       },
+      hide: function () {
+        if (!saved) return;
+        btns.forEach(function (bt, i) { bt.setAttribute("data-v", saved[i]); bt.textContent = saved[i] === "" ? "·" : saved[i]; bt.classList.remove("bad", "good"); });
+        saved = null;
+      },
       reveal: function () {
+        saved = btns.map(function (bt) { return bt.getAttribute("data-v"); });
         btns.forEach(function (bt) { var w = String(q.outs[bt.getAttribute("data-n")][+bt.getAttribute("data-m")]); bt.setAttribute("data-v", w); bt.textContent = w; });
       }
     };
@@ -309,9 +323,21 @@
       fb.appendChild(w);
       checkBtn.textContent = "Check again";
     }
+    var shown = false, savedInputs = [], markedOpts = [];
+    function hideAnswer() {
+      shown = false; showBtn.textContent = "Show answer";
+      if (widget && widget.hide) widget.hide();
+      markedOpts.forEach(function (b) { b.classList.remove("right"); }); markedOpts = [];
+      inputs.forEach(function (inp, i) { inp.value = savedInputs[i] || ""; });
+      fb.className = "fb"; fb.innerHTML = "";
+      checkBtn.textContent = "Check";
+    }
     showBtn.addEventListener("click", function () {
+      if (shown) { hideAnswer(); return; }
+      shown = true; showBtn.textContent = "Hide answer";
+      savedInputs = inputs.map(function (inp) { return inp.value; });
       if (widget && widget.reveal) widget.reveal();
-      if (q.type === "mcq" || q.type === "tf") body.querySelectorAll(".opt").forEach(function (b, i) { if (i === q.a) b.classList.add("right"); });
+      if (q.type === "mcq" || q.type === "tf") body.querySelectorAll(".opt").forEach(function (b, i) { if (i === q.a && !b.classList.contains("right")) { b.classList.add("right"); markedOpts.push(b); } });
       if (q.type === "text" || q.type === "bool") inputs[0].value = q.show || (q.ans ? q.ans[0] : "");
       if (q.type === "multi") q.fields.forEach(function (f, i) { inputs[i].value = f.ans[0]; });
       fb.className = "fb shown"; fb.innerHTML = "<p class='fb-head'>Answer shown.</p>";
