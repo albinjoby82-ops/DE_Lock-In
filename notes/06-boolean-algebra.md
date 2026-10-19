@@ -2,6 +2,12 @@
 
 Lecture 4, slides 2–13 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=06)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [logic gates AND OR NOT NAND NOR XOR](https://www.youtube.com/results?search_query=logic+gates+AND+OR+NOT+NAND+NOR+XOR)
+- [Boolean algebra simplification](https://www.youtube.com/results?search_query=Boolean+algebra+simplification)
+- [De Morgan's theorem](https://www.youtube.com/results?search_query=De+Morgan%27s+theorem)
+- [truth table from Boolean expression](https://www.youtube.com/results?search_query=truth+table+from+Boolean+expression)
+
 Every expression is a circuit. **Shorter expression = fewer gates** = cheaper and faster.
 
 Notation: `x'` = NOT x · `xy` = x AND y · `x + y` = x OR y.

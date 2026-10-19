@@ -2,6 +2,12 @@
 
 Lecture 3, slides 4–19 · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=04)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [two's complement explained](https://www.youtube.com/results?search_query=two%27s+complement+explained)
+- [signed magnitude vs one's complement vs two's complement](https://www.youtube.com/results?search_query=signed+magnitude+vs+one%27s+complement+vs+two%27s+complement)
+- [two's complement addition and subtraction](https://www.youtube.com/results?search_query=two%27s+complement+addition+and+subtraction)
+- [overflow in two's complement](https://www.youtube.com/results?search_query=overflow+in+two%27s+complement)
+
 ---
 
 ## 0. The problem this topic solves

@@ -2,6 +2,12 @@
 
 Lecture 6, all · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=09)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [K-map don't care conditions](https://www.youtube.com/results?search_query=K-map+don%27t+care+conditions)
+- [NAND only implementation](https://www.youtube.com/results?search_query=NAND+only+implementation)
+- [NOR only implementation](https://www.youtube.com/results?search_query=NOR+only+implementation)
+- [two level NAND NAND circuit](https://www.youtube.com/results?search_query=two+level+NAND+NAND+circuit)
+
 Two upgrades: **don't cares** make bigger K-map blocks, and **NAND / NOR only** circuits are what real chips prefer.
 
 ---

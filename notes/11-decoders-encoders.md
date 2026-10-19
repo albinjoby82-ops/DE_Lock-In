@@ -2,6 +2,11 @@
 
 Lecture 9 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=11)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [decoder digital logic 3 to 8](https://www.youtube.com/results?search_query=decoder+digital+logic+3+to+8)
+- [implementing a function with a decoder](https://www.youtube.com/results?search_query=implementing+a+function+with+a+decoder)
+- [encoder and priority encoder](https://www.youtube.com/results?search_query=encoder+and+priority+encoder)
+
 A **decoder** turns a binary number i into "line i is on". Its outputs are exactly the **minterms**, so **any function = decoder + one gate**.
 
 ---

@@ -2,6 +2,13 @@
 
 Lecture 2, slides 4–18 and 22–25 · ●●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=02)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [binary to decimal conversion](https://www.youtube.com/results?search_query=binary+to+decimal+conversion)
+- [decimal to binary conversion](https://www.youtube.com/results?search_query=decimal+to+binary+conversion)
+- [decimal fraction to binary](https://www.youtube.com/results?search_query=decimal+fraction+to+binary)
+- [hexadecimal explained](https://www.youtube.com/results?search_query=hexadecimal+explained)
+- [binary to hex and octal conversion](https://www.youtube.com/results?search_query=binary+to+hex+and+octal+conversion)
+
 ---
 
 ## 0. The one idea behind all of it

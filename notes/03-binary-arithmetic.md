@@ -2,6 +2,12 @@
 
 Lecture 2, slides 19–21 and 26–29 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=03)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [binary addition](https://www.youtube.com/results?search_query=binary+addition)
+- [binary subtraction with borrowing](https://www.youtube.com/results?search_query=binary+subtraction+with+borrowing)
+- [binary multiplication](https://www.youtube.com/results?search_query=binary+multiplication)
+- [binary long division](https://www.youtube.com/results?search_query=binary+long+division)
+
 Same as decimal sums, but you carry at **2**, not 10. Always check in decimal.
 
 ---

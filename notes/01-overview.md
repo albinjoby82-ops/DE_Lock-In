@@ -2,6 +2,11 @@
 
 Lecture 1 · worth a short-answer question at most · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=01)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [history of the transistor and integrated circuit](https://www.youtube.com/results?search_query=history+of+the+transistor+and+integrated+circuit)
+- [Moore's law explained](https://www.youtube.com/results?search_query=Moore%27s+law+explained)
+- [SSI MSI LSI VLSI integration levels](https://www.youtube.com/results?search_query=SSI+MSI+LSI+VLSI+integration+levels)
+
 Only learn the numbers below. Skip the chip photos.
 
 ---

@@ -2,6 +2,11 @@
 
 Lecture 10 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=12)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [multiplexer explained](https://www.youtube.com/results?search_query=multiplexer+explained)
+- [implementing Boolean function using multiplexer](https://www.youtube.com/results?search_query=implementing+Boolean+function+using+multiplexer)
+- [demultiplexer explained](https://www.youtube.com/results?search_query=demultiplexer+explained)
+
 A **mux** is a switch: many inputs in, **one** out. The select lines form a number, and that number picks the input. A mux can build **any** function.
 
 ---

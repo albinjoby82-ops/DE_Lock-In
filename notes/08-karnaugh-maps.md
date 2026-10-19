@@ -2,6 +2,11 @@
 
 Lecture 5, slides 10–27 · ●●● the biggest mid-term topic · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=08)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [Karnaugh map explained](https://www.youtube.com/results?search_query=Karnaugh+map+explained)
+- [K-map 4 variable simplification](https://www.youtube.com/results?search_query=K-map+4+variable+simplification)
+- [K-map product of sums grouping zeros](https://www.youtube.com/results?search_query=K-map+product+of+sums+grouping+zeros)
+
 Put the truth table in a grid, circle blocks of 1s, read one short term per block. **Fewest blocks, biggest blocks** = cheapest circuit.
 
 ---

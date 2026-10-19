@@ -2,6 +2,13 @@
 
 Lectures 7 and 8 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=10)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [half adder and full adder](https://www.youtube.com/results?search_query=half+adder+and+full+adder)
+- [ripple carry adder](https://www.youtube.com/results?search_query=ripple+carry+adder)
+- [carry lookahead adder](https://www.youtube.com/results?search_query=carry+lookahead+adder)
+- [adder subtractor circuit](https://www.youtube.com/results?search_query=adder+subtractor+circuit)
+- [2-bit binary multiplier circuit](https://www.youtube.com/results?search_query=2-bit+binary+multiplier+circuit)
+
 Topics 6 to 9 used to **design** real circuits. Design recipe for any "build a circuit that…" question:
 **name inputs and outputs → truth table → simplify each output → draw.**
 

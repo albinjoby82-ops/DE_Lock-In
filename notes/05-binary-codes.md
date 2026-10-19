@@ -2,6 +2,12 @@
 
 Lecture 3, slides 20–24 · ● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=05)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [BCD binary coded decimal](https://www.youtube.com/results?search_query=BCD+binary+coded+decimal)
+- [Gray code explained](https://www.youtube.com/results?search_query=Gray+code+explained)
+- [binary to Gray code conversion](https://www.youtube.com/results?search_query=binary+to+Gray+code+conversion)
+- [one-hot encoding digital logic](https://www.youtube.com/results?search_query=one-hot+encoding+digital+logic)
+
 A **code** is a list: each bit pattern stands for one thing. **n bits give 2ⁿ patterns.**
 
 > **Apply:** how many bits to code 10 items? 40 items?

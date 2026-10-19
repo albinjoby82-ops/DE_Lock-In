@@ -2,6 +2,11 @@
 
 Lecture 4 slides 14–21, Lecture 5 slides 2–9 · ●● · [**Quiz →**](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=07)
 
+**▶ Explainer videos** (tap to search YouTube):
+- [minterms and maxterms](https://www.youtube.com/results?search_query=minterms+and+maxterms)
+- [sum of products and product of sums](https://www.youtube.com/results?search_query=sum+of+products+and+product+of+sums)
+- [canonical SOP and POS](https://www.youtube.com/results?search_query=canonical+SOP+and+POS)
+
 Any truth table can be written straight down as an expression, two ways:
 **rows where f = 1 → Σm** · **rows where f = 0 → ΠM**. Both correct, both long. K-maps (Topic 8) shrink them.
 
