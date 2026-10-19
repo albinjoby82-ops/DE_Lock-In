@@ -183,6 +183,10 @@ if __name__ == "__main__":
     check_quiz()
     check_tt()
     check_numbers()
+    import gen_check
+    rows, gens, checked, gbad = gen_check.run(min_sop_lits)
+    print(f"{len(gens)} fresh-number generators, {len(rows)} samples, {checked} answers re-worked in Python")
+    bad.extend(gbad[:40])
     unused = check_links()
     if unused:
         print(f"{len(unused)} unused slide images (delete with --prune)")

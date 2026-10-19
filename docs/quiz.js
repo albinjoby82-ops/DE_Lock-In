@@ -465,9 +465,37 @@
       if (q._topic) pre.appendChild(el("p", { class: "from" }, "Topic " + q._topic));
       stage.innerHTML = "";
       stage.appendChild(pre);
-      var host = el("div"); stage.appendChild(host);
-      renderQuestion(q, host, function (s) { if (scores[i] === null) { scores[i] = s; refresh(); } });
-      if (scores[i] !== null) host.querySelector(".q").classList.add("seen");
+      var host = el("div");
+      var scoreIt = function (s) { if (scores[i] === null) { scores[i] = s; refresh(); } };
+      var showOriginal = function () {
+        renderQuestion(q, host, scoreIt);
+        if (scores[i] !== null) host.querySelector(".q").classList.add("seen");
+      };
+      var G = window.QUIZ_GEN;
+      if (q.gen && G && G[q.gen]) {
+        var bar = el("div", { class: "genbar" });
+        var newBtn = el("button", { type: "button", class: "btn ghost gen-new" }, "New numbers");
+        var backBtn = el("button", { type: "button", class: "btn ghost gen-back" }, "Back to the slide question");
+        var note = el("span", { class: "gen-note" }, "Same question, fresh numbers.");
+        backBtn.hidden = true;
+        newBtn.addEventListener("click", function () {
+          var v;
+          try { v = G[q.gen](q.gp || {}); } catch (e) { note.textContent = "Couldn't make a new one, try again."; return; }
+          v.ref = v.ref || q.ref;
+          renderQuestion(v, host, function () {});
+          host.querySelector(".q").classList.add("variant");
+          note.textContent = "Practice version: new numbers, not scored.";
+          newBtn.textContent = "Another one"; backBtn.hidden = false;
+        });
+        backBtn.addEventListener("click", function () {
+          showOriginal();
+          note.textContent = "Same question, fresh numbers."; newBtn.textContent = "New numbers"; backBtn.hidden = true;
+        });
+        bar.appendChild(newBtn); bar.appendChild(backBtn); bar.appendChild(note);
+        stage.appendChild(bar);
+      }
+      stage.appendChild(host);
+      showOriginal();
       refresh();
       root.scrollIntoView({ block: "start", behavior: "smooth" });
     }
