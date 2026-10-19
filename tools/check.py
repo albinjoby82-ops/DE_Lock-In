@@ -3,6 +3,7 @@
 Run: python3 tools/check.py   (needs node)
 """
 import json, os, re, subprocess, itertools, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 bad = []
@@ -48,6 +49,23 @@ def min_sop_lits(nv, ones, dc):
         if best is not None and k > 4 and best <= k:  # cannot improve with more terms
             break
     return best
+
+
+def check_refs():
+    import build_refs
+    refs = build_refs.build()
+    for fn in sorted(os.listdir(os.path.join(ROOT, "docs", "data"))):
+        txt = open(os.path.join(ROOT, "docs", "data", fn), encoding="utf8").read()
+        for ref in re.findall(r'"ref": "([^"]*)"', txt):
+            m = re.fullmatch(r"(\d\d)(?: (?:§(\d+)|(exam drill)))?", ref)
+            if not m or m.group(1) not in refs:
+                fail(f"{fn}: bad ref {ref!r}")
+            key = m.group(2) or m.group(3)
+            if key and key not in refs[m.group(1)]:
+                fail(f"{fn}: ref {ref!r} has no matching heading in the notes")
+    cur = open(os.path.join(ROOT, "docs", "refs.js"), encoding="utf8").read()
+    if cur != "window.QUIZ_REFS = " + json.dumps(refs, ensure_ascii=False, indent=1) + ";\n":
+        fail("docs/refs.js is out of date: run python3 tools/build_refs.py")
 
 
 def check_quiz():
@@ -161,6 +179,7 @@ def check_links():
 
 
 if __name__ == "__main__":
+    check_refs()
     check_quiz()
     check_tt()
     check_numbers()

@@ -21,6 +21,15 @@
     set: function (k, v) { try { localStorage.setItem("delockin:" + k, JSON.stringify(v)); } catch (e) {} }
   };
   var loaded = {};
+  function refLink(ref) {
+    var m = /^(\d\d)(?: (?:§(\d+)|(exam drill)))?$/.exec(ref || "");
+    var R = window.QUIZ_REFS && m && window.QUIZ_REFS[m[1]];
+    var p = el("p", { class: "ref" }, "From the notes: ");
+    if (!R) { p.appendChild(document.createTextNode(ref)); return p; }
+    var anchor = R[m[2] || m[3]];
+    p.appendChild(el("a", { href: REPO + "notes/" + R.file + ".md" + (anchor ? "#" + anchor : ""), target: "_blank", rel: "noopener" }, "Read it: " + ref + " →"));
+    return p;
+  }
   window.QUIZ = { add: function (t) { loaded[t.id] = t; }, TOPICS: TOPICS, REPO: REPO, store: store };
 
   /* ------------------------------------------------ Boolean expressions */
@@ -296,7 +305,7 @@
       if (fb.querySelector(".why")) return;
       if (!ok && !answered) { answered = true; done(0); }
       var w = el("div", { class: "why" }, q.why || "");
-      if (q.ref) w.appendChild(el("p", { class: "ref" }, "From the notes: " + q.ref));
+      if (q.ref) w.appendChild(refLink(q.ref));
       fb.appendChild(w);
       checkBtn.textContent = "Check again";
     }
@@ -308,7 +317,7 @@
       fb.className = "fb shown"; fb.innerHTML = "<p class='fb-head'>Answer shown.</p>";
       if (!answered) { answered = true; done(0); }
       fb.appendChild(el("div", { class: "why" }, q.why || ""));
-      if (q.ref) fb.lastChild.appendChild(el("p", { class: "ref" }, "From the notes: " + q.ref));
+      if (q.ref) fb.lastChild.appendChild(refLink(q.ref));
     });
     if (hintBtn) hintBtn.addEventListener("click", function () { hintBtn.outerHTML = "<p class='hint'>Hint: " + q.hint + "</p>"; });
 
