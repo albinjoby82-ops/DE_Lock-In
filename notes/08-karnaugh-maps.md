@@ -13,6 +13,8 @@ Put the truth table in a grid, circle blocks of 1s, read one short term per bloc
 
 ## 1. The grid: Gray order and cell numbers
 
+▶ Video: [Karnaugh map explained](https://www.youtube.com/results?search_query=Karnaugh+map+explained)
+
 **Rule:** AB down the side, C or CD across the top. Both go **00, 01, 11, 10**. Learn where each minterm sits.
 
 ![3-variable cell numbers](../docs/svg/k3-index.svg) ![4-variable cell numbers](../docs/svg/k4-index.svg)
@@ -62,6 +64,8 @@ Cells 1, 3: A = 0, C = 1 → A'C. Cells 4, 6: A = 1, C = 0 → AC'. **F = A'C + 
 
 ## 4. Four variables
 
+▶ Video: [K-map 4 variable simplification](https://www.youtube.com/results?search_query=K-map+4+variable+simplification)
+
 ![4-variable example](../docs/svg/k4-sop.svg)
 
 Left half (8 cells) → **C'**. Cells 0, 2, 4, 6 wrap left to right → **A'D'**. **F = C' + A'D'**.
@@ -78,6 +82,8 @@ The 4 corners → **B'D'**. The centre square → **BD**. **F = B'D' + BD**.
 ---
 
 ## 5. POS: group the 0s
+
+▶ Video: [K-map product of sums grouping zeros](https://www.youtube.com/results?search_query=K-map+product+of+sums+grouping+zeros)
 
 **Rule:** circle the **0s** the same way. Read with the maxterm rule: stays **0** → **plain**, stays **1** → **barred**. OR the letters, AND the brackets.
 

@@ -14,6 +14,8 @@ Same as decimal sums, but you carry at **2**, not 10. Always check in decimal.
 
 ## 1. Add
 
+▶ Video: [binary addition](https://www.youtube.com/results?search_query=binary+addition)
+
 **Rule:** 1 + 1 = **10** (write 0, carry 1). 1 + 1 + 1 = **11** (write 1, carry 1).
 
 ```
@@ -35,6 +37,8 @@ Right to left: 1+0=1; 1+1=10 → 0 c1; 0+1+1=10 → 0 c1; 1+0+1=10 → 0 c1. **1
 
 ## 2. Subtract
 
+▶ Video: [binary subtraction with borrowing](https://www.youtube.com/results?search_query=binary+subtraction+with+borrowing)
+
 **Rule:** 0 − 1 = **1, borrow 1** (you borrow 2 from the next column: 2 − 1 = 1).
 
 Circuits don't do this. They add a negative number instead (Topics 4 and 10).
@@ -49,6 +53,8 @@ Borrow ripples left to the 1: **0101** (8 − 3 = 5 ✓)
 ---
 
 ## 3. Multiply: shift and add
+
+▶ Video: [binary multiplication](https://www.youtube.com/results?search_query=binary+multiplication)
 
 **Rule:** for each **1** in the multiplier, write the multiplicand shifted to that place. Add the rows.
 
@@ -75,6 +81,8 @@ Shift left 1 place = × 2. Shift right 1 place = ÷ 2.
 ---
 
 ## 4. Divide: does it fit? (0 or 1)
+
+▶ Video: [binary long division](https://www.youtube.com/results?search_query=binary+long+division)
 
 **Rule:** bring down bits until the divisor fits → write **1** and subtract. If it doesn't fit → write **0**. What's left is the remainder.
 

@@ -14,6 +14,8 @@ Any truth table can be written straight down as an expression, two ways:
 
 ## 1. SOP and POS are circuit shapes
 
+▶ Video: [sum of products and product of sums](https://www.youtube.com/results?search_query=sum+of+products+and+product+of+sums)
+
 | Form | Looks like | Circuit |
 |---|---|---|
 | **SOP** (sum of products) | A'C' + BC + B'C' | AND gates → one OR |
@@ -31,6 +33,8 @@ Any truth table can be written straight down as an expression, two ways:
 ---
 
 ## 2. Minterm (m) and maxterm (M) for one row
+
+▶ Video: [minterms and maxterms](https://www.youtube.com/results?search_query=minterms+and+maxterms)
 
 | | Uses | bit 0 → | bit 1 → | Is … on that row only |
 |---|---|---|---|---|
@@ -51,6 +55,8 @@ Minterm and maxterm are complements: mᵢ' = Mᵢ.
 ---
 
 ## 3. Σm and ΠM
+
+▶ Video: [canonical SOP and POS](https://www.youtube.com/results?search_query=canonical+SOP+and+POS)
 
 f = 1 on rows 0, 1, 2, 3, 6 →
 

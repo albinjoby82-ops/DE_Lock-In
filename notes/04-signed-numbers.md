@@ -12,6 +12,8 @@ Lecture 3, slides 4–19 · ●●● · [**Quiz →**](https://albinjoby82-ops.
 
 ## 0. The problem this topic solves
 
+▶ Video: [signed magnitude vs one's complement vs two's complement](https://www.youtube.com/results?search_query=signed+magnitude+vs+one%27s+complement+vs+two%27s+complement)
+
 A computer stores a number in a **fixed number of bits**, say 4. That gives exactly 16 patterns, `0000` to `1111`. Read as plain binary, they mean **0 to 15**.
 
 But we also need **negative** numbers, like −5. And a circuit has **no minus sign**, only bits.
@@ -106,6 +108,8 @@ The exam asks four kinds of question:
 ---
 
 ## 3. 2's complement ⭐ the one computers actually use
+
+▶ Video: [two's complement explained](https://www.youtube.com/results?search_query=two%27s+complement+explained)
 
 **To make a number negative: flip every bit, then add 1.**
 
@@ -203,6 +207,8 @@ With n bits (sign bit included):
 
 ## 6. Adding and subtracting
 
+▶ Video: [two's complement addition and subtraction](https://www.youtube.com/results?search_query=two%27s+complement+addition+and+subtraction)
+
 **Subtracting is adding a negative:** A − B = A + (−B). Make −B, then add.
 
 **Add the bits normally** (topic 03). Then deal with any carry that falls off the left end:
@@ -229,6 +235,8 @@ Worked: **−2 + 7** in 4 bits
 ---
 
 ## 7. Overflow: the answer doesn't fit
+
+▶ Video: [overflow in two's complement](https://www.youtube.com/results?search_query=overflow+in+two%27s+complement)
 
 4-bit 2's complement only goes from −8 to +7. If the real answer is outside that, the bits roll round to the other end and give a **wrong** answer. That's **overflow**.
 

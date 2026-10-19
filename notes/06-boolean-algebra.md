@@ -16,6 +16,8 @@ Notation: `x'` = NOT x · `xy` = x AND y · `x + y` = x OR y.
 
 ## 1. The gates
 
+▶ Video: [logic gates AND OR NOT NAND NOR XOR](https://www.youtube.com/results?search_query=logic+gates+AND+OR+NOT+NAND+NOR+XOR)
+
 ![Logic gates](../docs/svg/gates.svg)
 
 **Careful:** in Boolean algebra **1 + 1 = 1**. OR is not adding.
@@ -30,6 +32,8 @@ xy = **0** · x + y = **1** · (xy)' = **1** · x ⊕ y = **1** (they differ)
 ---
 
 ## 2. Expression → truth table
+
+▶ Video: [truth table from Boolean expression](https://www.youtube.com/results?search_query=truth+table+from+Boolean+expression)
 
 **Rule:** n inputs → **2ⁿ rows** in binary order (000, 001 … 111). Put each row into the expression.
 
@@ -47,6 +51,8 @@ When x = 0, x' = 1 so f = 1. When x = 1, f = (1)z = z.
 ---
 
 ## 3. The axioms you use
+
+▶ Video: [De Morgan's theorem](https://www.youtube.com/results?search_query=De+Morgan%27s+theorem)
 
 | Law | OR form | AND form |
 |---|---|---|
@@ -84,6 +90,8 @@ Flip letters, swap operators: **x'(y + z')**.
 ---
 
 ## 4. Worked simplification (slide 12)
+
+▶ Video: [Boolean algebra simplification](https://www.youtube.com/results?search_query=Boolean+algebra+simplification)
 
 **x'y' + xyz + x'y**
 

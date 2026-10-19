@@ -13,6 +13,8 @@ A **mux** is a switch: many inputs in, **one** out. The select lines form a numb
 
 ## 1. 2-to-1 and 4-to-1
 
+▶ Video: [multiplexer explained](https://www.youtube.com/results?search_query=multiplexer+explained)
+
 **Y = S'I₀ + SI₁** → S = 0 passes I₀, S = 1 passes I₁.
 
 ![2-to-1 mux](../docs/svg/mux2-gates.svg)
@@ -48,6 +50,8 @@ First level shares the **low** select bits. The last mux uses the **high** bits.
 ---
 
 ## 3. Any function, full size
+
+▶ Video: [implementing Boolean function using multiplexer](https://www.youtube.com/results?search_query=implementing+Boolean+function+using+multiplexer)
 
 n variables → 2ⁿ-to-1 mux. Variables on the selects. **Dᵢ = 1 if mᵢ is in f, else 0.**
 
@@ -85,6 +89,8 @@ n variables → 2ⁿ-to-1 mux. Variables on the selects. **Dᵢ = 1 if mᵢ is i
 ---
 
 ## 5. Demultiplexer
+
+▶ Video: [demultiplexer explained](https://www.youtube.com/results?search_query=demultiplexer+explained)
 
 One input goes to **one of 2ⁿ outputs**. A demux = a decoder whose outputs are each ANDed with the input.
 

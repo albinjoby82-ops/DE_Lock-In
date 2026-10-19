@@ -21,6 +21,8 @@ Smallest n with 2ⁿ ≥ items: 10 → **4** (16). 40 → **6** (64).
 
 ## 1. BCD: 4 bits per decimal digit
 
+▶ Video: [BCD binary coded decimal](https://www.youtube.com/results?search_query=BCD+binary+coded+decimal)
+
 **Rule:** code each decimal digit on its own. 1010 to 1111 are **never** used.
 
 185 → 0001 | 1000 | 0101. Not the same as binary (185 = 10111001).
@@ -35,6 +37,8 @@ Smallest n with 2ⁿ ≥ items: 10 → **4** (16). 40 → **6** (64).
 ---
 
 ## 2. Gray code: neighbours differ in ONE bit
+
+▶ Video: [Gray code explained](https://www.youtube.com/results?search_query=Gray+code+explained) · [binary to Gray code conversion](https://www.youtube.com/results?search_query=binary+to+Gray+code+conversion)
 
 | Dec | Gray | Dec | Gray |
 |---|---|---|---|
@@ -59,6 +63,8 @@ You'll see Gray order again on every K-map: **00, 01, 11, 10**.
 ---
 
 ## 3. One-hot: one bit per value
+
+▶ Video: [one-hot encoding digital logic](https://www.youtube.com/results?search_query=one-hot+encoding+digital+logic)
 
 Exactly one bit is 1. Value k → bit position k − 1 (from the right, starting at 0).
 

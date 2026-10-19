@@ -13,6 +13,8 @@ Lecture 2, slides 4–18 and 22–25 · ●●● · [**Quiz →**](https://albi
 
 ## 0. The one idea behind all of it
 
+▶ Video: [hexadecimal explained](https://www.youtube.com/results?search_query=hexadecimal+explained)
+
 A **base** is how many digit symbols you have.
 
 | Name | Base | Digits | Place values, right to left |
@@ -47,6 +49,8 @@ Every question in this topic is one of three moves:
 ---
 
 ## 1. Into decimal: digit × place value, then add
+
+▶ Video: [binary to decimal conversion](https://www.youtube.com/results?search_query=binary+to+decimal+conversion)
 
 **Rule:** write the place values above the digits, multiply, add.
 Left of the point the powers go 0, 1, 2 … Right of the point they go −1, −2 …
@@ -92,6 +96,8 @@ F = 15. 2 × 16 + 15 = **47**
 
 ## 2. Decimal → any base: the whole part
 
+▶ Video: [decimal to binary conversion](https://www.youtube.com/results?search_query=decimal+to+binary+conversion)
+
 **Rule:** divide by the base. Write down the remainder. Divide the answer again. Stop at 0. Read the remainders **upward**.
 
 ![Dividing 41 by 2](../docs/svg/div-ladder.svg)
@@ -132,6 +138,8 @@ Check: 5 × 8 + 1 = 41 ✓
 
 ## 3. Decimal → any base: the fraction part
 
+▶ Video: [decimal fraction to binary](https://www.youtube.com/results?search_query=decimal+fraction+to+binary)
+
 **Rule:** multiply the fraction by the base. The whole number that pops out (left of the point) is the next digit. Keep only the fraction and repeat. Stop at 0. Read the digits **downward**.
 
 ![Multiplying 0.6875 by 2](../docs/svg/mul-ladder.svg)
@@ -162,6 +170,8 @@ Check: 0.25 + 0.125 = 0.375 ✓
 ---
 
 ## 4. Binary ↔ hex / octal: group the bits
+
+▶ Video: [binary to hex and octal conversion](https://www.youtube.com/results?search_query=binary+to+hex+and+octal+conversion)
 
 **Why it works:** 16 = 2⁴, so one hex digit is **exactly 4 bits**. 8 = 2³, so one octal digit is **exactly 3 bits**. You never need decimal in between.
 

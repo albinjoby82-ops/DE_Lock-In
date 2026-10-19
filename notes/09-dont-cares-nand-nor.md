@@ -14,6 +14,8 @@ Two upgrades: **don't cares** make bigger K-map blocks, and **NAND / NOR only** 
 
 ## 1. Don't cares (x)
 
+▶ Video: [K-map don't care conditions](https://www.youtube.com/results?search_query=K-map+don%27t+care+conditions)
+
 An input that never happens, or whose output doesn't matter, gets an **x**.
 
 **Rule:** treat x as **1** if it makes a block bigger. Otherwise treat it as 0 and ignore it. You **never** have to cover an x.
@@ -60,6 +62,8 @@ A NAND **is** an OR with inverted inputs. So in an AND-OR circuit, add two bubbl
 
 ## 4. NAND-NAND recipe (from SOP)
 
+▶ Video: [NAND only implementation](https://www.youtube.com/results?search_query=NAND+only+implementation) · [two level NAND NAND circuit](https://www.youtube.com/results?search_query=two+level+NAND+NAND+circuit)
+
 1. Minimum **SOP** (K-map, use don't cares).
 2. Draw AND → OR.
 3. Swap **every** gate for **NAND**. Same wires.
@@ -70,6 +74,8 @@ A NAND **is** an OR with inverted inputs. So in an AND-OR circuit, add two bubbl
 Why step 4: a lone letter has no first-level gate, so it misses its bubble. The output NAND would flip it.
 
 ## 5. NOR-NOR recipe (from POS)
+
+▶ Video: [NOR only implementation](https://www.youtube.com/results?search_query=NOR+only+implementation)
 
 Same four steps, but start from the minimum **POS** (group the 0s), draw OR → AND, swap every gate for **NOR**, complement lone letters.
 

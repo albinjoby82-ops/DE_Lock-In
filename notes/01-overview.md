@@ -13,6 +13,8 @@ Only learn the numbers below. Skip the chip photos.
 
 ## 1. The timeline
 
+▶ Video: [history of the transistor and integrated circuit](https://www.youtube.com/results?search_query=history+of+the+transistor+and+integrated+circuit) · [SSI MSI LSI VLSI integration levels](https://www.youtube.com/results?search_query=SSI+MSI+LSI+VLSI+integration+levels)
+
 | When | What | Remember |
 |---|---|---|
 | 1943 | COLOSSUS | first **valve** computer (UK, code-breaking) |
@@ -40,6 +42,8 @@ Speed was set by the electronics, not by reading the program in. And the machine
 ---
 
 ## 2. Moore's law
+
+▶ Video: [Moore's law explained](https://www.youtube.com/results?search_query=Moore%27s+law+explained)
 
 **Rule:** transistor count **doubles every 18 to 24 months** (Moore's 1965 version: every year).
 

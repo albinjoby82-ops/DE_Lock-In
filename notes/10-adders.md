@@ -29,6 +29,8 @@ Three 1s (odd) → **1**. Three 1s again → **1**.
 
 ## 2. Half adder: two bits
 
+▶ Video: [half adder and full adder](https://www.youtube.com/results?search_query=half+adder+and+full+adder)
+
 | X | Y | C | S |
 |---|---|---|---|
 | 0 | 0 | 0 | 0 |
@@ -65,6 +67,8 @@ S₁ = 1 ⊕ 0 = 1, C₁ = 0. S = 1 ⊕ 1 = **0**, C₂ = 1·1 = 1. C = 0 + 1 = 
 
 ## 4. Ripple-carry adder
 
+▶ Video: [ripple carry adder](https://www.youtube.com/results?search_query=ripple+carry+adder)
+
 One full adder per bit. Each carry-out feeds the next carry-in.
 
 ![4-bit ripple carry adder](../docs/svg/ripple4.svg)
@@ -81,6 +85,8 @@ One full adder per bit. Each carry-out feeds the next carry-in.
 ---
 
 ## 5. Carry lookahead: every carry at once
+
+▶ Video: [carry lookahead adder](https://www.youtube.com/results?search_query=carry+lookahead+adder)
 
 **Pᵢ = Aᵢ ⊕ Bᵢ** (propagate: passes a carry on) · **Gᵢ = AᵢBᵢ** (generate: makes a carry itself)
 
@@ -105,6 +111,8 @@ G₀ = 1·1 = 1, P₀ = 0. G₁ = 1·0 = 0, P₁ = 1. C₂ = G₁ + P₁G₀ + P
 
 ## 6. Subtract with the same adder
 
+▶ Video: [adder subtractor circuit](https://www.youtube.com/results?search_query=adder+subtractor+circuit)
+
 **A − B = A + B' + 1.** Invert B with XOR gates, set carry-in = 1. One control line M does both:
 
 ![Adder-subtractor](../docs/svg/add-sub.svg)
@@ -121,6 +129,8 @@ Half subtractor (by hand): **D = X ⊕ Y, Borrow = X'Y**.
 ---
 
 ## 7. Multiplier
+
+▶ Video: [2-bit binary multiplier circuit](https://www.youtube.com/results?search_query=2-bit+binary+multiplier+circuit)
 
 Bit × bit = **AND**. 2 × 2: four ANDs make the partial products, two half adders add them.
 

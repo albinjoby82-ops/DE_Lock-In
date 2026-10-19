@@ -13,6 +13,8 @@ A **decoder** turns a binary number i into "line i is on". Its outputs are exact
 
 ## 1. n-to-2ⁿ decoder
 
+▶ Video: [decoder digital logic 3 to 8](https://www.youtube.com/results?search_query=decoder+digital+logic+3+to+8)
+
 **Rule:** inputs form a number i → **only output i is 1**.
 
 ![2-to-4 decoder](../docs/svg/dec2to4-gates.svg)
@@ -29,6 +31,8 @@ Each AND gate is one minterm: Z₂ = A₁A₀' is 1 only for input 10.
 ---
 
 ## 2. Any function: decoder + OR ⭐
+
+▶ Video: [implementing a function with a decoder](https://www.youtube.com/results?search_query=implementing+a+function+with+a+decoder)
 
 **Rule (active-high):** write f as **Σm**, **OR** those outputs.
 
@@ -82,6 +86,8 @@ EN is tied to ground (logic 0) so it is always on.
 ---
 
 ## 5. Encoders: the reverse
+
+▶ Video: [encoder and priority encoder](https://www.youtube.com/results?search_query=encoder+and+priority+encoder)
 
 **Rule:** output bit k = **OR** of every input whose number has bit k = 1.
 
