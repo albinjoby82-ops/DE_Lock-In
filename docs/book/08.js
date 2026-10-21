@@ -22,7 +22,9 @@ BOOK.add({
 "lits": 4,
 "why": "<p>F = 1 on cells 0, 2, 6, 7.</p><img src='svg/book/k3-1a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z'</b> from cells 0, 2</li><li><b>xy</b> from cells 6, 7</li></ul><p><b>F = xy + x'z'</b> (4 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.1 (b) ★",
@@ -40,7 +42,10 @@ BOOK.add({
 "lits": 3,
 "why": "<p>F = 1 on cells 0, 2, 3, 4, 6.</p><img src='svg/book/k3-1b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>z'</b> from cells 0, 2, 4, 6</li><li><b>x'y</b> from cells 2, 3</li></ul><p><b>F = z' + x'y</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.1 (c) ★",
@@ -58,7 +63,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>F = 1 on cells 0, 1, 2, 3, 7.</p><img src='svg/book/k3-1c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'</b> from cells 0, 1, 2, 3</li><li><b>yz</b> from cells 3, 7</li></ul><p><b>F = x' + yz</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.1 (d) ★",
@@ -75,7 +82,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>F = 1 on cells 3, 5, 6, 7.</p><img src='svg/book/k3-1d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>yz</b> from cells 3, 7</li><li><b>xz</b> from cells 5, 7</li><li><b>xy</b> from cells 6, 7</li></ul><p><b>F = xy + xz + yz</b> (6 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -98,7 +107,9 @@ BOOK.add({
 "lits": 4,
 "why": "<p>F = 1 on cells 0, 1, 5, 7.</p><img src='svg/book/k3-2a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'y'</b> from cells 0, 1</li><li><b>xz</b> from cells 5, 7</li></ul><p><b>F = xz + x'y'</b> (4 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.2 (b) ★",
@@ -116,7 +127,10 @@ BOOK.add({
 "lits": 3,
 "why": "<p>F = 1 on cells 1, 2, 3, 6, 7.</p><img src='svg/book/k3-2b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z</b> from cells 1, 3</li><li><b>y</b> from cells 2, 3, 6, 7</li></ul><p><b>F = y + x'z</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 3.2 (c)",
@@ -133,7 +147,9 @@ BOOK.add({
 "lits": 4,
 "why": "<p>F = 1 on cells 0, 1, 6, 7.</p><img src='svg/book/k3-2c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'y'</b> from cells 0, 1</li><li><b>xy</b> from cells 6, 7</li></ul><p><b>F = xy + x'y'</b> (4 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.2 (d)",
@@ -151,7 +167,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>F = 1 on cells 0, 1, 3, 4, 5.</p><img src='svg/book/k3-2d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>y'</b> from cells 0, 1, 4, 5</li><li><b>x'z</b> from cells 1, 3</li></ul><p><b>F = y' + x'z</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.2 (e)",
@@ -168,7 +186,9 @@ BOOK.add({
 "lits": 1,
 "why": "<p>F = 1 on cells 1, 3, 5, 7.</p><img src='svg/book/k3-2e.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>z</b> from cells 1, 3, 5, 7</li></ul><p><b>F = z</b> (1 literal).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 3.2 (f)",
@@ -186,7 +206,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>F = 1 on cells 1, 4, 5, 6, 7.</p><img src='svg/book/k3-2f.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>y'z</b> from cells 1, 5</li><li><b>x</b> from cells 4, 5, 6, 7</li></ul><p><b>F = x + y'z</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -209,7 +231,9 @@ BOOK.add({
 "lits": 4,
 "why": "<p>Plot each term: xy + x'y'z' + x'yz' → 1s on cells <b>0, 2, 6, 7</b>.</p><img src='svg/book/k3-3a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z'</b> from cells 0, 2</li><li><b>xy</b> from cells 6, 7</li></ul><p><b>F = xy + x'z'</b> (4 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 3.3 (b) ★",
@@ -227,7 +251,10 @@ BOOK.add({
 "lits": 3,
 "why": "<p>Plot each term: x'y' + yz + x'yz' → 1s on cells <b>0, 1, 2, 3, 7</b>.</p><img src='svg/book/k3-3b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'</b> from cells 0, 1, 2, 3</li><li><b>yz</b> from cells 3, 7</li></ul><p><b>F = x' + yz</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 1,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 3.3 (c) ★",
@@ -245,7 +272,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>Plot each term: x'y + yz' + y'z' → 1s on cells <b>0, 2, 3, 4, 6</b>.</p><img src='svg/book/k3-3c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>z'</b> from cells 0, 2, 4, 6</li><li><b>x'y</b> from cells 2, 3</li></ul><p><b>F = z' + x'y</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 3.3 (d)",
@@ -261,7 +290,9 @@ BOOK.add({
 "lits": 9,
 "why": "<p>Plot each term: xyz + x'y'z + xy'z' → 1s on cells <b>1, 4, 7</b>.</p><img src='svg/book/k3-3d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'y'z</b> from cells 1</li><li><b>xy'z'</b> from cells 4</li><li><b>xyz</b> from cells 7</li></ul><p><b>F = xyz + xy'z' + x'y'z</b> (9 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 1,
+"core": false
 }
 ]
 },
@@ -284,7 +315,9 @@ BOOK.add({
 "lits": 1,
 "why": "<p>F = 1 on cells 2, 3, 6, 7.</p><img src='svg/book/k3-4a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>y</b> from cells 2, 3, 6, 7</li></ul><p><b>F = y</b> (1 literal).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.4 (b) ★",
@@ -301,7 +334,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>F = 1 on cells 4, 6, 7, 15.</p><img src='svg/book/k3-4b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'BD'</b> from cells 4, 6</li><li><b>BCD</b> from cells 7, 15</li></ul><p><b>F = BCD + A'BD'</b> (6 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.4 (c) ★",
@@ -320,7 +355,10 @@ BOOK.add({
 "lits": 8,
 "why": "<p>F = 1 on cells 3, 7, 11, 13, 14, 15.</p><img src='svg/book/k3-4c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>CD</b> from cells 3, 7, 11, 15</li><li><b>ABD</b> from cells 13, 15</li><li><b>ABC</b> from cells 14, 15</li></ul><p><b>F = CD + ABC + ABD</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.4 (d) ★",
@@ -339,7 +377,9 @@ BOOK.add({
 "lits": 5,
 "why": "<p>F = 1 on cells 2, 3, 12, 13, 14, 15.</p><img src='svg/book/k3-4d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>w'x'y</b> from cells 2, 3</li><li><b>wx</b> from cells 12, 13, 14, 15</li></ul><p><b>F = wx + w'x'y</b> (5 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.4 (e)",
@@ -358,7 +398,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>F = 1 on cells 1, 4, 5, 6, 7, 13.</p><img src='svg/book/k3-4e.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>w'y'z</b> from cells 1, 5</li><li><b>w'x</b> from cells 4, 5, 6, 7</li><li><b>xy'z</b> from cells 5, 13</li></ul><p><b>F = w'x + xy'z + w'y'z</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.4 (f)",
@@ -376,7 +418,9 @@ BOOK.add({
 "lits": 5,
 "why": "<p>F = 1 on cells 0, 1, 5, 8, 9.</p><img src='svg/book/k3-4f.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'y'</b> from cells 0, 1, 8, 9</li><li><b>w'y'z</b> from cells 1, 5</li></ul><p><b>F = x'y' + w'y'z</b> (5 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -402,7 +446,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>F = 1 on cells 1, 4, 5, 6, 12, 14, 15.</p><img src='svg/book/k3-5a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>w'y'z</b> from cells 1, 5</li><li><b>xz'</b> from cells 4, 6, 12, 14</li><li><b>wxy</b> from cells 14, 15</li></ul><p><b>F = xz' + wxy + w'y'z</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.5 (b)",
@@ -422,7 +468,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>F = 1 on cells 1, 5, 9, 10, 11, 14, 15.</p><img src='svg/book/k3-5b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'C'D</b> from cells 1, 5</li><li><b>AC</b> from cells 10, 11, 14, 15</li><li><b>B'C'D</b> from cells 1, 9</li></ul><p><b>F = AC + B'C'D + A'C'D</b> (8 literals).</p><p>Just as small: AC + AB'D + A'C'D.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.5 (c)",
@@ -443,7 +491,9 @@ BOOK.add({
 "lits": 4,
 "why": "<p>F = 1 on cells 0, 1, 4, 5, 6, 7, 8, 9.</p><img src='svg/book/k3-5c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>w'x</b> from cells 4, 5, 6, 7</li><li><b>x'y'</b> from cells 0, 1, 8, 9</li></ul><p><b>F = w'x + x'y'</b> (4 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.5 (d) ★",
@@ -466,7 +516,10 @@ BOOK.add({
 "lits": 6,
 "why": "<p>F = 1 on cells 0, 2, 4, 5, 6, 7, 8, 10, 13, 15.</p><img src='svg/book/k3-5d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>BD</b> from cells 5, 7, 13, 15</li><li><b>A'D'</b> from cells 0, 2, 4, 6</li></ul><p><b>F = BD + B'D' + A'D'</b> (6 literals).</p><p>Just as small: BD + A'B + B'D'.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -493,7 +546,10 @@ BOOK.add({
 "lits": 8,
 "why": "<p>Plot each term: A'B'C'D' + AC'D' + B'CD' + A'BCD + BC'D → 1s on cells <b>0, 2, 5, 7, 8, 10, 12, 13</b>.</p><img src='svg/book/k3-6a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>A'BD</b> from cells 5, 7</li><li><b>ABC'</b> from cells 12, 13</li></ul><p><b>F = B'D' + ABC' + A'BD</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": true,
+"corder": 3
 },
 {
 "tag": "Mano 3.6 (b) ★",
@@ -515,7 +571,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>Plot each term: x'z + w'xy' + w(x'y + xy') → 1s on cells <b>1, 3, 4, 5, 9, 10, 11, 12, 13</b>.</p><img src='svg/book/k3-6b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z</b> from cells 1, 3, 9, 11</li><li><b>xy'</b> from cells 4, 5, 12, 13</li><li><b>wx'y</b> from cells 10, 11</li></ul><p><b>F = xy' + x'z + wx'y</b> (7 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.6 (c)",
@@ -536,7 +594,9 @@ BOOK.add({
 "lits": 11,
 "why": "<p>Plot each term: A'B'C'D' + A'CD' + AB'D' + ABCD + A'BD → 1s on cells <b>0, 2, 5, 6, 7, 8, 10, 15</b>.</p><img src='svg/book/k3-6c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>A'BD</b> from cells 5, 7</li><li><b>BCD</b> from cells 7, 15</li><li><b>A'CD'</b> from cells 2, 6</li></ul><p><b>F = B'D' + BCD + A'BD + A'CD'</b> (11 literals).</p><p>Just as small: B'D' + BCD + A'BC + A'BD.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.6 (d)",
@@ -556,7 +616,9 @@ BOOK.add({
 "lits": 12,
 "why": "<p>Plot each term: A'B'C'D' + AB'C + B'CD' + ABCD' + BC'D → 1s on cells <b>0, 2, 5, 10, 11, 13, 14</b>.</p><img src='svg/book/k3-6d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'B'D'</b> from cells 0, 2</li><li><b>BC'D</b> from cells 5, 13</li><li><b>AB'C</b> from cells 10, 11</li><li><b>ACD'</b> from cells 10, 14</li></ul><p><b>F = ACD' + AB'C + BC'D + A'B'D'</b> (12 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -585,7 +647,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>Plot each term: w'z + xz + x'y + wx'z → 1s on cells <b>1, 2, 3, 5, 7, 9, 10, 11, 13, 15</b>.</p><img src='svg/book/k3-7a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>z</b> from cells 1, 3, 5, 7, 9, 11, 13, 15</li><li><b>x'y</b> from cells 2, 3, 10, 11</li></ul><p><b>F = z + x'y</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.7 (b)",
@@ -607,7 +671,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>Plot each term: C'D + A'B'C + ABC' + AB'C → 1s on cells <b>1, 2, 3, 5, 9, 10, 11, 12, 13</b>.</p><img src='svg/book/k3-7b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'C</b> from cells 2, 3, 10, 11</li><li><b>C'D</b> from cells 1, 5, 9, 13</li><li><b>ABC'</b> from cells 12, 13</li></ul><p><b>F = B'C + C'D + ABC'</b> (7 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.7 (c) ★",
@@ -630,7 +696,9 @@ BOOK.add({
 "lits": 9,
 "why": "<p>Plot each term: AB'C + B'C'D' + BCD + ACD' + A'B'C + A'BC'D → 1s on cells <b>0, 2, 3, 5, 7, 8, 10, 11, 14, 15</b>.</p><img src='svg/book/k3-7c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>A'BD</b> from cells 5, 7</li><li><b>AC</b> from cells 10, 11, 14, 15</li><li><b>CD</b> from cells 3, 7, 11, 15</li></ul><p><b>F = AC + CD + B'D' + A'BD</b> (9 literals).</p><p>Just as small: AC + B'C + B'D' + A'BD.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 3.7 (d)",
@@ -652,7 +720,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>Plot each term: xyz + wy + wxy' + x'y → 1s on cells <b>2, 3, 7, 10, 11, 12, 13, 14, 15</b>.</p><img src='svg/book/k3-7d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'y</b> from cells 2, 3, 10, 11</li><li><b>yz</b> from cells 3, 7, 11, 15</li><li><b>wx</b> from cells 12, 13, 14, 15</li></ul><p><b>F = wx + yz + x'y</b> (6 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -680,7 +750,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Each term covers every cell where its letters match (missing letters = both values):</p><ul><li><b>xy</b> → 6, 7</li><li><b>yz</b> → 3, 7</li><li><b>xy'z</b> → 5</li></ul><img src='svg/book/k3-8a.svg' alt=''><p><b>F = Σ(3, 5, 6, 7)</b>. Cells hit by two terms only count once.</p>",
-"ref": "08 §6"
+"ref": "08 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 3.8 (b) ★",
@@ -702,7 +774,10 @@ BOOK.add({
 }
 ],
 "why": "<p>Each term covers every cell where its letters match (missing letters = both values):</p><ul><li><b>C'D</b> → 1, 5, 9, 13</li><li><b>ABC'</b> → 12, 13</li><li><b>ABD'</b> → 12, 14</li><li><b>A'B'D</b> → 1, 3</li></ul><img src='svg/book/k3-8b.svg' alt=''><p><b>F = Σ(1, 3, 5, 9, 12, 13, 14)</b>. Cells hit by two terms only count once.</p>",
-"ref": "08 §6"
+"ref": "08 §6",
+"grp": 1,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.8 (c)",
@@ -724,7 +799,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Each term covers every cell where its letters match (missing letters = both values):</p><ul><li><b>wyz</b> → 11, 15</li><li><b>w'x'</b> → 0, 1, 2, 3</li><li><b>wxz'</b> → 12, 14</li></ul><img src='svg/book/k3-8c.svg' alt=''><p><b>F = Σ(0, 1, 2, 3, 11, 12, 14, 15)</b>. Cells hit by two terms only count once.</p>",
-"ref": "08 §6"
+"ref": "08 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 3.8 (d)",
@@ -746,7 +823,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Each term covers every cell where its letters match (missing letters = both values):</p><ul><li><b>A'B</b> → 4, 5, 6, 7</li><li><b>A'CD</b> → 3, 7</li><li><b>B'CD</b> → 3, 11</li><li><b>BC'D'</b> → 4, 12</li></ul><img src='svg/book/k3-8d.svg' alt=''><p><b>F = Σ(3, 4, 5, 6, 7, 11, 12)</b>. Cells hit by two terms only count once.</p>",
-"ref": "08 §6"
+"ref": "08 §6",
+"grp": 1,
+"core": false
 }
 ]
 },
@@ -759,42 +838,55 @@ BOOK.add({
 "type": "work",
 "q": "Find all the prime implicants of <code>F(w, x, y, z) = Σ(0, 2, 4, 5, 6, 7, 8, 10, 13, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9a.svg' alt='prime implicants'><p><b>Prime implicants</b> (4): x'z', xz, w'z', w'x.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (2): x'z', xz.</p><ul><li><b>x'z'</b> is the only prime covering cells 8, 10</li><li><b>xz</b> is the only prime covering cells 13, 15</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.9 (b) ★",
 "type": "work",
 "q": "Find all the prime implicants of <code>F(A, B, C, D) = Σ(0, 2, 3, 5, 7, 8, 10, 11, 14, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9b.svg' alt='prime implicants'><p><b>Prime implicants</b> (5): CD, B'D', B'C, AC, A'BD.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (3): B'D', A'BD, AC.</p><ul><li><b>B'D'</b> is the only prime covering cells 0, 8</li><li><b>A'BD</b> is the only prime covering cell 5</li><li><b>AC</b> is the only prime covering cell 14</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.9 (c)",
 "type": "work",
 "q": "Find all the prime implicants of <code>F(A, B, C, D) = Σ(1, 3, 4, 5, 10, 11, 12, 13, 14, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9c.svg' alt='prime implicants'><p><b>Prime implicants</b> (6): BC', B'CD, AC, A'C'D, AB, A'B'D.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (2): BC', AC.</p><ul><li><b>BC'</b> is the only prime covering cell 4</li><li><b>AC</b> is the only prime covering cell 10</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.9 (d)",
 "type": "work",
 "q": "Find all the prime implicants of <code>F(w, x, y, z) = Σ(1, 3, 6, 7, 8, 9, 12, 13, 14, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9d.svg' alt='prime implicants'><p><b>Prime implicants</b> (6): xy, x'y'z, wy', w'yz, wx, w'x'z.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (2): xy, wy'.</p><ul><li><b>xy</b> is the only prime covering cell 6</li><li><b>wy'</b> is the only prime covering cell 8</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.9 (e)",
 "type": "work",
 "q": "Find all the prime implicants of <code>F(A, B, C, D) = Σ(0, 2, 3, 5, 7, 8, 10, 11, 13, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9e.svg' alt='prime implicants'><p><b>Prime implicants</b> (4): CD, B'D', BD, B'C.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (2): B'D', BD.</p><ul><li><b>B'D'</b> is the only prime covering cells 0, 8</li><li><b>BD</b> is the only prime covering cells 5, 13</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.9 (f)",
 "type": "work",
 "q": "Find all the prime implicants of <code>F(w, x, y, z) = Σ(0, 2, 7, 8, 9, 10, 12, 13, 14, 15)</code> and say which are essential.",
 "why": "<img src='svg/book/k3-9f.svg' alt='prime implicants'><p><b>Prime implicants</b> (5): x'z', xyz, wz', wy', wx.</p><p>A prime implicant is a block that can't be made any bigger. It is <b>essential</b> if it is the only block covering some 1.</p><p><b>Essential</b> (3): x'z', xyz, wy'.</p><ul><li><b>x'z'</b> is the only prime covering cells 0, 2</li><li><b>xyz</b> is the only prime covering cell 7</li><li><b>wy'</b> is the only prime covering cell 9</li></ul>",
-"ref": "08 §2"
+"ref": "08 §2",
+"grp": 3,
+"core": false
 }
 ]
 },
@@ -823,7 +915,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>F = 1 on cells 0, 2, 4, 5, 6, 7, 8, 10, 13, 15.</p><img src='svg/book/k3-10a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z'</b> from cells 0, 2, 8, 10</li><li><b>xz</b> from cells 5, 7, 13, 15</li><li><b>w'z'</b> from cells 0, 2, 4, 6</li></ul><p><b>F = xz + x'z' + w'z'</b> (6 literals).</p><p>Just as small: xz + w'x + x'z'.</p><p>Start with the essential primes (x'z', xz), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.10 (b)",
@@ -846,7 +940,9 @@ BOOK.add({
 "lits": 9,
 "why": "<p>F = 1 on cells 0, 2, 3, 5, 7, 8, 10, 11, 14, 15.</p><img src='svg/book/k3-10b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>A'BD</b> from cells 5, 7</li><li><b>AC</b> from cells 10, 11, 14, 15</li><li><b>CD</b> from cells 3, 7, 11, 15</li></ul><p><b>F = AC + CD + B'D' + A'BD</b> (9 literals).</p><p>Just as small: AC + B'C + B'D' + A'BD.</p><p>Start with the essential primes (B'D', A'BD, AC), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.10 (c) ★",
@@ -869,7 +965,10 @@ BOOK.add({
 "lits": 7,
 "why": "<p>F = 1 on cells 1, 3, 4, 5, 10, 11, 12, 13, 14, 15.</p><img src='svg/book/k3-10c.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>BC'</b> from cells 4, 5, 12, 13</li><li><b>AC</b> from cells 10, 11, 14, 15</li><li><b>A'B'D</b> from cells 1, 3</li></ul><p><b>F = AC + BC' + A'B'D</b> (7 literals).</p><p>Start with the essential primes (BC', AC), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 3.10 (d)",
@@ -892,7 +991,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>F = 1 on cells 1, 3, 6, 7, 8, 9, 12, 13, 14, 15.</p><img src='svg/book/k3-10d.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>xy</b> from cells 6, 7, 14, 15</li><li><b>wy'</b> from cells 8, 9, 12, 13</li><li><b>w'x'z</b> from cells 1, 3</li></ul><p><b>F = wy' + xy + w'x'z</b> (7 literals).</p><p>Start with the essential primes (xy, wy'), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.10 (e)",
@@ -915,7 +1016,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>F = 1 on cells 0, 2, 3, 5, 7, 8, 10, 11, 13, 15.</p><img src='svg/book/k3-10e.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>B'D'</b> from cells 0, 2, 8, 10</li><li><b>BD</b> from cells 5, 7, 13, 15</li><li><b>CD</b> from cells 3, 7, 11, 15</li></ul><p><b>F = BD + CD + B'D'</b> (6 literals).</p><p>Just as small: BD + B'C + B'D'.</p><p>Start with the essential primes (B'D', BD), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 3.10 (f)",
@@ -938,7 +1041,9 @@ BOOK.add({
 "lits": 9,
 "why": "<p>F = 1 on cells 0, 2, 7, 8, 9, 10, 12, 13, 14, 15.</p><img src='svg/book/k3-10f.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>x'z'</b> from cells 0, 2, 8, 10</li><li><b>xyz</b> from cells 7, 15</li><li><b>wy'</b> from cells 8, 9, 12, 13</li><li><b>wz'</b> from cells 8, 10, 12, 14</li></ul><p><b>F = wz' + wy' + x'z' + xyz</b> (9 literals).</p><p>Just as small: wx + wy' + x'z' + xyz.</p><p>Start with the essential primes (x'z', xyz, wy'), then cover any 1s left with the fewest extra primes.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 3,
+"core": false
 }
 ]
 },
@@ -966,7 +1071,10 @@ BOOK.add({
 "lits": 9,
 "why": "<p>F = 1 on cells 0, 1, 4, 5, 16, 17, 21, 25, 29.</p><img src='svg/book/k3-11a.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'B'D'</b> from cells 0, 1, 4, 5</li><li><b>B'C'D'</b> from cells 0, 1, 16, 17</li><li><b>AD'E</b> from cells 17, 21, 25, 29</li></ul><p><b>F = AD'E + B'C'D' + A'B'D'</b> (9 literals).</p><p>Five variables = two 4-variable maps, one for A = 0 and one for A = 1. A block may use the <b>same cells in both maps</b> (then A drops out).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 5,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.11 (b)",
@@ -992,7 +1100,9 @@ BOOK.add({
 "lits": 15,
 "why": "<p>Plot each term on the A = 0 and A = 1 maps → 1s on cells <b>0, 1, 4, 5, 6, 7, 10, 11, 14, 15, 16, 20, 21</b>.</p><img src='svg/book/k3-11b.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'B'D'</b> from cells 0, 1, 4, 5</li><li><b>A'BD</b> from cells 10, 11, 14, 15</li><li><b>B'D'E'</b> from cells 0, 4, 16, 20</li><li><b>B'CD'</b> from cells 4, 5, 20, 21</li><li><b>A'CD</b> from cells 6, 7, 14, 15</li></ul><p><b>F = A'BD + A'CD + B'CD' + B'D'E' + A'B'D'</b> (15 literals).</p><p>Just as small: A'BD + B'CD' + A'B'C + B'D'E' + A'B'D'.</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 5,
+"core": false
 }
 ]
 },
@@ -1018,7 +1128,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>F = 0 on cells <b>3, 4, 6, 7, 9, 11, 12, 14, 15</b>. For POS you group the <b>0s</b>.</p><img src='svg/book/k3-12a.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(y' + z')</b> from cells 3, 7, 11, 15</li><li><b>(x' + z)</b> from cells 4, 6, 12, 14</li><li><b>(w' + x + z')</b> from cells 9, 11</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (y' + z')(x' + z)(w' + x + z')</b> (7 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.12 (b) ★",
@@ -1041,7 +1153,10 @@ BOOK.add({
 "lits": 4,
 "why": "<p>F = 0 on cells <b>1, 3, 5, 7, 13, 15</b>. For POS you group the <b>0s</b>.</p><img src='svg/book/k3-12b.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(A + D')</b> from cells 1, 3, 5, 7</li><li><b>(B' + D')</b> from cells 5, 7, 13, 15</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (A + D')(B' + D')</b> (4 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 3.12 (c)",
@@ -1063,7 +1178,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>F = 0 on cells <b>1, 3, 6, 9, 11, 12, 14</b>. For POS you group the <b>0s</b>.</p><img src='svg/book/k3-12c.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(B + D')</b> from cells 1, 3, 9, 11</li><li><b>(B' + C' + D)</b> from cells 6, 14</li><li><b>(A' + B' + D)</b> from cells 12, 14</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (B + D')(B' + C' + D)(A' + B' + D)</b> (8 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": false
 }
 ]
 },
@@ -1087,7 +1204,9 @@ BOOK.add({
 "lits": 3,
 "why": "<p>Plot it: 1s on cells <b>0, 2, 4, 6, 7</b>.</p><img src='svg/book/k3-13as.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>z'</b> from cells 0, 2, 4, 6</li><li><b>xy</b> from cells 6, 7</li></ul><p><b>F = z' + xy</b> (3 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (a · POS) ★",
@@ -1105,7 +1224,10 @@ BOOK.add({
 "lits": 4,
 "why": "<p>Same map, now group the 0s: cells <b>1, 3, 5</b>.</p><img src='svg/book/k3-13ap.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(x + z')</b> from cells 1, 3</li><li><b>(y + z')</b> from cells 1, 5</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (x + z')(y + z')</b> (4 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 3.13 (b · SOP)",
@@ -1127,7 +1249,9 @@ BOOK.add({
 "lits": 6,
 "why": "<p>Plot it: 1s on cells <b>1, 5, 8, 9, 10, 11, 13, 14, 15</b>.</p><img src='svg/book/k3-13bs.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>C'D</b> from cells 1, 5, 9, 13</li><li><b>AB'</b> from cells 8, 9, 10, 11</li><li><b>AC</b> from cells 10, 11, 14, 15</li></ul><p><b>F = AC + AB' + C'D</b> (6 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (b · POS)",
@@ -1149,7 +1273,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>Same map, now group the 0s: cells <b>0, 2, 3, 4, 6, 7, 12</b>.</p><img src='svg/book/k3-13bp.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(A + D)</b> from cells 0, 2, 4, 6</li><li><b>(A + C')</b> from cells 2, 3, 6, 7</li><li><b>(B' + C + D)</b> from cells 4, 12</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (A + D)(A + C')(B' + C + D)</b> (7 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (c · SOP)",
@@ -1171,7 +1297,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>Plot it: 1s on cells <b>0, 1, 2, 4, 5, 6, 8, 12, 14</b>.</p><img src='svg/book/k3-13cs.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>A'C'</b> from cells 0, 1, 4, 5</li><li><b>A'D'</b> from cells 0, 2, 4, 6</li><li><b>C'D'</b> from cells 0, 4, 8, 12</li><li><b>BD'</b> from cells 4, 6, 12, 14</li></ul><p><b>F = BD' + C'D' + A'D' + A'C'</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (c · POS)",
@@ -1193,7 +1321,9 @@ BOOK.add({
 "lits": 7,
 "why": "<p>Same map, now group the 0s: cells <b>3, 7, 9, 10, 11, 13, 15</b>.</p><img src='svg/book/k3-13cp.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(C' + D')</b> from cells 3, 7, 11, 15</li><li><b>(A' + D')</b> from cells 9, 11, 13, 15</li><li><b>(A' + B + C')</b> from cells 10, 11</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (C' + D')(A' + D')(A' + B + C')</b> (7 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (d · SOP)",
@@ -1212,7 +1342,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>Plot it: 1s on cells <b>7, 9, 11, 12, 13, 15</b>.</p><img src='svg/book/k3-13ds.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>BCD</b> from cells 7, 15</li><li><b>AD</b> from cells 9, 11, 13, 15</li><li><b>ABC'</b> from cells 12, 13</li></ul><p><b>F = AD + ABC' + BCD</b> (8 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 3.13 (d · POS)",
@@ -1231,7 +1363,9 @@ BOOK.add({
 "lits": 8,
 "why": "<p>Same map, now group the 0s: cells <b>0, 1, 2, 3, 4, 5, 6, 8, 10, 14</b>.</p><img src='svg/book/k3-13dp.svg' alt='grouped K-map'><p>Group the 0s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>(A + B)</b> from cells 0, 1, 2, 3</li><li><b>(A + C)</b> from cells 0, 1, 4, 5</li><li><b>(B + D)</b> from cells 0, 2, 8, 10</li><li><b>(C' + D)</b> from cells 2, 6, 10, 14</li></ul><p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p><p><b>F = (A + B)(A + C)(B + D)(C' + D)</b> (8 literals).</p>",
 "ref": "08 §5",
-"form": "pos"
+"form": "pos",
+"grp": 4,
+"core": false
 }
 ]
 },
@@ -1255,7 +1389,9 @@ BOOK.add({
 "show": "B'D'(A + C') + BD(A' + C')",
 "why": "<p>F = Σ(0, 5, 7, 8, 10, 13). The smallest SOP, <b>AB'D' + BC'D + A'BD + B'C'D'</b>, has 12 literals: too many. So factor or use XOR.</p><table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>AB'D' + B'C'D' + A'BD + BC'D</td><td>the minimal SOP (4 terms)</td></tr><tr><td>2</td><td><b>1.</b> B'D'(A + C') + BD(A' + C')</td><td>factor B'D' and BD: 8 literals</td></tr><tr><td>3</td><td>all 1s have B = D, so F = (B ⊙ D)·(…)</td><td>B ⊙ D = BD + B'D' (XNOR)</td></tr><tr><td>4</td><td><b>2.</b> (B ⊙ D)(C' + (A ⊕ B))</td><td>when B = D = 0 we need A + C', when 1 we need A' + C': that's C' + (A ⊕ B): 5 literals</td></tr><tr><td>5</td><td><b>3.</b> (B ⊙ D)(C' + (A ⊕ D))</td><td>B = D inside that bracket, so D can stand in for B: 5 literals</td></tr></table>",
 "lits": 8,
-"ref": "08 §3"
+"ref": "08 §3",
+"grp": 6,
+"core": false
 }
 ]
 },
@@ -1279,9 +1415,42 @@ BOOK.add({
 "lits": 10,
 "why": "<p>Plot f: 1s on 1, 2, 5, 6, 9, 10, 12, 13. Plot g: 0s on 3, 6, 9, 13, 14 (one 0-cell per bracket, e.g. a + b + c' + d' = 0 only on 0011 = 3, and so on).</p><p>F = fg is 1 only where <b>both</b> maps have a 1: cells <b>1, 2, 5, 10, 12</b>.</p><img src='svg/book/k3-26.svg' alt='grouped K-map'><p>Group the 1s in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges):</p><ul><li><b>a'c'd</b> from cells 1, 5</li><li><b>b'cd'</b> from cells 2, 10</li><li><b>abc'd'</b> from cells 12</li></ul><p><b>F = b'cd' + a'c'd + abc'd'</b> (10 literals).</p>",
 "ref": "08 §3",
-"form": "sop"
+"form": "sop",
+"grp": 6,
+"core": true,
+"corder": 1
 }
 ]
+}
+],
+"groups": [
+{
+"name": "3-variable maps",
+"blurb": "Fill from Σ, group in 1s, 2s, 4s, read each block."
+},
+{
+"name": "Plot an expression first",
+"blurb": "Each term covers every cell its letters allow."
+},
+{
+"name": "4-variable maps",
+"blurb": "Same rules, with corners and edges wrapping."
+},
+{
+"name": "Prime implicants and essentials",
+"blurb": "Biggest possible blocks; essentials first, then cover what's left."
+},
+{
+"name": "POS: group the 0s",
+"blurb": "Each 0-block gives an OR term."
+},
+{
+"name": "5-variable maps",
+"blurb": "Two 4-variable maps side by side."
+},
+{
+"name": "Harder ones",
+"blurb": "Combine two maps, or beat the SOP with XOR."
 }
 ]
 });

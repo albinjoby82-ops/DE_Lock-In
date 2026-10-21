@@ -484,7 +484,8 @@
       idx = i;
       var q = qs[i];
       var pre = el("div");
-      if (q._topic) pre.appendChild(el("p", { class: "from" }, "Topic " + q._topic));
+      if (q._from) pre.appendChild(el("p", { class: "from" }, q._from));
+      else if (q._topic) pre.appendChild(el("p", { class: "from" }, "Topic " + q._topic));
       stage.innerHTML = "";
       stage.appendChild(pre);
       var host = el("div");

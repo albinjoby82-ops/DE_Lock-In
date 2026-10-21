@@ -28,7 +28,7 @@
   <div class="topics" id="topics"></div>
 
   <h2 id="book-questions">Book questions</h2>
-  <p class="lede">End-of-chapter problems from Mano &amp; Ciletti, <i>Digital Design</i> (4th ed.), sorted by topic, each with a full worked solution. Extra practice once a topic's quiz is done, and the pool for the mock mid-term.</p>
+  <p class="lede">End-of-chapter problems from Mano &amp; Ciletti, <i>Digital Design</i> (4th ed.), each with a full worked solution. Every topic is split into a few <b>skills</b>; each skill has 1 to 4 <b>core</b> questions and the rest is optional extra practice. Short on time? Do the <b>Core path</b>.</p>
   <div class="topics" id="bookgrid"></div>
 
   <h2>Mock mid-term</h2>
@@ -37,6 +37,7 @@
     <div class="pick" id="mockpick"></div>
     <label>Questions <select id="mockn" class="btn ghost"><option>8</option><option selected>12</option><option>20</option><option>30</option></select></label>
     <label>Minutes <select id="mockmin" class="btn ghost"><option>30</option><option>45</option><option selected>50</option><option>60</option><option>90</option></select></label>
+    <label><input type="checkbox" id="mockcore"> Core questions only</label>
     <button class="btn primary" type="button" id="mockgo">Start mock</button>
     <p class="tiny" id="mockhist"></p>
   </div>

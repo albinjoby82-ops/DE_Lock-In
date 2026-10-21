@@ -28,7 +28,10 @@ BOOK.add({
 }
 ],
 "why": "<p>BCD: each digit → 4 bits: <b>1000 0111 0010 0011</b>.</p><p>ASCII digits are 011 followed by the BCD of the digit: '8' = 0111000. Count the 1s; add a parity bit to make the count even.</p><table class='bits'><tr><th>char</th><td>8</td><td>7</td><td>2</td><td>3</td></tr><tr><th>7-bit</th><td>0111000</td><td>0110111</td><td>0110010</td><td>0110011</td></tr><tr><th>with parity</th><td>10111000</td><td>10110111</td><td>10110010</td><td>00110011</td></tr></table>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -50,7 +53,10 @@ BOOK.add({
 }
 ],
 "why": "<p>842 = 1000 0100 0010, 537 = 0101 0011 0111. Add digit by digit from the right:</p><table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>2 + 7 = 9 = 1001</td><td>≤ 9: keep it</td></tr><tr><td>2</td><td>4 + 3 = 7 = 0111</td><td>≤ 9: keep it</td></tr><tr><td>3</td><td>8 + 5 = 13 = 1101</td><td>&gt; 9: add 0110 (6)</td></tr><tr><td>4</td><td>1101 + 0110 = 1 0011</td><td>digit 3, carry 1 into a new digit</td></tr><tr><td>5</td><td><b>0001 0011 0111 1001 = 1379</b></td><td>check: 842 + 537 = 1379 ✓</td></tr></table>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 1,
+"core": true,
+"corder": 1
 }
 ]
 },
@@ -63,14 +69,18 @@ BOOK.add({
 "type": "work",
 "q": "Make a weighted binary code for the decimal digits with weights <b>6, 3, 1, 1</b>.",
 "why": "<table class='bits'><tr><th>digit</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><th>code</th><td>0000</td><td>0001</td><td>0011</td><td>0100</td><td>0101</td><td>0111</td><td>1000</td><td>1001</td><td>1011</td><td>1100</td></tr></table><p>Each digit = sum of the weights where the bit is 1 (e.g. 8 = 6 + 1 + 1 = 1011). Some digits have two choices (1 = 0010 or 0001); pick one and stay consistent.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 1.24 (b)",
 "type": "work",
 "q": "Make a weighted binary code for the decimal digits with weights <b>6, 4, 2, 1</b>.",
 "why": "<table class='bits'><tr><th>digit</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><th>code</th><td>0000</td><td>0001</td><td>0010</td><td>0011</td><td>0100</td><td>0101</td><td>1000</td><td>1001</td><td>1010</td><td>1011</td></tr></table><p>6 could be 1000 or 0110, and 7 could be 1001 or 0111. Any choice that adds up is fine.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -113,7 +123,10 @@ BOOK.add({
 }
 ],
 "why": "<p>(a) BCD: <b>0101 0001 0011 0111</b></p><p>(b) excess-3: add 3 to each digit first (8, 4, 6, 10) → <b>1000 0100 0110 1010</b></p><p>(c) 2421: 5 = 1011 (2+2+1, the self-complementing choice), 1 = 0001, 3 = 0011, 7 = 1101 → <b>1011 0001 0011 1101</b></p><p>(d) 6311: <b>0111 0001 0100 1001</b></p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": true,
+"corder": 1
 }
 ]
 },
@@ -141,7 +154,9 @@ BOOK.add({
 }
 ],
 "why": "<p>9's complement: 4862. In 2421: <b>0100 1110 1100 0010</b>.</p><p>Now flip every bit of 5137 in 2421 (1011 0001 0011 1101) → 0100 1110 1100 0010. Same answer! Flipping the bits gives the 9's complement: that's what <b>self-complementing</b> means.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -154,7 +169,9 @@ BOOK.add({
 "type": "work",
 "q": "Assign a binary code to the 52 playing cards, in an orderly way, using the minimum number of bits.",
 "why": "<p>2⁵ = 32 is too few, 2⁶ = 64 ≥ 52, so <b>6 bits</b>.</p><p>Orderly scheme: <b>2 bits for the suit</b> + <b>4 bits for the rank</b>.</p><table class='bits'><tr><th>suit</th><td>00 ♣</td><td>01 ♦</td><td>10 ♥</td><td>11 ♠</td></tr></table><p>Rank: 0001 = Ace, 0010 = 2 … 1010 = 10, 1011 = J, 1100 = Q, 1101 = K. Example: Q♥ = 10 1100.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -193,7 +210,9 @@ BOOK.add({
 }
 ],
 "why": "<table class='bits'><tr><th>char</th><td>G</td><td>.</td><td>SP</td><td>B</td><td>o</td><td>o</td><td>l</td><td>e</td></tr><tr><th>hex</th><td>47</td><td>2E</td><td>20</td><td>42</td><td>6F</td><td>6F</td><td>6C</td><td>65</td></tr><tr><th>8-bit</th><td>01000111</td><td>00101110</td><td>10100000</td><td>01000010</td><td>01101111</td><td>01101111</td><td>01101100</td><td>01100101</td></tr></table><p>Parity bit = 1 if the 7-bit code has an odd number of 1s (to make it even), else 0.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -215,7 +234,10 @@ BOOK.add({
 }
 ],
 "why": "<table class='bits'><tr><th>bits</th><td>1000010</td><td>1101001</td><td>1101100</td><td>1101100</td><td>1000111</td><td>1100001</td><td>1110100</td><td>1100101</td><td>1110011</td></tr><tr><th>hex</th><td>42</td><td>69</td><td>6C</td><td>6C</td><td>47</td><td>61</td><td>74</td><td>65</td><td>73</td></tr><tr><th>char</th><td>B</td><td>i</td><td>l</td><td>l</td><td>G</td><td>a</td><td>t</td><td>e</td><td>s</td></tr></table><p><b>BillGates</b>. Tip: 100xxxx = capitals (41 = A), 110xxxx / 111xxxx = lowercase (61 = a).</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": true,
+"corder": 1
 }
 ]
 },
@@ -244,7 +266,9 @@ BOOK.add({
 }
 ],
 "why": "<table class='bits'><tr><th>hex</th><td>73</td><td>F4</td><td>E5</td><td>76</td><td>E5</td><td>4A</td><td>EF</td><td>62</td><td>73</td></tr><tr><th>8 bits</th><td>01110011</td><td>11110100</td><td>11100101</td><td>01110110</td><td>11100101</td><td>01001010</td><td>11101111</td><td>01100010</td><td>01110011</td></tr><tr><th>drop bit 7</th><td>73</td><td>74</td><td>65</td><td>76</td><td>65</td><td>4A</td><td>6F</td><td>62</td><td>73</td></tr><tr><th>char</th><td>s</td><td>t</td><td>e</td><td>v</td><td>e</td><td>J</td><td>o</td><td>b</td><td>s</td></tr><tr><th>1s</th><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td><td>3</td><td>7</td><td>3</td><td>5</td></tr></table><p>(a) <b>steveJobs</b>. (b) Every byte has an odd number of 1s → <b>odd parity</b>.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -273,7 +297,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Mano counts <b>94</b> printing (graphic) characters, 21₁₆ to 7E₁₆. Letters 26 + 26 = 52, numerals 10 → 62. Special = 94 − 62 = <b>32</b>.</p><p>(If you count the space as printing: 95 and 33. Both are accepted.)</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -293,7 +319,9 @@ BOOK.add({
 ],
 "a": 1,
 "why": "<p>A = 100 0001 (41₁₆), a = 110 0001 (61₁₆). They differ by 20₁₆ = 32: only <b>bit b₆</b> changes.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": false
 }
 ]
 },
@@ -333,7 +361,10 @@ BOOK.add({
 }
 ],
 "why": "<p>Split into 4s: 1000 | 1001 | 0111</p><p>(a) 8 | 9 | 7 → <b>897</b>. (b) subtract 3 each: 5 | 6 | 4 → <b>564</b>. (c) weights 8, 4, −2, −1: 1000 = 8, 1001 = 8 − 1 = 7, 0111 = 4 − 2 − 1 = 1 → <b>871</b>. (d) 2048 + 128 + 16 + 4 + 2 + 1 = <b>2,199</b>.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 0,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -372,9 +403,25 @@ BOOK.add({
 }
 ],
 "why": "<table class='bits'><tr><th>digit</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><th>code</th><td>10110000</td><td>00110001</td><td>00110010</td><td>10110011</td><td>00110100</td><td>10110101</td><td>10110110</td><td>00110111</td><td>00111000</td><td>10111001</td></tr></table><p>011 + BCD of the digit, then a parity bit that makes the total number of 1s odd.</p>",
-"ref": "05 §1"
+"ref": "05 §1",
+"grp": 2,
+"core": false
 }
 ]
+}
+],
+"groups": [
+{
+"name": "BCD, excess-3 and weighted codes",
+"blurb": "Write a number in each code, and read a register back."
+},
+{
+"name": "BCD addition",
+"blurb": "Add digit by digit; over 9 → add 6."
+},
+{
+"name": "ASCII and parity",
+"blurb": "Read and write ASCII, add or check a parity bit."
 }
 ]
 });

@@ -190,3 +190,14 @@ table.kshow .tags { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 2px; }
 .clock.up { background: var(--no-bg); border-left: 5px solid var(--no); font-weight: 700; }
 .clock + div .qbar { top: 46px; }
 @media (max-width: 520px) { .why table.wk td:nth-child(2) { white-space: normal; } }
+
+/* skill groups */
+.viewtog { color: var(--muted); font-size: .92rem; margin: 0 0 10px; }
+.howto { background: var(--soft-bg); border-radius: 10px; padding: 10px 14px; margin: 0 0 12px; font-size: .95rem; }
+.skill h2 { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.skill .gn { display: inline-block; min-width: 1.7em; height: 1.7em; line-height: 1.7em; text-align: center; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: .9rem; }
+.skill .gprog { margin-left: auto; font-size: .85rem; color: var(--muted); font-weight: 400; }
+.tier { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--accent); margin: 8px 0 6px; }
+details.more { margin: 4px 0 8px; border: 1.5px dashed var(--line); border-radius: 12px; padding: 4px 12px; }
+details.more > summary { cursor: pointer; font-weight: 700; padding: 8px 0; color: var(--muted); }
+details.more[open] > summary { margin-bottom: 8px; }

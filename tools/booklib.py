@@ -416,7 +416,11 @@ def work_q(tag, q, why, svg=None, ref=None):
 def write_topic(tid, title, intro, problems):
     path = os.path.join(ROOT, "docs", "book", tid + ".js")
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    import book_groups
     data = {"id": tid, "title": title, "intro": intro, "problems": problems}
+    groups = book_groups.apply(tid, problems)
+    if groups:
+        data["groups"] = groups
     with open(path, "w", encoding="utf8") as f:
         f.write("BOOK.add(" + json.dumps(data, ensure_ascii=False, indent=0) + ");\n")
     return sum(len(p["qs"]) for p in problems)

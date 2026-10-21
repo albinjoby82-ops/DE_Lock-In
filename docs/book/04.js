@@ -26,7 +26,10 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>01111111</b>.</p><p>2's: 1's + 1 = <b>10000000</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 1.14 (b)",
@@ -47,7 +50,9 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>11111111</b>.</p><p>2's: 1's + 1 = <b>00000000</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p><p>Any carry out of the 8 bits is dropped.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 1.14 (c)",
@@ -68,7 +73,10 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>00100101</b>.</p><p>2's: 1's + 1 = <b>00100110</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 1.14 (d)",
@@ -89,7 +97,9 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>10001001</b>.</p><p>2's: 1's + 1 = <b>10001010</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 1.14 (e)",
@@ -110,7 +120,9 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>01111010</b>.</p><p>2's: 1's + 1 = <b>01111011</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 1.14 (f)",
@@ -131,7 +143,9 @@ BOOK.add({
 }
 ],
 "why": "<p>1's: flip every bit → <b>00000000</b>.</p><p>2's: 1's + 1 = <b>00000001</b>. Shortcut: copy bits from the right up to and including the first 1, flip the rest.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -160,7 +174,10 @@ BOOK.add({
 }
 ],
 "why": "<p>9's: each digit → 9 − digit → <b>47215369</b>.</p><p>10's: 9's + 1 → <b>47215370</b> (carry out of 8 digits dropped).</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 3,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 1.15 (b)",
@@ -183,7 +200,9 @@ BOOK.add({
 }
 ],
 "why": "<p>9's: each digit → 9 − digit → <b>36674399</b>.</p><p>10's: 9's + 1 → <b>36674400</b> (carry out of 8 digits dropped).</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 1.15 (c)",
@@ -206,7 +225,9 @@ BOOK.add({
 }
 ],
 "why": "<p>9's: each digit → 9 − digit → <b>74999999</b>.</p><p>10's: 9's + 1 → <b>75000000</b> (carry out of 8 digits dropped).</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 1.15 (d)",
@@ -230,7 +251,10 @@ BOOK.add({
 }
 ],
 "why": "<p>9's: each digit → 9 − digit → <b>99999999</b>.</p><p>10's: 9's + 1 → <b>00000000</b> (carry out of 8 digits dropped).</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 3,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -271,7 +295,9 @@ BOOK.add({
 }
 ],
 "why": "<p>(a) 15's complement: each digit → F − digit: B2FA → 4D05. Add 1 → <b>4D06</b>.</p><p>(b) <b>1011 0010 1111 1010</b>. (c) flip and add 1 → <b>0100 1101 0000 0110</b>. (d) = <b>4D06</b>, the same as (a): the 16's complement and 2's complement are the same thing, written in hex vs binary.</p>",
-"ref": "04 §3"
+"ref": "04 §3",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -293,7 +319,9 @@ BOOK.add({
 }
 ],
 "why": "<p>10's complement of 3409 = 6591.</p><p>6428 + 6591 = 13019 → end carry → drop it → <b>3019</b>.</p><p>Check: 6428 − 3409 = 3019 ✓</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 1.17 (b)",
@@ -309,7 +337,10 @@ BOOK.add({
 }
 ],
 "why": "<p>10's complement of 1800 = 8200.</p><p>0125 + 8200 = 8325, no end carry → negative: −(10's complement of 8325) = <b>-1675</b>.</p><p>Check: 125 − 1800 = -1675 ✓</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 1.17 (c)",
@@ -325,7 +356,9 @@ BOOK.add({
 }
 ],
 "why": "<p>10's complement of 6152 = 3848.</p><p>2043 + 3848 = 5891, no end carry → negative: −(10's complement of 5891) = <b>-4109</b>.</p><p>Check: 2043 − 6152 = -4109 ✓</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 1.17 (d)",
@@ -341,7 +374,9 @@ BOOK.add({
 }
 ],
 "why": "<p>10's complement of 0745 = 9255.</p><p>1631 + 9255 = 10886 → end carry → drop it → <b>886</b>.</p><p>Check: 1631 − 745 = 886 ✓</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 }
 ]
 },
@@ -363,7 +398,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Make both 5 bits: 10011 − 10001. 2's complement of 10001 = 01111.</p><p>10011 + 01111 = 100010 → end carry → drop it → <b>00010</b> = 2.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 1.18 (b)",
@@ -380,7 +417,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Make both 6 bits: 100010 − 100011. 2's complement of 100011 = 011101.</p><p>100010 + 011101 = 111111, no end carry → negative: −(2's complement of 111111) = <b>−000001</b> = -1.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 1.18 (c)",
@@ -397,7 +436,10 @@ BOOK.add({
 }
 ],
 "why": "<p>Make both 6 bits: 001001 − 101000. 2's complement of 101000 = 011000.</p><p>001001 + 011000 = 100001, no end carry → negative: −(2's complement of 100001) = <b>−011111</b> = -31.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 1.18 (d)",
@@ -413,7 +455,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Make both 6 bits: 110000 − 010101. 2's complement of 010101 = 101011.</p><p>110000 + 101011 = 1011011 → end carry → drop it → <b>011011</b> = 27.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 1,
+"core": false
 }
 ]
 },
@@ -437,7 +481,9 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,286 = 0 09286 · −9,286 = 9 90714 · +801 = 0 00801 · −801 = 9 99199</p><p>0 09286 + 0 00801 = 0 10087</p><p>sign digit 0 → +10,087.</p><p>Note: the printed problem says the sum is +10,627, but 9,286 + 801 = <b>10,087</b>. The method is what matters.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 1.19 (b) ★",
@@ -455,7 +501,10 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,286 = 0 09286 · −9,286 = 9 90714 · +801 = 0 00801 · −801 = 9 99199</p><p>0 09286 + 9 99199 = 0 08485 (end carry dropped)</p><p>sign digit 0 → +8,485.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 1.19 (c) ★",
@@ -473,7 +522,9 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,286 = 0 09286 · −9,286 = 9 90714 · +801 = 0 00801 · −801 = 9 99199</p><p>9 90714 + 0 00801 = 9 91515</p><p>sign digit 9 → negative: 10's complement = 008485 → <b>-8,485</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 1.19 (d) ★",
@@ -491,7 +542,10 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,286 = 0 09286 · −9,286 = 9 90714 · +801 = 0 00801 · −801 = 9 99199</p><p>9 90714 + 9 99199 = 9 89913 (end carry dropped)</p><p>sign digit 9 → negative: 10's complement = 010087 → <b>-10,087</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -519,7 +573,10 @@ BOOK.add({
 }
 ],
 "why": "<p>00011101 + 11001111 = <b>11101100</b>.</p><p>Leading 1 → negative: 2's complement 00010100 = 20 → <b>-20</b>.</p><p>Values: +29 = 00011101, +49 = 00110001, −29 = 11100011, −49 = 11001111. (The problem prints +46 = 00101110 first, but then uses 49 in the sums.)</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 2,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 1.20 (b)",
@@ -541,7 +598,9 @@ BOOK.add({
 }
 ],
 "why": "<p>11100011 + 00110001 = <b>00010100</b> (carry out dropped).</p><p>Leading 0 → <b>+20</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 1.20 (c)",
@@ -563,7 +622,10 @@ BOOK.add({
 }
 ],
 "why": "<p>11100011 + 11001111 = <b>10110010</b> (carry out dropped).</p><p>Leading 1 → negative: 2's complement 01001110 = 78 → <b>-78</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 2,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -587,7 +649,9 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,742 = 0 09742 · −9,742 = 9 90258 · +641 = 0 00641 · −641 = 9 99359</p><p>0 09742 + 0 00641 = 0 10383</p><p>sign digit 0 → +10,383.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 1.21 (b)",
@@ -605,7 +669,9 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,742 = 0 09742 · −9,742 = 9 90258 · +641 = 0 00641 · −641 = 9 99359</p><p>0 09742 + 9 99359 = 0 09101 (end carry dropped)</p><p>sign digit 0 → +9,101.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 1.21 (c)",
@@ -623,7 +689,9 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,742 = 0 09742 · −9,742 = 9 90258 · +641 = 0 00641 · −641 = 9 99359</p><p>9 90258 + 0 00641 = 9 90899</p><p>sign digit 9 → negative: 10's complement = 009101 → <b>-9,101</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 },
 {
 "tag": "Mano 1.21 (d)",
@@ -641,9 +709,33 @@ BOOK.add({
 }
 ],
 "why": "<p>+9,742 = 0 09742 · −9,742 = 9 90258 · +641 = 0 00641 · −641 = 9 99359</p><p>9 90258 + 9 99359 = 9 89617 (end carry dropped)</p><p>sign digit 9 → negative: 10's complement = 010383 → <b>-10,383</b>.</p>",
-"ref": "04 §6"
+"ref": "04 §6",
+"grp": 4,
+"core": false
 }
 ]
+}
+],
+"groups": [
+{
+"name": "1's and 2's complement",
+"blurb": "Flip the bits; flip and add 1. Watch the all-0 and 1000… cases."
+},
+{
+"name": "Subtract with complements",
+"blurb": "Add the complement; an end carry means positive, none means negative."
+},
+{
+"name": "Signed 2's complement sums",
+"blurb": "Add the bit patterns, read the sign bit."
+},
+{
+"name": "9's and 10's complement",
+"blurb": "The decimal version of 1's and 2's."
+},
+{
+"name": "Signed 10's complement sums",
+"blurb": "Same idea with a sign digit 0 or 9."
 }
 ]
 });

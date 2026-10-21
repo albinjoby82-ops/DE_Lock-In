@@ -12,14 +12,18 @@ BOOK.add({
 "type": "work",
 "q": "Show that E = F₁ + F₂ contains the sum of the minterms of F₁ and of F₂.",
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>F₁ = Σ(minterms of F₁), F₂ = Σ(minterms of F₂)</td><td>any function is the OR of its minterms</td></tr><tr><td>2</td><td>E = F₁ + F₂ = Σ(F₁'s) + Σ(F₂'s)</td><td>OR them</td></tr><tr><td>3</td><td>a minterm in both appears twice: m + m = m</td><td>idempotent law</td></tr><tr><td>4</td><td>E = Σ(every minterm in F₁ or F₂)</td><td>the union of the two lists</td></tr></table><p>Example: F₁ = Σ(1, 3), F₂ = Σ(3, 6) → E = Σ(1, 3, 6).</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 3,
+"core": false
 },
 {
 "tag": "Mano 2.10 (b)",
 "type": "work",
 "q": "Show that G = F₁F₂ contains only the minterms common to F₁ and F₂.",
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>G = (Σ mᵢ)(Σ mⱼ) = Σ mᵢmⱼ</td><td>multiply out every pair</td></tr><tr><td>2</td><td>i ≠ j: mᵢmⱼ = 0</td><td>two different minterms differ in some letter, so they contain x·x' = 0</td></tr><tr><td>3</td><td>i = j: mᵢmᵢ = mᵢ</td><td>x·x = x</td></tr><tr><td>4</td><td>G = Σ(minterms in both lists)</td><td>only the common ones survive</td></tr></table><p>Example: F₁ = Σ(1, 3), F₂ = Σ(3, 6) → G = Σ(3).</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 3,
+"core": false
 }
 ]
 },
@@ -32,14 +36,19 @@ BOOK.add({
 "type": "work",
 "q": "Prove that the sum of all minterms of a 3-variable function is 1.",
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>x'y'z' + x'y'z + x'yz' + x'yz + xy'z' + xy'z + xyz' + xyz</td><td>all 8 minterms</td></tr><tr><td>2</td><td>x'y'(z' + z) + x'y(z' + z) + xy'(z' + z) + xy(z' + z)</td><td>pair them up on z</td></tr><tr><td>3</td><td>x'y' + x'y + xy' + xy</td><td>z' + z = 1</td></tr><tr><td>4</td><td>x'(y' + y) + x(y' + y) = x' + x</td><td>pair again on y</td></tr><tr><td>5</td><td><b>1</b></td><td>x' + x = 1</td></tr></table>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 3,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 2.16 (b)",
 "type": "work",
 "q": "Suggest a procedure for a general proof (n variables).",
 "why": "<p><b>Induction.</b> Pair every minterm with the one that differs only in the last variable xₙ. Each pair is P·xₙ' + P·xₙ = P, so the 2ⁿ minterms of n variables collapse to the 2ⁿ⁻¹ minterms of n − 1 variables. Repeat until one variable is left: x₁' + x₁ = <b>1</b>.</p><p>Or the 'truth table' argument: every row of the table makes exactly one minterm equal 1, so the OR is 1 on every row.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 3,
+"core": false
 }
 ]
 },
@@ -65,7 +74,10 @@ BOOK.add({
 ]
 },
 "why": "<p>Easiest row by row: put each xyz into both brackets, F = 1 only if both brackets are 1.</p><p>F = 1 on rows <b>3, 5, 6, 7</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 2.17 (a) ★",
@@ -100,7 +112,10 @@ BOOK.add({
 }
 ],
 "why": "<p><b>Σm(3, 5, 6, 7)</b>: the rows where F = 1.</p><p><b>ΠM(0, 1, 2, 4)</b>: every other row.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 2.17 (b)",
@@ -120,7 +135,9 @@ BOOK.add({
 ]
 },
 "why": "<p>Simplify first: (x + y')(y' + z) = y' + xz. So F = 1 whenever y = 0, plus row 111.</p><p>F = 1 on rows <b>0, 1, 4, 5, 7</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 2.17 (b)",
@@ -155,7 +172,9 @@ BOOK.add({
 }
 ],
 "why": "<p><b>Σm(0, 1, 4, 5, 7)</b>: the rows where F = 1.</p><p><b>ΠM(2, 3, 6)</b>: every other row.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 2.17 (c)",
@@ -183,7 +202,9 @@ BOOK.add({
 ]
 },
 "why": "<p>Find each term's rows: x'z → 1, 3, 9, 11 · wx'y → 10, 11 · wyz' → 10, 14 · w'y' → 0, 1, 4, 5. Then merge the lists.</p><p>F = 1 on rows <b>0, 1, 3, 4, 5, 9, 10, 11, 14</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 2.17 (c)",
@@ -218,7 +239,9 @@ BOOK.add({
 }
 ],
 "why": "<p><b>Σm(0, 1, 3, 4, 5, 9, 10, 11, 14)</b>: the rows where F = 1.</p><p><b>ΠM(2, 6, 7, 8, 12, 13, 15)</b>: every other row.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 2.17 (d)",
@@ -238,7 +261,9 @@ BOOK.add({
 ]
 },
 "why": "<p>Row by row. F needs (x + z) = 1, so rows 000 and 010 are 0 straight away.</p><p>F = 1 on rows <b>1, 3, 6, 7</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 },
 {
 "tag": "Mano 2.17 (d)",
@@ -273,7 +298,9 @@ BOOK.add({
 }
 ],
 "why": "<p><b>Σm(1, 3, 6, 7)</b>: the rows where F = 1.</p><p><b>ΠM(0, 2, 4, 5)</b>: every other row.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": false
 }
 ]
 },
@@ -314,7 +341,10 @@ BOOK.add({
 }
 ],
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>B'D + BD = D</td><td>factor D: B' + B = 1</td></tr><tr><td>2</td><td>D + A'D = D</td><td>absorption</td></tr><tr><td>3</td><td>F = D</td><td>so F = 1 on every odd row</td></tr></table><p><b>Σm(1, 3, 5, 7, 9, 11, 13, 15)</b> and <b>ΠM(0, 2, 4, 6, 8, 10, 12, 14)</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 0,
+"core": true,
+"corder": 3
 }
 ]
 },
@@ -342,7 +372,9 @@ BOOK.add({
 }
 ],
 "why": "<p>F' is 1 exactly where F is 0: every number 0–15 <i>not</i> in F's list. <b>F' = Σm(0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14)</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 2.20 (b)",
@@ -364,7 +396,10 @@ BOOK.add({
 }
 ],
 "why": "<p>F = Π(2, 4, 5, 7) means F is <b>0</b> on rows 2, 4, 5, 7. F' is 1 on those rows.</p><p><b>F' = Σm(2, 4, 5, 7)</b>: the same numbers, just switch Π → Σ.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 1,
+"core": true,
+"corder": 1
 }
 ]
 },
@@ -392,7 +427,9 @@ BOOK.add({
 }
 ],
 "why": "<p>Swap the symbol and list the missing numbers from 0–7: <b>ΠM(0, 1, 3, 4, 7)</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 1,
+"core": false
 },
 {
 "tag": "Mano 2.21 (b)",
@@ -414,7 +451,10 @@ BOOK.add({
 }
 ],
 "why": "<p>Missing from 0–15: <b>Σm(3, 5, 6, 8, 10, 11, 13, 14, 15)</b>.</p>",
-"ref": "07 §3"
+"ref": "07 §3",
+"grp": 1,
+"core": true,
+"corder": 2
 }
 ]
 },
@@ -439,7 +479,10 @@ BOOK.add({
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>AB·B + AB·C'D + C·B + C·C'D</td><td>multiply out</td></tr><tr><td>2</td><td>AB + ABC'D + BC + 0</td><td>BB = B, CC' = 0</td></tr><tr><td>3</td><td><b>AB + BC</b></td><td>ABC'D is absorbed by AB</td></tr></table>",
 "lits": 4,
 "form": "sop",
-"ref": "07 §1"
+"ref": "07 §1",
+"grp": 2,
+"core": true,
+"corder": 1
 },
 {
 "tag": "Mano 2.22 (a · POS) ★",
@@ -458,7 +501,10 @@ BOOK.add({
 "why": "<p>From the SOP: AB + BC = <b>B(A + C)</b>. Each bracket (B and A + C) is a sum, so this is POS.</p>",
 "lits": 3,
 "form": "pos",
-"ref": "07 §1"
+"ref": "07 §1",
+"grp": 2,
+"core": true,
+"corder": 2
 },
 {
 "tag": "Mano 2.22 (b · SOP) ★",
@@ -478,7 +524,9 @@ BOOK.add({
 "why": "<table class='wk'><tr><th>#</th><th>Expression</th><th>Why</th></tr><tr><td>1</td><td>x' + x(y + z')</td><td>x(x + y') = x (absorption)</td></tr><tr><td>2</td><td><b>x' + y + z'</b></td><td>x' + xP = x' + P</td></tr></table>",
 "lits": 3,
 "form": "sop",
-"ref": "07 §1"
+"ref": "07 §1",
+"grp": 2,
+"core": false
 },
 {
 "tag": "Mano 2.22 (b · POS) ★",
@@ -498,9 +546,29 @@ BOOK.add({
 "why": "<p>x' + y + z' is a single sum term, so it is <b>already a POS</b> (a product with one factor). It's SOP and POS at once.</p>",
 "lits": 3,
 "form": "pos",
-"ref": "07 §1"
+"ref": "07 §1",
+"grp": 2,
+"core": false
 }
 ]
+}
+],
+"groups": [
+{
+"name": "Truth table → Σm and ΠM",
+"blurb": "1-rows are the minterms, 0-rows the maxterms."
+},
+{
+"name": "Switch forms and complements",
+"blurb": "Swap Σ ↔ Π and list the missing numbers."
+},
+{
+"name": "SOP ↔ POS",
+"blurb": "Multiply out for SOP, factor (or group the 0s) for POS."
+},
+{
+"name": "Why minterms work",
+"blurb": "Short proofs about sums and products of minterms."
 }
 ]
 });

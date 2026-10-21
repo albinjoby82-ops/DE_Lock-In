@@ -9,7 +9,7 @@ Digital Electronics mid-term (Lectures 1–10), learnt by **doing**, not reading
 1. **Read a topic's notes.** Each idea is: one short **rule** → a **diagram** → an **Apply** question. Answer on paper before opening the answer.
 2. **Do that topic's quiz.** Click to fill K-maps and truth tables, type expressions, trace circuits. It checks your working (Boolean answers are tested on every row, and must be minimal) and shows why. Done the slide version? Press **New numbers** for a fresh one with the full working.
 3. **Mixed drill.** Random questions across topics, like the real exam.
-4. **Book questions.** The Mano & Ciletti (4th ed.) end-of-chapter problems for the topic, each with a full worked solution. Do them on paper, check typed ones, self-mark the rest.
+4. **Book questions.** The Mano & Ciletti (4th ed.) end-of-chapter problems, each with a full worked solution, grouped into **skills**. Each skill has 1–4 **core** questions; the rest is optional extra practice. Short on time? Do the topic's **Core path** (110 questions across all topics instead of 375). Groups live in `tools/book_groups.py`.
 5. **Mock mid-term.** Random book questions against the clock.
 6. Got confused? Add it to [my-questions.md](my-questions.md).
 
