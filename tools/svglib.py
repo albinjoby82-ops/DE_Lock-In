@@ -207,7 +207,7 @@ def _runs(sorted_set, n):
 
 
 def kmap(vars_, vals, groups=(), cell=54, show_idx=True, title=None, legend=True,
-         blank="0", x0=None, y0=None, s=None, caption=None):
+         blank="0", x0=None, y0=None, s=None, caption=None, idx_offset=0):
     """vars_ like 'ABCD' (row vars first). vals: dict minterm->'1'/'0'/'X'.
     groups: list of dicts {cells:[..], color:'red', label:"B'D'"}."""
     nv = len(vars_)
@@ -245,7 +245,7 @@ def kmap(vars_, vals, groups=(), cell=54, show_idx=True, title=None, legend=True
                 s.text(x + cell / 2, y + cell / 2 + 7, v.lower() if v == "X" else v, size=20,
                        color=colr, weight="bold" if v != "0" else "normal")
             if show_idx:
-                s.text(x + cell - 5, y + cell - 5, str(m), size=10, anchor="end", color="#8c959f")
+                s.text(x + cell - 5, y + cell - 5, str(m + idx_offset), size=10, anchor="end", color="#8c959f")
     s.rect(ox, oy, C * cell, R * cell, stroke=INK, width=2)
     # groups
     pos = {}

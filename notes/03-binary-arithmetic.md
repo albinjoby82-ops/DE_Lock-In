@@ -127,6 +127,8 @@ Shift left 1 place = × 2. Shift right 1 place = ÷ 2.
 
 **▶ [Topic 03 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=03)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 02 + 03](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=02,03&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=03)** (Mano 1.11, 1.12: 3 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [04 · Signed numbers and overflow](04-signed-numbers.md)

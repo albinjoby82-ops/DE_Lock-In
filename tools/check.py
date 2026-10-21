@@ -194,8 +194,8 @@ def check_book():
         if r["type"] == "bool":
             if not r["verdict"].get("ok"):
                 fail(f"{tag}: model answer rejected: {r['verdict']}")
-            if r["lits"]:
-                best = min_sop_lits(len(r["vars"]), r["ones"], [])
+            if r["lits"] is not None and r["form"] != "pos":
+                best = min_sop_lits(len(r["vars"]), r["ones"], r["dc"])
                 if best is not None and best < r["lits"]:
                     fail(f"{tag}: claims {r['lits']} literals but a {best}-literal SOP exists")
         if r["type"] == "tt":

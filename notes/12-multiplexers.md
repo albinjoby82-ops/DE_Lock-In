@@ -127,6 +127,8 @@ Selects ABC, data in terms of D. Pairs (0,1)→D, (2,3)→D, (4,5)→D', (6,7)�
 
 **▶ [Topic 12 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=12)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 11 + 12](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=11,12&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=12)** (Mano 4.3, 4.31–4.35: 16 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 That's the last topic. Do the [cheat sheet](../cheat-sheet.md) the night before.

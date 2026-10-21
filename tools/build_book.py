@@ -675,5 +675,10 @@ def topic07():
 
 
 if __name__ == "__main__":
-    a, b = topic06(), topic07()
-    print(f"book 06: {a} questions · book 07: {b} questions · {len(os.listdir(SVG_OUT))} svgs")
+    import book_ch1
+    counts = {"02": book_ch1.topic02(), "03": book_ch1.topic03(), "04": book_ch1.topic04(), "05": book_ch1.topic05(),
+              "06": topic06(), "07": topic07()}
+    for mod in ("book_ch3", "book_ch4"):
+        if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), mod + ".py")):
+            counts.update(__import__(mod).build())
+    print(" · ".join(f"{k}: {v}" for k, v in sorted(counts.items())), f"· total {sum(counts.values())} · {len(os.listdir(SVG_OUT))} svgs")

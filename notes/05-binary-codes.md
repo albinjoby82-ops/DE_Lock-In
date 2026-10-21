@@ -91,6 +91,8 @@ The 1 is at position 5 → value **6**.
 
 **▶ [Topic 05 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=05)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 04 + 05](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=04,05&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=05)** (Mano 1.22–1.34: 14 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [06 · Gates and Boolean algebra](06-boolean-algebra.md)

@@ -128,6 +128,8 @@ Group the 0s:
 
 **▶ [Topic 09 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=09)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 08 + 09](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=08,09&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=09)** (Mano 3.15–3.25: 36 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [10 · Adders, subtractors, multipliers](10-adders.md)

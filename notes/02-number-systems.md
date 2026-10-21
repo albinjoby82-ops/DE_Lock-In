@@ -239,6 +239,8 @@ Check: 7 × 16 + 11 = 123 ✓, 2/16 + 8/256 = 0.15625 ✓
 
 **▶ [Topic 02 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=02)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 01 + 02](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=01,02&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=02)** (Mano 1.1–1.10, 1.13: 22 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [03 · Binary arithmetic](03-binary-arithmetic.md)

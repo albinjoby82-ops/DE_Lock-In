@@ -23,7 +23,7 @@ Digital Electronics mid-term (Lectures 1–10), learnt by **doing**, not reading
 notes/NN-topic.md   the 12 topics (rule → diagram → apply question)
 docs/               the quiz site (GitHub Pages): data/NN.js = each topic's questions, gen.js = New numbers versions
 docs/svg/           every drawn diagram (built by tools/build_svg.py)
-docs/book/NN.js     book questions + worked solutions per topic (built by tools/build_book.py)
+docs/book/NN.js     book questions + worked solutions per topic (built by tools/build_book.py + book_ch1/3/4.py)
 docs/book.html      book question lists (?t=06) and the timed mock mid-term (?mock=06,07&n=12&min=50)
 docs/svg/book/      book circuits, K-maps and timing diagrams (built by tools/build_book.py)
 img/                the few lecture slide crops still used

@@ -420,3 +420,325 @@ def write_topic(tid, title, intro, problems):
     with open(path, "w", encoding="utf8") as f:
         f.write("BOOK.add(" + json.dumps(data, ensure_ascii=False, indent=0) + ");\n")
     return sum(len(p["qs"]) for p in problems)
+
+
+# ============================================================ K-map solver
+import itertools
+
+GCOL = ["red", "blue", "green", "purple", "orange", "teal"]
+
+
+def _cov(t, m):
+    mask, val = t
+    return (m & mask) == val
+
+
+def term_cells(t, nv):
+    return [m for m in range(2 ** nv) if _cov(t, m)]
+
+
+def term_lits(t):
+    return bin(t[0]).count("1")
+
+
+def primes(nv, ones, dc=()):
+    allowed = set(ones) | set(dc)
+    imps = []
+    for mask in range(1 << nv):
+        for val in range(1 << nv):
+            if val & ~mask:
+                continue
+            cells = term_cells((mask, val), nv)
+            if all(c in allowed for c in cells) and any(c in ones for c in cells):
+                imps.append((mask, val))
+    pr = [t for t in imps if not any(u != t and (u[0] & t[0]) == u[0] and (t[1] & u[0]) == u[1] for u in imps)]
+    return pr
+
+
+def min_covers(nv, ones, dc=()):
+    """All covers with the fewest literals (ties broken by fewest terms). Returns list of term lists."""
+    ones = sorted(set(ones))
+    if not ones:
+        return [[]]
+    pr = primes(nv, ones, dc)
+    if len(ones) + len(dc) == 2 ** nv:
+        return [[(0, 0)]]
+    # essential primes
+    ess = []
+    for m in ones:
+        c = [t for t in pr if _cov(t, m)]
+        if len(c) == 1 and c[0] not in ess:
+            ess.append(c[0])
+    left = [m for m in ones if not any(_cov(t, m) for t in ess)]
+    rest = [t for t in pr if t not in ess]
+    best, sols = None, []
+    if not left:
+        return [ess]
+    for k in range(1, len(rest) + 1):
+        if best is not None and k > best[1] + 2:
+            break
+        for combo in itertools.combinations(rest, k):
+            if all(any(_cov(t, m) for t in combo) for m in left):
+                cost = (sum(term_lits(t) for t in ess + list(combo)), len(ess) + k)
+                if best is None or cost < best:
+                    best, sols = cost, [ess + list(combo)]
+                elif cost == best:
+                    sols.append(ess + list(combo))
+    return sols
+
+
+def essential(nv, ones, dc=()):
+    pr = primes(nv, ones, dc)
+    ess = []
+    for m in ones:
+        c = [t for t in pr if _cov(t, m)]
+        if len(c) == 1 and c[0] not in ess:
+            ess.append(c[0])
+    return pr, ess
+
+
+def tstr(t, vars_, pos=False):
+    mask, val = t
+    nv = len(vars_)
+    if mask == 0:
+        return "0" if pos else "1"
+    parts = []
+    for k, v in enumerate(vars_):
+        bit = 1 << (nv - 1 - k)
+        if mask & bit:
+            on = bool(val & bit)
+            if pos:  # sum term from a zero-group: complement the literal
+                parts.append(v + ("'" if on else ""))
+            else:
+                parts.append(v + ("" if on else "'"))
+    if pos:
+        return "(" + " + ".join(parts) + ")" if len(parts) > 1 else parts[0]
+    return "".join(parts)
+
+
+def sop_str(terms, vars_):
+    if not terms:
+        return "0"
+    return " + ".join(tstr(t, vars_) for t in sorted(terms, key=lambda t: (term_lits(t), -t[1], t[0])))
+
+
+def pos_str(terms, vars_):
+    if not terms:
+        return "1"
+    return "".join(tstr(t, vars_, pos=True) for t in terms)
+
+
+def solve(vars_, ones, dc=(), form="sop"):
+    """Return (best_expr, all_exprs, terms, lits). For POS the terms are zero-groups."""
+    nv = len(vars_)
+    if form == "pos":
+        zeros = [m for m in range(2 ** nv) if m not in ones and m not in dc]
+        covs = min_covers(nv, zeros, dc)
+        exprs = [pos_str(c, vars_) for c in covs]
+    else:
+        covs = min_covers(nv, ones, dc)
+        exprs = [sop_str(c, vars_) for c in covs]
+    lits = sum(term_lits(t) for t in covs[0])
+    for e, c in zip(exprs, covs):
+        got = set(ones_of(e, vars_))
+        need = set(ones)
+        assert need <= got and got <= need | set(dc), (e, ones, dc)
+    return exprs[0], exprs, covs[0], lits
+
+
+def ones_of(expr, vars_):
+    return ones(expr, vars_)
+
+
+def group_list(terms, vars_, pos=False):
+    nv = len(vars_)
+    out = []
+    for k, t in enumerate(terms):
+        out.append({"cells": term_cells(t, nv), "color": GCOL[k % len(GCOL)], "label": tstr(t, vars_, pos)})
+    return out
+
+
+def kmap_svg(name, vars_, ones_, dc, groups, caption):
+    """2-4 vars: one map. 5 vars: two 4-var maps (first var = 0 / 1)."""
+    nv = len(vars_)
+    if nv <= 4:
+        v = {m: ("1" if m in ones_ else ("X" if m in dc else "0")) for m in range(2 ** nv)}
+        kmap(vars_, v, groups, caption=caption).save(os.path.join(SVG_OUT, name + ".svg"))
+        return name
+    sub = vars_[1:]
+    s = Svg(760, 10, caption)
+    hmax = 0
+    for half in (0, 1):
+        v = {m: ("1" if m + 16 * half in ones_ else ("X" if m + 16 * half in dc else "0")) for m in range(16)}
+        gs = []
+        for g in groups:
+            cells = [c - 16 * half for c in g["cells"] if (c >= 16) == bool(half)]
+            if cells:
+                gs.append({"cells": cells, "color": g["color"], "label": g["label"]})
+        W, H = kmap(sub, v, gs, title=f"{vars_[0]} = {half}", s=s, x0=10 + 380 * half, y0=0, legend=False, idx_offset=16 * half)
+        hmax = max(hmax, H)
+    y = hmax + 8
+    for g in groups:
+        st, fl = COL[g["color"]]
+        s.rect(80, y - 13, 18, 16, stroke=st, fill=fl, rx=4, width=2.5)
+        s.text(106, y, g["label"], size=16, anchor="start", color=st, weight="bold")
+        s.text(106 + 9 * len(g["label"]) + 18, y, "cells " + ",".join(map(str, sorted(g["cells"]))), size=12, anchor="start", color=MUTED)
+        y += 26
+    s.text(380, y + 6, caption, size=15, weight="bold")
+    s.h = int(y + 22)
+    s.save(os.path.join(SVG_OUT, name + ".svg"))
+    return name
+
+
+def kmap_card(tag, q, vars_, ones_, name, dc=(), form="sop", ref="08 §3", extra="", intro=None, fn=None):
+    """Bool question whose answer is a minimal SOP/POS, with a drawn grouped K-map."""
+    ones_ = sorted(set(ones_))
+    best, alls, terms, L = solve(vars_, ones_, dc, form)
+    if fn is not None:
+        assert ones(fn, vars_) == ones_, (tag, ones(fn, vars_), ones_)
+    pos = form == "pos"
+    gs = group_list(terms, vars_, pos)
+    kmap_svg(name, vars_, ones_, dc, gs, f"F = {best}")
+    lines = []
+    for g in gs:
+        lines.append(f"<li><b>{g['label']}</b> from cells {lst(sorted(g['cells']))}</li>")
+    what = "0s" if pos else "1s"
+    h = intro if intro is not None else (
+        f"<p>F = 1 on {('cells ' + lst(ones_)) if ones_ else 'no cells'}" +
+        (f", don't care on {lst(dc)}" if dc else "") + ".</p>")
+    h += img(name, "grouped K-map")
+    h += f"<p>Group the {what} in the biggest blocks of 1, 2, 4, 8 (they can wrap round the edges)" + \
+         (", using an x only if it makes a block bigger" if dc else "") + ":</p><ul>" + "".join(lines) + "</ul>"
+    if pos:
+        h += "<p>Each group of 0s gives one OR term: a letter that is 0 across the group appears plain, a 1 appears barred.</p>"
+    h += f"<p><b>F = {best}</b> ({L} literal{'s' if L != 1 else ''}).</p>"
+    if len(alls) > 1:
+        h += "<p>Just as small: " + " · ".join(alls[1:4]) + ".</p>"
+    h += extra
+    d = {"tag": tag, "type": "bool", "q": q, "vars": vars_, "ones": ones_, "show": best, "lits": L, "why": h, "ref": ref}
+    if dc:
+        d["dc"] = sorted(dc)
+    if form != "any" and best not in ("0", "1"):
+        d["form"] = form
+    return d, best, alls, terms
+
+
+# ============================================================ NAND / NOR conversions
+def _lit_node(lab, inv=False):
+    if inv:
+        return ("in", lab[:-1] if lab.endswith("'") else lab + "'")
+    return ("in", lab)
+
+
+def _split_terms(expr):
+    t = flat(parse(expr))
+    return t[1] if t[0] == "or" else [t]
+
+
+def _labels(t):
+    """literal labels of a product/sum node."""
+    if t[0] == "var":
+        return [t[1]]
+    if t[0] == "not":
+        return [t[1][1] + "'"]
+    return [x[1] if x[0] == "var" else x[1][1] + "'" for x in t[1]]
+
+
+def sop_nand(expr):
+    """Two-level NAND-NAND drawing tree for an SOP string."""
+    kids = []
+    for t in _split_terms(expr):
+        labs = _labels(t)
+        if len(labs) == 1:
+            kids.append(_lit_node(labs[0], inv=True))
+        else:
+            kids.append(G("NAND", *labs))
+    return G("NAND", *kids) if len(kids) > 1 else ("g", "NOT", [kids[0]], None)
+
+
+def pos_nor(expr):
+    """Two-level NOR-NOR drawing tree for a POS string."""
+    t = flat(parse(expr))
+    facs = t[1] if t[0] == "and" else [t]
+    kids = []
+    for f in facs:
+        labs = _labels(flat(f))
+        if len(labs) == 1:
+            kids.append(_lit_node(labs[0], inv=True))
+        else:
+            kids.append(G("NOR", *labs))
+    return G("NOR", *kids) if len(kids) > 1 else ("g", "NOT", [kids[0]], None)
+
+
+def multi_level(expr, kind="NAND"):
+    """Multi-level NAND-only (or NOR-only) circuit from an AND/OR expression.
+    Complemented inputs are taken as available; 'NOT' gates mean a gate with its inputs tied."""
+    t = flat(parse(expr))
+
+    def pos(n):  # node computing n
+        op = n[0]
+        if op == "var":
+            return ("in", n[1])
+        if op == "not" and n[1][0] == "var":
+            return ("in", n[1][1] + "'")
+        if op == "not":
+            return neg(n[1])
+        n = flat(n)
+        if kind == "NAND":
+            if n[0] == "or":
+                return ("g", "NAND", [neg(k) for k in n[1]], None)
+            return ("g", "NOT", [neg(n)], None)
+        else:
+            if n[0] == "and":
+                return ("g", "NOR", [neg(k) for k in n[1]], None)
+            return ("g", "NOT", [neg(n)], None)
+
+    def neg(n):  # node computing n'
+        op = n[0]
+        if op == "var":
+            return ("in", n[1] + "'")
+        if op == "not":
+            return pos(n[1])
+        n = flat(n)
+        if kind == "NAND":
+            if n[0] == "and":
+                return ("g", "NAND", [pos(k) for k in n[1]], None)
+            return ("g", "NOT", [pos(n)], None)
+        else:
+            if n[0] == "or":
+                return ("g", "NOR", [pos(k) for k in n[1]], None)
+            return ("g", "NOT", [pos(n)], None)
+
+    return pos(t)
+
+
+# ============================================================ timing with a time axis
+def save_timing_t(name, signals, title, t_end, step, unit="ns", px=7, t0=0):
+    """signals: list of (name, function t->0/1, colour). Sampled every `step` from t0 to t_end."""
+    lm = 110 - t0 * px
+    W = int(lm + t_end * px + 40)
+    H = 60 + len(signals) * 50 + 30
+    s = Svg(W, H, title)
+    s.text(W / 2, 22, title, size=15, weight="bold")
+    for tt_ in range(t0, t_end + 1, 10):
+        x = lm + tt_ * px
+        s.line([(x, 34), (x, H - 30)], "#d0d7de", 1, dash="3 4")
+        s.text(x, H - 12, f"{tt_}", size=11, color=MUTED)
+    s.text(lm + t0 * px - 14, H - 12, unit, size=11, color=MUTED, anchor="end")
+    for r, (nm, f, col) in enumerate(signals):
+        base = 60 + r * 50 + 26
+        hi = base - 26
+        c = COL[col][0] if col else INK
+        s.text(lm + t0 * px - 14, base - 8, nm, size=14, anchor="end", weight="bold", color=c)
+        pts = []
+        tt_ = t0
+        while tt_ <= t_end:
+            y = hi if f(tt_) else base
+            x = lm + tt_ * px
+            if pts and pts[-1][1] != y:
+                pts.append((x, pts[-1][1]))
+            pts.append((x, y))
+            tt_ += step
+        s.line(pts, c, 2.5)
+    s.save(os.path.join(SVG_OUT, name + ".svg"))
+    return name

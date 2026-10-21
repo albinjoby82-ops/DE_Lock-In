@@ -126,6 +126,8 @@ Active-low: **S = AND(D₀, D₃, D₅, D₆)**, **C = AND(D₀, D₁, D₂, D�
 
 **▶ [Topic 11 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=11)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 10 + 11](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=10,11&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=11)** (Mano 4.22–4.30: 26 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [12 · Multiplexers and demultiplexers](12-multiplexers.md)

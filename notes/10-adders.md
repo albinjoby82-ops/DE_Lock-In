@@ -158,6 +158,8 @@ It's the full adder's carry: Σm(3, 5, 6, 7) → **F = XY + XZ + YZ**. Three 2-i
 
 **▶ [Topic 10 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=10)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 09 + 10](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=09,10&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=10)** (Mano 3.28–3.33, 4.4–4.21: 58 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [11 · Decoders and encoders](11-decoders-encoders.md)

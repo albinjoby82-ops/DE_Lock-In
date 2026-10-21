@@ -48,8 +48,12 @@
     }
     function xorx() {
       var n = prod(), kids = [n];
-      while (peek() === "⊕") { i++; kids.push(prod()); }
-      return kids.length > 1 ? { op: "xor", k: kids } : n;
+      while (peek() === "⊕" || peek() === "⊙") {
+        var nx = s[i] === "⊙"; i++;
+        var r = prod();
+        n = nx ? { op: "not", k: [{ op: "xor", k: [n, r] }] } : { op: "xor", k: [n, r] };
+      }
+      return n;
     }
     function prod() {
       var kids = [unary()];
@@ -133,7 +137,7 @@
     if (wrong.length) return { ok: false, msg: "Not the same function. It gives the wrong output on row" + (wrong.length > 1 ? "s " : " ") + wrong.join(", ") + "." };
     if (q.form === "sop" && !isSOP(p.tree)) return { ok: false, msg: "Right function, but that's not written as a sum of products (an OR of AND terms)." };
     if (q.form === "pos" && !isPOS(p.tree)) return { ok: false, msg: "Right function, but that's not written as a product of sums (an AND of OR terms)." };
-    if (q.lits && p.lits > q.lits) return { ok: false, msg: "Right function, but not minimal: you used " + p.lits + " letters. The minimum is " + q.lits + ". Look for bigger blocks, or a block you don't need." };
+    if (typeof q.lits === "number" && p.lits > q.lits) return { ok: false, msg: "Right function, but not minimal: you used " + p.lits + " letters. The minimum is " + q.lits + ". Look for bigger blocks, or a block you don't need." };
     if (q.terms && (q.form === "sop" || q.form === "pos") && termCount(p.tree, q.form) > q.terms) return { ok: false, msg: "Right function, but it has more terms than it needs (" + q.terms + ")." };
     return { ok: true };
   }

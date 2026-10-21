@@ -286,6 +286,8 @@ Worked: **4 + 5** = `0100 + 0101` = `1001`. Two positives gave a negative (−7)
 
 **▶ [Topic 04 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=04)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 03 + 04](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=03,04&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=04)** (Mano 1.14–1.21: 30 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [05 · Binary codes](05-binary-codes.md)

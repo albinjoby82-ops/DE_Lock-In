@@ -143,6 +143,8 @@ It's 0 when B = 0 and C = 1 → cells **1 and 5**.
 
 **▶ [Topic 08 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=08)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 07 + 08](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=07,08&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=08)** (Mano 3.1–3.14, 3.26: 63 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [09 · Don't cares, NAND-NAND and NOR-NOR](09-dont-cares-nand-nor.md)

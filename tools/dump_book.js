@@ -13,7 +13,7 @@ for (const id of Object.keys(store).sort()) {
   for (const p of store[id].problems) for (const q of p.qs) {
     const r = { topic: id, tag: q.tag, type: q.type, why: q.why || "", q: q.q, svg: q.svg || null };
     if (q.type === "bool") {
-      r.verdict = Q.checkBool(q, q.show); r.vars = q.vars; r.ones = q.ones; r.lits = q.lits || null; r.form = q.form || "any";
+      r.verdict = Q.checkBool(q, q.show); r.vars = q.vars; r.ones = q.ones; r.lits = (typeof q.lits === "number") ? q.lits : null; r.form = q.form || "any"; r.dc = q.dc || [];
       r.showLits = Q.parseBool(q.show, q.vars).lits;
     }
     if (q.type === "tt") { r.vars = q.vars; r.outs = q.outs; }
