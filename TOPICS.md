@@ -19,6 +19,8 @@ Mid-term = Lectures 1–10 = **10%** of the module. No formula sheet, so learn t
 | 11 | Decoders and encoders | L9 | ●● | [notes](notes/11-decoders-encoders.md) | [quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=11) | ☐ |
 | 12 | Multiplexers | L10 | ●● | [notes](notes/12-multiplexers.md) | [quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=12) | ☐ |
 
+**Book questions (Mano 4th ed.):** [06 Boolean algebra](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=06) · [07 Minterms and maxterms](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=07) · other topics coming. Then sit a [mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions).
+
 **Skip:** course admin, chip photos (L1 10–29), CMOS transistor drawings (L6 7, just know the counts), ASCII table, the 4×4 multiplier wiring.
 
 **Final exam only (not here yet):** flip-flops, registers, counters, memory.

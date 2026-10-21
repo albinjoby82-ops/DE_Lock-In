@@ -178,7 +178,49 @@ def check_links():
     return unused
 
 
+def check_book():
+    """Book questions: engine accepts every model answer, minimal where asked, diagrams exist."""
+    import booklib
+    rows = json.loads(subprocess.check_output(["node", os.path.join(ROOT, "tools", "dump_book.js")], text=True))
+    print(f"{len(rows)} book questions")
+    tags = set()
+    for r in rows:
+        tag = f"book {r['topic']} {r['tag']}"
+        if (r["topic"], r["tag"]) in tags and r["type"] != "multi":
+            fail(f"{tag}: duplicate tag")
+        tags.add((r["topic"], r["tag"]))
+        if not r["why"].strip():
+            fail(f"{tag}: no worked solution")
+        if r["type"] == "bool":
+            if not r["verdict"].get("ok"):
+                fail(f"{tag}: model answer rejected: {r['verdict']}")
+            if r["lits"]:
+                best = min_sop_lits(len(r["vars"]), r["ones"], [])
+                if best is not None and best < r["lits"]:
+                    fail(f"{tag}: claims {r['lits']} literals but a {best}-literal SOP exists")
+        if r["type"] == "tt":
+            for k, v in r["outs"].items():
+                if len(v) != 2 ** len(r["vars"]):
+                    fail(f"{tag}: output {k} has {len(v)} rows")
+        if r["type"] == "multi":
+            for f in r["fields"]:
+                if not f["normOk"]:
+                    fail(f"{tag}: empty accepted answer in {f['label']}")
+        for m in re.finditer(r"svg/(book/[\w-]+)\.svg", r["why"] + r["q"]):
+            if not os.path.exists(os.path.join(ROOT, "docs", "svg", m.group(1) + ".svg")):
+                fail(f"{tag}: missing {m.group(1)}")
+        if r["svg"] and not os.path.exists(os.path.join(ROOT, "docs", "svg", r["svg"] + ".svg")):
+            fail(f"{tag}: missing question figure {r['svg']}")
+    # the builder's own asserts re-run: rebuilding must reproduce the committed data exactly
+    before = {f: open(os.path.join(ROOT, "docs", "book", f), encoding="utf8").read() for f in os.listdir(os.path.join(ROOT, "docs", "book"))}
+    subprocess.check_call([sys.executable, os.path.join(ROOT, "tools", "build_book.py")], stdout=subprocess.DEVNULL)
+    for f, txt in before.items():
+        if open(os.path.join(ROOT, "docs", "book", f), encoding="utf8").read() != txt:
+            fail(f"docs/book/{f} is out of date: run python3 tools/build_book.py")
+
+
 if __name__ == "__main__":
+    check_book()
     check_refs()
     check_quiz()
     check_tt()

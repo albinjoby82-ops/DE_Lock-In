@@ -286,7 +286,8 @@
   function renderQuestion(q, host, done) {
     host.innerHTML = "";
     var card = el("article", { class: "q" });
-    card.appendChild(el("div", { class: "q-kind" }, ({ mcq: "Pick one", tf: "True or false", text: "Type the answer", bool: "Type the expression", kmap: "Fill the K-map", tt: "Fill the truth table", multi: "Fill each box" })[q.type] || ""));
+    if (q.tag) card.appendChild(el("p", { class: "from" }, q.tag));
+    card.appendChild(el("div", { class: "q-kind" }, ({ mcq: "Pick one", tf: "True or false", text: "Type the answer", bool: "Type the expression", kmap: "Fill the K-map", tt: "Fill the truth table", multi: "Fill each box", work: "Do it on paper, then mark yourself" })[q.type] || ""));
     card.appendChild(el("div", { class: "q-text" }, q.q));
     if (q.svg) {
       var fig = el("figure", { class: "q-fig" });
@@ -302,7 +303,7 @@
     var actions = el("div", { class: "actions" });
     var checkBtn = el("button", { type: "button", class: "btn primary" }, "Check");
     var hintBtn = q.hint ? el("button", { type: "button", class: "btn ghost" }, "Hint") : null;
-    var showBtn = el("button", { type: "button", class: "btn ghost" }, "Show answer");
+    var showBtn = el("button", { type: "button", class: q.type === "work" ? "btn primary" : "btn ghost" }, q.type === "work" ? "Show solution" : "Show answer");
     actions.appendChild(checkBtn); if (hintBtn) actions.appendChild(hintBtn); actions.appendChild(showBtn);
     card.appendChild(actions); card.appendChild(fb);
     var answered = false, tries = 0, widget = null, inputs = [];
@@ -325,7 +326,7 @@
     }
     var shown = false, savedInputs = [], markedOpts = [];
     function hideAnswer() {
-      shown = false; showBtn.textContent = "Show answer";
+      shown = false; showBtn.textContent = q.type === "work" ? "Show solution" : "Show answer";
       if (widget && widget.hide) widget.hide();
       markedOpts.forEach(function (b) { b.classList.remove("right"); }); markedOpts = [];
       inputs.forEach(function (inp, i) { inp.value = savedInputs[i] || ""; });
@@ -334,20 +335,37 @@
     }
     showBtn.addEventListener("click", function () {
       if (shown) { hideAnswer(); return; }
-      shown = true; showBtn.textContent = "Hide answer";
+      shown = true; showBtn.textContent = q.type === "work" ? "Hide solution" : "Hide answer";
       savedInputs = inputs.map(function (inp) { return inp.value; });
       if (widget && widget.reveal) widget.reveal();
       if (q.type === "mcq" || q.type === "tf") body.querySelectorAll(".opt").forEach(function (b, i) { if (i === q.a && !b.classList.contains("right")) { b.classList.add("right"); markedOpts.push(b); } });
       if (q.type === "text" || q.type === "bool") inputs[0].value = q.show || (q.ans ? q.ans[0] : "");
       if (q.type === "multi") q.fields.forEach(function (f, i) { inputs[i].value = f.ans[0]; });
-      fb.className = "fb shown"; fb.innerHTML = "<p class='fb-head'>Answer shown.</p>";
-      if (!answered) { answered = true; done(0); }
+      fb.className = "fb shown"; fb.innerHTML = "<p class='fb-head'>" + (q.type === "work" ? "Solution" : "Answer shown.") + "</p>";
+      if (!answered && q.type !== "work") { answered = true; done(0); }
       fb.appendChild(el("div", { class: "why" }, q.why || ""));
       if (q.ref) fb.lastChild.appendChild(refLink(q.ref));
+      if (q.type === "work" && !answered) {
+        var mk = el("div", { class: "selfmark" });
+        mk.appendChild(el("span", {}, "How did you do?"));
+        [["Got it", 1], ["Half right", 0.5], ["Missed it", 0]].forEach(function (o) {
+          var b = el("button", { type: "button", class: "btn" + (o[1] === 1 ? " primary" : " ghost") }, o[0]);
+          b.addEventListener("click", function () {
+            if (answered) return;
+            answered = true; done(o[1]);
+            mk.innerHTML = "<span>Marked: <b>" + o[0] + "</b></span>";
+          });
+          mk.appendChild(b);
+        });
+        fb.appendChild(mk);
+      }
     });
     if (hintBtn) hintBtn.addEventListener("click", function () { hintBtn.outerHTML = "<p class='hint'>Hint: " + q.hint + "</p>"; });
 
-    if (q.type === "mcq" || q.type === "tf") {
+    if (q.type === "work") {
+      checkBtn.style.display = "none";
+      body.appendChild(el("p", { class: "tiny" }, "Write your full working on paper first. Then open the solution and mark yourself honestly."));
+    } else if (q.type === "mcq" || q.type === "tf") {
       var opts = q.type === "tf" ? ["True", "False"] : q.opts;
       var list = el("div", { class: "opts" });
       var chosen = null;
@@ -420,7 +438,7 @@
     }
     host.appendChild(card);
     var first = card.querySelector("input");
-    if (first && window.matchMedia("(pointer:fine)").matches) first.focus({ preventScroll: true });
+    if (first && !q._nofocus && window.matchMedia("(pointer:fine)").matches) first.focus({ preventScroll: true });
   }
 
   /* ------------------------------------------------ quiz runner */
@@ -466,7 +484,7 @@
       stage.innerHTML = "";
       stage.appendChild(pre);
       var host = el("div");
-      var scoreIt = function (s) { if (scores[i] === null) { scores[i] = s; refresh(); } };
+      var scoreIt = function (s) { if (scores[i] === null) { scores[i] = s; refresh(); if (opts.onScore) opts.onScore(q, s); } };
       var showOriginal = function () {
         renderQuestion(q, host, scoreIt);
         if (scores[i] !== null) host.querySelector(".q").classList.add("seen");
@@ -504,6 +522,7 @@
       scores.forEach(function (s, i) { got += s || 0; if (s !== 1) missed.push(i); });
       var pct = Math.round(100 * got / qs.length);
       if (opts.key) { var best = store.get("best:" + opts.key) || 0; if (pct > best) store.set("best:" + opts.key, pct); }
+      if (opts.onFinish) opts.onFinish(pct, qs, scores);
       stage.innerHTML = "";
       var box = el("div", { class: "summary" });
       box.appendChild(el("h2", {}, pct + "%"));

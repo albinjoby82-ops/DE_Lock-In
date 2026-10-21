@@ -155,3 +155,38 @@ table.kshow td.zero b { color: var(--muted); font-weight: 400; }
 table.kshow td.dc b { color: #bc4c00; }
 table.kshow td small { position: absolute; right: 3px; bottom: 1px; font-size: .62rem; color: var(--muted); }
 table.kshow .tags { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 2px; }
+
+/* book questions */
+.tcard.soon { opacity: .6; box-shadow: none; }
+.tcard .prog { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.tcard .prog i { display: block; height: 100%; background: var(--ok); }
+.bookbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 12px; }
+.bookbar .score { margin-left: auto; }
+.jump { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: .95rem; margin: 0 0 8px; color: var(--muted); }
+.jump a { font-weight: 700; }
+.prob { margin-top: 26px; scroll-margin-top: 10px; }
+.prob h2 { margin: 0 0 2px; padding-top: 10px; border-top: 2px solid var(--line); }
+.ptext { color: var(--muted); margin: 0 0 10px; }
+.bq { margin: 0 0 14px; }
+.bq.did .q { border-left: 5px solid var(--ok); }
+.from { margin: 0 0 4px; }
+.selfmark { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.selfmark span { font-weight: 700; margin-right: 4px; }
+.why table.wk { border-collapse: collapse; margin: 8px 0; width: 100%; }
+.why table.wk th, .why table.wk td { text-align: left; padding: 5px 10px; vertical-align: top; }
+.why table.wk th { background: var(--sel); }
+.why table.wk td:first-child { color: var(--muted); width: 2em; text-align: center; }
+.why table.wk td:nth-child(2) { font-weight: 400; white-space: nowrap; }
+.why table.wk td:nth-child(3) { color: var(--muted); font-size: .9rem; }
+.why mark { background: #ffe58f; color: #1b1f24; padding: 0 3px; border-radius: 4px; }
+.why table.tts td.o, .why table.tts th.o { background: var(--sel); font-weight: 700; }
+.why table.bits th { text-align: right; }
+.why table.bits td { font-family: ui-monospace, Menlo, Consolas, monospace; }
+.q-text table.bits td { font-family: ui-monospace, Menlo, Consolas, monospace; }
+.why img + img { margin-top: 8px; }
+.wk-wrap, .why { overflow-x: auto; }
+.mockstart { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.clock { position: sticky; top: 0; z-index: 3; background: var(--soft-bg); border-radius: 10px; padding: 8px 14px; margin-bottom: 6px; font-size: 1.05rem; }
+.clock.up { background: var(--no-bg); border-left: 5px solid var(--no); font-weight: 700; }
+.clock + div .qbar { top: 46px; }
+@media (max-width: 520px) { .why table.wk td:nth-child(2) { white-space: normal; } }

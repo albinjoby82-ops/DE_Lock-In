@@ -133,6 +133,8 @@ AB and BC are absorbed by B: = **B + AC**.
 
 **▶ [Topic 06 quiz](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?t=06)** (answers checked as you go, **New numbers** for fresh practice)  
 [Mixed quiz: topics 05 + 06](https://albinjoby82-ops.github.io/DE_Lock-In/quiz.html?mix=05,06&n=15)  
+**▶ [Book questions for this topic](https://albinjoby82-ops.github.io/DE_Lock-In/book.html?t=06)** (Mano Ch 2 + 1.35, 1.36, 4.1, 4.2: 86 questions, every one worked)  
+[Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
 Next: [07 · SOP, POS, minterms and maxterms](07-minterms-maxterms.md)
