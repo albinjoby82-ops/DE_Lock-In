@@ -103,6 +103,96 @@ AB and BC are absorbed by B: = **B + AC**.
 
 ---
 
+## 5. Hard worked problems (spot the rule)
+
+**How to read the diagrams:** the orange underlined part is what the next rule acts on. Each arrow names the rule and the signal that told you to use it.
+
+**Signals to hunt for:**
+
+| You see | Use |
+|---|---|
+| X + X' or XX' | Complement |
+| the same factor in two terms | Distributive (factor) |
+| x + x'(anything) | Drop the x' |
+| x in one term, x' in another, a third term made of their partners | Consensus |
+| a bar over a whole group | De Morgan |
+| two brackets that share a part | Distributive (backwards) |
+| one term that pairs with several others | Idempotent (copy it) |
+
+Try each one first, then open the diagram.
+
+**H1.** Simplify  A'B'C + A'BC + AB'C + ABC' + ABC
+<details><summary>Worked diagram</summary>
+
+![H1 worked](../docs/svg/hard-h1.svg)
+
+</details>
+
+**H2.** Simplify  (x + y)(x' + z)(y + z)
+<details><summary>Worked diagram</summary>
+
+![H2 worked](../docs/svg/hard-h2.svg)
+
+</details>
+
+**H3.** Simplify  ((A + B')C)' + A'B
+<details><summary>Worked diagram</summary>
+
+![H3 worked](../docs/svg/hard-h3.svg)
+
+</details>
+
+**H4.** Simplify  (a + b)'(a' + b')'
+<details><summary>Worked diagram</summary>
+
+![H4 worked](../docs/svg/hard-h4.svg)
+
+</details>
+
+**H5.** Simplify  A + A'B + A'B'C + A'B'C'D
+<details><summary>Worked diagram</summary>
+
+![H5 worked](../docs/svg/hard-h5.svg)
+
+</details>
+
+**H6.** Simplify  (A + B + C)(A + B + C')(A + B' + C)
+<details><summary>Worked diagram</summary>
+
+![H6 worked](../docs/svg/hard-h6.svg)
+
+</details>
+
+**H7.** Simplify  (x + y)(x' + y') + xy
+<details><summary>Worked diagram</summary>
+
+![H7 worked](../docs/svg/hard-h7.svg)
+
+</details>
+
+**H8.** Simplify  (A'B + AB')'
+<details><summary>Worked diagram</summary>
+
+![H8 worked](../docs/svg/hard-h8.svg)
+
+</details>
+
+**H9.** Simplify  A'B'C + A'BC' + A'BC + ABC
+<details><summary>Worked diagram</summary>
+
+![H9 worked](../docs/svg/hard-h9.svg)
+
+</details>
+
+**H10.** Prove  (x + z)(x' + y) = xy + x'z
+<details><summary>Worked diagram</summary>
+
+![H10 worked](../docs/svg/hard-h10.svg)
+
+</details>
+
+---
+
 ## Exam drill
 
 **1.** Simplify xy + x'z + yz. **2.** Simplify (x + y)(x + y'). **3.** Prove (x + y)(x + z) = x + yz with a truth table or the axioms.

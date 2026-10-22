@@ -1,5 +1,6 @@
 """Build every drawn diagram into docs/svg/. Run: python3 tools/build_svg.py"""
 import os, math
+from html import escape
 from svglib import Svg, Gate, wire, label_in, label_out, block, kmap, INK, MUTED, COL
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -700,6 +701,170 @@ def boolean_rules():
     save(s, "boolean-rules")
 
 
+# ======================================================== hard worked problems (Topic 6)
+def _bool_eval(expr, env):
+    """Evaluate x' / xy / x + y notation. Braces are highlight marks and are ignored."""
+    s = expr.replace("{", "").replace("}", "").replace(" ", "").replace("·", "")
+    pos = [0]
+
+    def peek():
+        return s[pos[0]] if pos[0] < len(s) else ""
+
+    def atom():
+        c = peek()
+        if c == "(":
+            pos[0] += 1
+            v = orx()
+            assert peek() == ")", s
+            pos[0] += 1
+        elif c in "01":
+            pos[0] += 1
+            v = c == "1"
+        else:
+            assert c.isalpha(), (s, pos[0])
+            pos[0] += 1
+            v = env[c]
+        while peek() == "'":
+            pos[0] += 1
+            v = not v
+        return v
+
+    def andx():
+        v = atom()
+        while peek() and peek() not in "+)":
+            v = atom() and v
+        return v
+
+    def orx():
+        v = andx()
+        while peek() == "+":
+            pos[0] += 1
+            v = andx() or v
+        return v
+
+    v = orx()
+    assert pos[0] == len(s), s
+    return v
+
+
+def _same(a, b):
+    import itertools
+    vs = sorted({c for c in (a + b) if c.isalpha()})
+    for bits in itertools.product([False, True], repeat=len(vs)):
+        env = dict(zip(vs, bits))
+        if _bool_eval(a, env) != _bool_eval(b, env):
+            return False
+    return True
+
+
+HARD = [
+    ("h1", "Simplify  A'B'C + A'BC + AB'C + ABC' + ABC", [
+        ("{A'B'C + A'BC} + AB'C + {ABC' + ABC}", "Distributive (factor)", "A'C and AB each appear twice"),
+        ("A'C{(B' + B)} + AB'C + AB{(C' + C)}", "Complement", "B' + B = 1 and C' + C = 1"),
+        ("A'C + {AB'C + AB}", "Distributive (factor)", "both terms have A"),
+        ("A'C + A{(B + B'C)}", "Drop the x'", "B + B'C = B + C"),
+        ("A'C + {A(B + C)}", "Distributive (expand)", "multiply A in"),
+        ("{A'C} + AB + {AC}", "Distributive (factor)", "both terms have C"),
+        ("C{(A' + A)} + AB", "Complement", "A' + A = 1"),
+        ("C + AB", None, None)]),
+    ("h2", "Simplify  (x + y)(x' + z)(y + z)", [
+        ("(x + y)(x' + z){(y + z)}", "Consensus (AND form)", "x and x' in brackets, so (y + z) is spare"),
+        ("{(x + y)(x' + z)}", "Distributive (expand)", "multiply out"),
+        ("{xx'} + xz + x'y + yz", "Complement", "xx' = 0"),
+        ("xz + x'y + {yz}", "Consensus", "x and x' again, so yz is spare"),
+        ("xz + x'y", None, None)]),
+    ("h3", "Simplify  ((A + B')C)' + A'B", [
+        ("{((A + B')C)'} + A'B", "De Morgan (AND)", "bar over a product: (XY)' = X' + Y'"),
+        ("{(A + B')'} + C' + A'B", "De Morgan (OR)", "flip letters, + becomes ·  (B'' = B)"),
+        ("{A'B} + C' + {A'B}", "Idempotent", "A'B appears twice"),
+        ("A'B + C'", None, None)]),
+    ("h4", "Simplify  (a + b)'(a' + b')'", [
+        ("{(a + b)'}(a' + b')'", "De Morgan (OR)", "(a + b)' = a'b'"),
+        ("a'b'{(a' + b')'}", "De Morgan (OR)", "flip letters: a'' = a, b'' = b"),
+        ("{a'}b'{a}b", "Complement + null", "a'a = 0, and 0 · anything = 0"),
+        ("0", None, None)]),
+    ("h5", "Simplify  A + A'B + A'B'C + A'B'C'D", [
+        ("A + {A'B + A'B'C + A'B'C'D}", "Distributive (factor)", "every other term has A'"),
+        ("{A + A'(B + B'C + B'C'D)}", "Drop the x'", "A + A'X = A + X  (X = the bracket)"),
+        ("A + B + {B'C + B'C'D}", "Distributive (factor)", "both terms have B'"),
+        ("A + {B + B'(C + C'D)}", "Drop the x'", "B + B'X = B + X"),
+        ("A + B + {C + C'D}", "Drop the x'", "C + C'D = C + D"),
+        ("A + B + C + D", None, None)]),
+    ("h6", "Simplify  (A + B + C)(A + B + C')(A + B' + C)", [
+        ("{(A + B + C)(A + B + C')}(A + B' + C)", "Distributive (backwards)", "share A + B:  (X + C)(X + C') = X + CC'"),
+        ("(A + B + {CC'})(A + B' + C)", "Complement", "CC' = 0"),
+        ("{(A + B)(A + B' + C)}", "Distributive (backwards)", "share A:  (A + X)(A + Y) = A + XY"),
+        ("A + {B(B' + C)}", "Distributive (expand)", "multiply B in"),
+        ("A + {BB'} + BC", "Complement", "BB' = 0"),
+        ("A + BC", None, None)]),
+    ("h7", "Simplify  (x + y)(x' + y') + xy", [
+        ("{(x + y)(x' + y')} + xy", "Distributive (expand)", "multiply out"),
+        ("{xx'} + xy' + x'y + {yy'} + xy", "Complement", "xx' = 0 and yy' = 0"),
+        ("{xy'} + x'y + {xy}", "Distributive (factor)", "both terms have x"),
+        ("x{(y' + y)} + x'y", "Complement", "y' + y = 1"),
+        ("{x + x'y}", "Drop the x'", "x + x'y = x + y"),
+        ("x + y", None, None)]),
+    ("h8", "Simplify  (A'B + AB')'", [
+        ("{(A'B + AB')'}", "De Morgan (OR)", "bar over a sum becomes a product"),
+        ("{(A'B)'}{(AB')'}", "De Morgan (AND)", "each bar: flip letters, · becomes +"),
+        ("{(A + B')(A' + B)}", "Distributive (expand)", "multiply out"),
+        ("{AA'} + AB + A'B' + {B'B}", "Complement", "AA' = 0 and B'B = 0"),
+        ("AB + A'B'", None, None)]),
+    ("h9", "Simplify  A'B'C + A'BC' + A'BC + ABC", [
+        ("A'B'C + A'BC' + {A'BC} + ABC", "Idempotent (copy)", "A'BC pairs with all 3 others, so write it 3 times"),
+        ("({A'B'C + A'BC}) + ({A'BC' + A'BC}) + ({A'BC + ABC})", "Distributive (factor)", "pull out A'C, A'B and BC"),
+        ("A'C{(B' + B)} + A'B{(C' + C)} + BC{(A' + A)}", "Complement", "every bracket = 1"),
+        ("A'C + A'B + BC", None, None)]),
+    ("h10", "Prove  (x + z)(x' + y) = xy + x'z", [
+        ("{(x + z)(x' + y)}", "Distributive (expand)", "multiply out the left side"),
+        ("{xx'} + xy + x'z + yz", "Complement", "xx' = 0"),
+        ("xy + x'z + {yz}", "Consensus", "x and x', so yz is spare"),
+        ("xy + x'z", None, "= right side ✓")]),
+]
+
+
+def _segs(s, x, y, size=18):
+    out, hi = [], False
+    for part in s.replace("}", "{").split("{"):
+        if part:
+            if hi:
+                out.append(f'<tspan fill="{COL["orange"][0]}" font-weight="bold" '
+                           f'text-decoration="underline">{escape(part)}</tspan>')
+            else:
+                out.append(f'<tspan>{escape(part)}</tspan>')
+        hi = not hi
+    return (f'<text x="{x}" y="{y}" font-size="{size}" text-anchor="start" fill="{INK}" '
+            f'xml:space="preserve">' + "".join(out) + "</text>")
+
+
+def hard_problems():
+    for name, title, steps in HARD:
+        for (a, *_), (b, *_) in zip(steps, steps[1:]):
+            assert _same(a, b), (name, a, b)
+        if name == "h10":
+            assert _same(steps[0][0], "xy + x'z")
+        n = len(steps)
+        H = 60 + (n - 1) * 58 + 54
+        s = Svg(680, H, title)
+        s.text(24, 30, title, size=17, anchor="start", weight="bold")
+        y = 74
+        for i, (expr, rule, note) in enumerate(steps):
+            if i == n - 1:
+                w = len(expr) * 11 + 30
+                s.rect(18, y - 26, w, 38, stroke=COL["teal"][0], fill=COL["teal"][1], rx=6, width=2)
+                s.text(32, y, expr, size=20, anchor="start", weight="bold", color=COL["teal"][0])
+                if note:
+                    s.text(18 + w + 14, y - 2, note, size=15, anchor="start", weight="bold", color=COL["teal"][0])
+                break
+            s.add(_segs(expr, 24, y))
+            oc = COL["orange"][0]
+            s.arrow([(34, y + 12), (34, y + 38)], color=oc, width=2)
+            s.text(52, y + 31, rule, size=14, anchor="start", weight="bold", color=oc)
+            s.text(250, y + 31, note, size=13, anchor="start", color=MUTED)
+            y += 58 + (14 if i == n - 2 else 0)
+        save(s, "hard-" + name)
+
+
 if __name__ == "__main__":
-    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders(); boolean_rules()
+    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders(); boolean_rules(); hard_problems()
     print("ok", len(os.listdir(OUT)))
