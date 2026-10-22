@@ -872,9 +872,9 @@ def minterms():
 
     def cell(s, x, y, t, kind="gray", w=44, size=18):
         st, fl, tc = {"gray": (GRAY, "#fff", INK), "amber": (AMB[0], AMB[1], AMB[0]),
-                      "teal": (TEAL[0], TEAL[1], TEAL[0])}[kind]
-        s.rect(x, y, w, 34, stroke=st, fill=fl, rx=4, width=2)
-        s.text(x + w / 2, y + 23, t, size=size, weight="bold", color=tc)
+                      "teal": (TEAL[0], TEAL[1], TEAL[0]), "faint": ("#d0d7de", "#fff", "#afb8c1")}[kind]
+        s.rect(x, y, w, 34, stroke=st, fill=fl, rx=4, width=2 if kind != "faint" else 1)
+        s.text(x + w / 2, y + 23, t, size=size, weight="bold" if kind != "faint" else "normal", color=tc)
 
     # ---- 0. how the rows are numbered: xyz read as a binary number
     s = Svg(680, 420, "Truth table rows 0-7: read xyz as binary, x=4 y=2 z=1")
@@ -978,6 +978,102 @@ def minterms():
            size=14, anchor="start", color=MUTED)
     assert sorted(set(range(8)) - ones) == [4, 5, 7]
     save(s, "sigma-pi-switch")
+
+    # ---- 3. why Σm works: OR of one-row minterms
+    ks = [0, 1, 2, 3, 6]
+    s = Svg(680, 440, "Why Σm works: each minterm is 1 on one row; OR them to get f")
+    mx = [200 + 56 * k for k in range(5)]
+    fx = 510
+    s.text(82, 34, "row", size=13, color=MUTED)
+    s.text(142, 34, "x y z", size=13, color=MUTED)
+    for j, k in enumerate(ks):
+        s.text(mx[j] + 22, 34, f"m{'₀₁₂₃₄₅₆₇'[k]}", size=15, weight="bold", color=AMB[0])
+        if j < 4:
+            s.text(mx[j] + 50, 34, "+", size=15, weight="bold", color=MUTED)
+    s.text(fx - 22, 34, "=", size=15, weight="bold", color=MUTED)
+    s.text(fx + 22, 34, "f", size=15, weight="bold", color=TEAL[0])
+    for r in range(8):
+        y = 48 + 40 * r
+        cell(s, 60, y, str(r), "gray", size=16)
+        cell(s, 114, y, format(r, "03b"), "gray", w=56, size=15)
+        for j, k in enumerate(ks):
+            cell(s, mx[j], y, "1" if r == k else "0", "amber" if r == k else "faint", size=16)
+        f = 1 if r in ks else 0
+        assert f == max(1 if r == k else 0 for k in ks)
+        cell(s, fx, y, str(f), "teal" if f else "faint", size=16)
+    s.text(40, 392, "Each minterm is 1 on its own row only. OR them → f = 1 on exactly rows 0, 1, 2, 3, 6.",
+           size=14, anchor="start", color=INK)
+    s.text(40, 418, "ΠM is the mirror: each maxterm is 0 on its own row only. AND them → f = 0 on rows 4, 5, 7.",
+           size=14, anchor="start", color=MUTED)
+    save(s, "sigma-why")
+
+    # ---- 4. worked exam questions: expression -> rows -> Σm and ΠM
+    SUB = "₀₁₂₃₄₅₆₇"
+
+    def mint(r, L):
+        b = format(r, "03b")
+        return "".join(l + ("" if c == "1" else "'") for l, c in zip(L, b))
+
+    def maxt(r, L):
+        b = format(r, "03b")
+        return "(" + " + ".join(l + ("" if c == "0" else "'") for l, c in zip(L, b)) + ")"
+
+    def worked(name, expr, L, terms, sop, func):
+        """terms: (label, hint, rows). sop: terms are ANDs, F=1 where any covers.
+        pos: terms are ORs, F=0 where any is 0."""
+        cov = set().union(*[set(t[2]) for t in terms])
+        F = [(1 if r in cov else 0) if sop else (0 if r in cov else 1) for r in range(8)]
+        assert F == [func(*map(int, format(r, "03b"))) for r in range(8)], name
+        ones = [r for r in range(8) if F[r]]
+        zeros = [r for r in range(8) if not F[r]]
+        x0, p = 150, 58
+        X = lambda i: x0 + i * p
+        nt = len(terms)
+        yF = 130 + 40 * nt + 8
+        H = yF + 246
+        s = Svg(680, H, f"Worked: {expr}")
+        s.text(24, 30, expr, size=18, anchor="start", weight="bold")
+        rows = [("row", "", None), (" ".join(L), "", None)]
+        s.text(24, 73, "row", size=15, anchor="start", weight="bold")
+        s.text(24, 113, "  ".join(L), size=15, anchor="start", weight="bold")
+        for i in range(8):
+            cell(s, X(i), 50, str(i), "gray", size=16)
+            cell(s, X(i), 90, format(i, "03b"), "gray", size=15)
+        for j, (lab, hint, rr) in enumerate(terms):
+            y = 130 + 40 * j
+            s.text(24, y + 16, lab, size=15, anchor="start", weight="bold", color=AMB[0])
+            s.text(24, y + 31, hint, size=11, anchor="start", color=MUTED)
+            for i in range(8):
+                hit = i in rr
+                v = (1 if hit else 0) if sop else (0 if hit else 1)
+                cell(s, X(i), y, str(v), "amber" if hit else "faint", size=16)
+        s.line([(x0, yF - 5), (X(7) + 44, yF - 5)], color=INK, width=1)
+        s.text(24, yF + 22, "F = OR" if sop else "F = AND", size=15, anchor="start", weight="bold")
+        for i in range(8):
+            cell(s, X(i), yF, str(F[i]), "gray", size=16)
+        W = X(7) + 44 - x0
+        yb = yF + 56
+        lst = lambda xs: ", ".join(map(str, xs))
+        s.text(24, yb + 26, "1-rows", size=13, anchor="start", color=MUTED)
+        s.rect(x0, yb, W, 38, stroke=TEAL[0], fill=TEAL[1], rx=6)
+        s.text(x0 + W / 2, yb + 25, f"F = Σm({lst(ones)})", size=18, weight="bold", color=TEAL[0])
+        s.text(x0, yb + 60, "= " + " + ".join(mint(r, L) for r in ones), size=14, anchor="start", color=INK)
+        yb2 = yb + 78
+        s.text(24, yb2 + 26, "0-rows", size=13, anchor="start", color=MUTED)
+        s.rect(x0, yb2, W, 38, stroke=TEAL[0], fill=TEAL[1], rx=6)
+        s.text(x0 + W / 2, yb2 + 25, f"F = ΠM({lst(zeros)})", size=18, weight="bold", color=TEAL[0])
+        s.text(x0, yb2 + 60, "= " + "".join(maxt(r, L) for r in zeros), size=14, anchor="start", color=INK)
+        s.text(24, yb2 + 92, f"F' = Σm({lst(zeros)}) = ΠM({lst(ones)})", size=14, anchor="start",
+               weight="bold", color=MUTED)
+        assert len(ones) + len(zeros) == 8
+        save(s, name)
+
+    worked("sigma-pi-worked-sop", "F(A, B, C) = A'B + AC'", "ABC",
+           [("A'B", "A=0, B=1", [2, 3]), ("AC'", "A=1, C=0", [4, 6])], True,
+           lambda a, b, c: int((not a and b) or (a and not c)))
+    worked("sigma-pi-worked-pos", "F(x, y, z) = (x + y')(y' + z)", "xyz",
+           [("x + y'", "0 when x=0, y=1", [2, 3]), ("y' + z", "0 when y=1, z=0", [2, 6])], False,
+           lambda x, y, z: int((x or not y) and (not y or z)))
 
 
 if __name__ == "__main__":
