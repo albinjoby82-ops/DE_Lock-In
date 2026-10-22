@@ -43,6 +43,10 @@ Any truth table can be written straight down as an expression, two ways:
 
 Row 5 = 101 → **m₅ = xy'z** · **M₅ = x' + y + z'**
 
+![Row 5 = 101 as a minterm and as a maxterm](../docs/svg/minterm-maxterm-row5.svg)
+
+Orange = the letters that get a bar. Plug 101 back in: m₅ = 1 and M₅ = 0, on that row only.
+
 Minterm and maxterm are complements: mᵢ' = Mᵢ.
 
 > **Apply:** f(x, y, z). Write m₃ and M₃.
@@ -62,6 +66,10 @@ f = 1 on rows 0, 1, 2, 3, 6 →
 
 **f = Σm(0, 1, 2, 3, 6)** = x'y'z' + x'y'z + x'yz' + x'yz + xyz'
 **f = ΠM(4, 5, 7)** = (x' + y + z)(x' + y + z')(x' + y' + z')
+
+![f = Σm(0, 1, 2, 3, 6) = ΠM(4, 5, 7) from one truth table](../docs/svg/sigma-pi-switch.svg)
+
+Same table, read two ways: the 1-rows (grey) give Σm, the 0-rows (orange) give ΠM.
 
 **Rule to switch:** swap Σm ↔ ΠM and take the **missing** numbers.
 

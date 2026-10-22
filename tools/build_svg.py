@@ -865,6 +865,95 @@ def hard_problems():
         save(s, "hard-" + name)
 
 
+def minterms():
+    """Topic 07 worked diagrams: one-row minterm/maxterm, and the Σm ↔ ΠM switch.
+    Colours: grey = given, orange = the thing that matters, teal = the result."""
+    AMB, TEAL, GRAY = COL["orange"], COL["teal"], "#8c959f"
+
+    def cell(s, x, y, t, kind="gray", w=44, size=18):
+        st, fl, tc = {"gray": (GRAY, "#fff", INK), "amber": (AMB[0], AMB[1], AMB[0]),
+                      "teal": (TEAL[0], TEAL[1], TEAL[0])}[kind]
+        s.rect(x, y, w, 34, stroke=st, fill=fl, rx=4, width=2)
+        s.text(x + w / 2, y + 23, t, size=size, weight="bold", color=tc)
+
+    # ---- 1. one row (row 5 = 101) as a minterm and as a maxterm
+    bits = [1, 0, 1]
+    names = "xyz"
+    cx = [190, 270, 350]
+    s = Svg(680, 400, "Row 5 = 101 written as minterm m5 and maxterm M5")
+
+    def term_block(y0, label, op, barred_when, rule, result):
+        flip = [b == barred_when for b in bits]
+        letters = [n + ("'" if f else "") for n, f in zip(names, flip)]
+        vals = [b ^ int(f) for b, f in zip(bits, flip)]
+        for i, n in enumerate(names):
+            s.text(cx[i] + 22, y0 - 8, n, size=13, color=MUTED)
+        # bits row
+        s.text(30, y0 + 23, "row 5", size=15, anchor="start", weight="bold")
+        for i in range(3):
+            cell(s, cx[i], y0, str(bits[i]))
+        # substitution arrows (orange = this letter gets a bar)
+        for i in range(3):
+            s.arrow([(cx[i] + 22, y0 + 36), (cx[i] + 22, y0 + 64)], color=AMB[0] if flip[i] else GRAY, width=2)
+        for j, (rt, hot) in enumerate(rule):
+            s.text(410, y0 + 50 + 15 * j, rt, size=13, anchor="start",
+                   weight="bold" if hot else "normal", color=AMB[0] if hot else MUTED)
+        # letters row
+        s.text(30, y0 + 89, label, size=15, anchor="start", weight="bold")
+        for i in range(3):
+            cell(s, cx[i], y0 + 66, letters[i], "amber" if flip[i] else "gray")
+        for i in range(2):
+            s.text((cx[i] + 44 + cx[i + 1]) / 2, y0 + 90, op, size=28 if op == "·" else 20, weight="bold", color=MUTED)
+        s.text(412, y0 + 90, result, size=20, anchor="start", weight="bold", color=TEAL[0])
+        # check row: plug the row's bits back in
+        s.text(30, y0 + 137, "plug in 101", size=15, anchor="start", weight="bold")
+        for i in range(3):
+            cell(s, cx[i], y0 + 114, str(vals[i]))
+        for i in range(2):
+            s.text((cx[i] + 44 + cx[i + 1]) / 2, y0 + 138, op, size=28 if op == "·" else 20, weight="bold", color=MUTED)
+        out = 1 if op == "·" else 0
+        s.text(412, y0 + 138, f"= {out}", size=20, anchor="start", weight="bold")
+        s.text(462, y0 + 138, "on row 5 only", size=13, anchor="start", color=MUTED)
+        # the diagram must be true
+        assert (min(vals) if op == "·" else max(vals)) == out
+
+    term_block(40, "minterm m₅", "·", 0, [("bit 1 → x", False), ("bit 0 → x'", True)], "m₅ = xy'z")
+    s.line([(24, 208), (656, 208)], color="#d0d7de", width=1)
+    term_block(228, "maxterm M₅", "+", 1, [("bit 0 → x", False), ("bit 1 → x'", True)], "M₅ = x' + y + z'")
+    save(s, "minterm-maxterm-row5")
+
+    # ---- 2. Σm and ΠM: the 1-rows and the 0-rows are the same table, read two ways
+    ones = {0, 1, 2, 3, 6}
+    fval = [1 if i in ones else 0 for i in range(8)]
+    x0, p = 130, 58
+    X = lambda i: x0 + i * p
+    W = 7 * p + 44
+    s = Svg(680, 345, "f = Σm(0,1,2,3,6) = ΠM(4,5,7)")
+    s.rect(x0, 20, W, 40, stroke=TEAL[0], fill=TEAL[1], rx=6)
+    s.text(x0 + W / 2, 46, "f = Σm(0, 1, 2, 3, 6)", size=20, weight="bold", color=TEAL[0])
+    s.text(24, 45, "take the 1s", size=13, anchor="start", color=MUTED)
+    ys = {"row": 100, "xyz": 140, "f": 180}
+    s.text(24, ys["row"] + 23, "row", size=15, anchor="start", weight="bold")
+    s.text(24, ys["xyz"] + 23, "x y z", size=15, anchor="start", weight="bold")
+    s.text(24, ys["f"] + 23, "f", size=15, anchor="start", weight="bold")
+    for i in range(8):
+        k = "gray" if fval[i] else "amber"
+        cell(s, X(i), ys["row"], str(i), k)
+        cell(s, X(i), ys["xyz"], format(i, "03b"), "gray", size=15)
+        cell(s, X(i), ys["f"], str(fval[i]), k)
+        if fval[i]:
+            s.arrow([(X(i) + 22, ys["row"] - 2), (X(i) + 22, 62)], color=GRAY, width=2)
+        else:
+            s.arrow([(X(i) + 22, ys["f"] + 36), (X(i) + 22, 252)], color=AMB[0], width=2)
+    s.rect(x0, 254, W, 40, stroke=TEAL[0], fill=TEAL[1], rx=6)
+    s.text(x0 + W / 2, 280, "f = ΠM(4, 5, 7)", size=20, weight="bold", color=TEAL[0])
+    s.text(24, 279, "take the 0s", size=13, anchor="start", color=MUTED)
+    s.text(24, 326, "complement f' = swap the lists: Σm(4, 5, 7) = ΠM(0, 1, 2, 3, 6)",
+           size=14, anchor="start", color=MUTED)
+    assert sorted(set(range(8)) - ones) == [4, 5, 7]
+    save(s, "sigma-pi-switch")
+
+
 if __name__ == "__main__":
-    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders(); boolean_rules(); hard_problems()
+    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders(); boolean_rules(); hard_problems(); minterms()
     print("ok", len(os.listdir(OUT)))
