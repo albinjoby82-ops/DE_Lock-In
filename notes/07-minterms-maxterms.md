@@ -36,6 +36,24 @@ Any truth table can be written straight down as an expression, two ways:
 
 ▶ Video: [minterms and maxterms](https://www.youtube.com/results?search_query=minterms+and+maxterms)
 
+**First: how the rows are numbered.** The rows count up in binary, 000 → 111. Read xyz as one binary number (x = 4, y = 2, z = 1). The row number is that number, and it's also the minterm/maxterm number.
+
+![Truth table rows 0-7: read xyz as binary](../docs/svg/row-numbering.svg)
+
+Row 5 = 101 because 4 + 0 + 1 = 5. So m₅ and M₅ both belong to the row x = 1, y = 0, z = 1.
+
+- Writing the table fast: **z** flips every row, **y** every 2 rows, **x** every 4.
+- n letters → 2ⁿ rows, numbered from **0**.
+
+> **Apply:** which row is x = 1, y = 1, z = 0? And what are x, y, z on row 3?
+<details><summary>Answer</summary>
+
+110 → 4 + 2 + 0 = **row 6**. Row 3 = 2 + 1 → **011** (x = 0, y = 1, z = 1).
+
+</details>
+
+Now each row gets a minterm and a maxterm:
+
 | | Uses | bit 0 → | bit 1 → | Is … on that row only |
 |---|---|---|---|---|
 | **minterm mᵢ** | AND of all letters | **x'** | x | **1** |

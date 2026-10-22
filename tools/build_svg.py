@@ -876,6 +876,32 @@ def minterms():
         s.rect(x, y, w, 34, stroke=st, fill=fl, rx=4, width=2)
         s.text(x + w / 2, y + 23, t, size=size, weight="bold", color=tc)
 
+    # ---- 0. how the rows are numbered: xyz read as a binary number
+    s = Svg(680, 420, "Truth table rows 0-7: read xyz as binary, x=4 y=2 z=1")
+    cols = [260, 310, 360]
+    s.text(40, 44, "letter", size=13, anchor="start", color=MUTED)
+    s.text(40, 68, "place value", size=13, anchor="start", color=MUTED)
+    s.text(192, 68, "row", size=13, color=MUTED)
+    for c, n, w in zip(cols, "xyz", "421"):
+        s.text(c + 22, 44, n, size=15, weight="bold")
+        s.text(c + 22, 68, w, size=13, color=MUTED)
+    s.line([(160, 78), (620, 78)], color="#d0d7de", width=1)
+    for r in range(8):
+        y = 86 + 40 * r
+        b = format(r, "03b")
+        k = "amber" if r == 5 else "gray"
+        cell(s, 170, y, str(r), k)
+        for c, bit in zip(cols, b):
+            cell(s, c, y, bit, k)
+        parts = [str(int(bit) * w) for bit, w in zip(b, (4, 2, 1))]
+        assert sum(map(int, parts)) == r
+        txt = " + ".join(parts) + f" = {r}"
+        if r == 5:
+            cell(s, 428, y, txt, "teal", w=150, size=16)
+        else:
+            s.text(440, y + 22, txt, size=13, anchor="start", color=MUTED)
+    save(s, "row-numbering")
+
     # ---- 1. one row (row 5 = 101) as a minterm and as a maxterm
     bits = [1, 0, 1]
     names = "xyz"
