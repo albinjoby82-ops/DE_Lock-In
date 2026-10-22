@@ -54,21 +54,11 @@ When x = 0, x' = 1 so f = 1. When x = 1, f = (1)z = z.
 
 ▶ Video: [De Morgan's theorem](https://www.youtube.com/results?search_query=De+Morgan%27s+theorem)
 
-| Law | OR form | AND form |
-|---|---|---|
-| Identity / null | x + 0 = x · **x + 1 = 1** | x·1 = x · x·0 = 0 |
-| Idempotent | **x + x = x** | **x·x = x** |
-| Complement | x + x' = 1 | x·x' = 0 |
-| Distributive | **x + yz = (x + y)(x + z)** | x(y + z) = xy + xz |
-| De Morgan | (x + y)' = x'y' | (xy)' = x' + y' |
+**8 rules:** 5 laws (null and identity count as one) + 3 shortcuts. Every OR rule has an AND twin: swap + and ·, swap 0 and 1.
 
-**Three shortcuts** (follow from the axioms):
+![Boolean algebra rules grouped by what they do](../docs/svg/boolean-rules.svg)
 
-| Name | Rule |
-|---|---|
-| Absorption | **x + xy = x** |
-| — | **x + x'y = x + y** |
-| Consensus | **xy + x'z + yz = xy + x'z** |
+**Order to try them:** x next to x' (complement) → any 0 or 1 (null, identity) → repeated terms (idempotent, absorption) → distribute or De Morgan only when stuck.
 
 **De Morgan in one line:** to complement a whole group, flip every letter **and** swap AND ↔ OR.
 (ab + c)' = (a' + b')c'

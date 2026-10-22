@@ -654,6 +654,52 @@ def ladders():
            "remainder 12 is written C  (A=10 B=11 C=12 D=13 E=14 F=15)")
 
 
+# ======================================================== Boolean algebra rules (Topic 6)
+def boolean_rules():
+    s = Svg(640, 560, "Boolean algebra rules grouped by what they do")
+    s.text(295, 26, "OR form", size=15, weight="bold")
+    s.text(515, 26, "AND form", size=15, weight="bold")
+    rows = [
+        ("Null", "kills the term", "x + 1 = 1", "x·0 = 0", "orange"),
+        ("Complement", "x meets x'", "x + x' = 1", "x·x' = 0", "orange"),
+        ("Identity", "does nothing", "x + 0 = x", "x·1 = x", None),
+        ("Idempotent", "merges copies", "x + x = x", "x·x = x", None),
+        ("Distributive", "expand or factor", "x + yz = (x + y)(x + z)", "x(y + z) = xy + xz", None),
+        ("De Morgan", "flip bar, swap + ·", "(x + y)' = x'y'", "(xy)' = x' + y'", None),
+    ]
+
+    def box(x, y, w, txt, c):
+        stroke, fill = COL[c] if c else ("#8c959f", "#f6f8fa")
+        s.rect(x, y, w, 38, stroke=stroke, fill=fill, rx=5, width=1.5)
+        s.text(x + w / 2, y + 25, txt, size=16, weight="bold" if c else "normal")
+
+    y = 44
+    for name, job, a, b, c in rows:
+        s.text(20, y + 16, name, size=15, anchor="start", weight="bold")
+        s.text(20, y + 33, job, size=12, anchor="start", color=MUTED)
+        box(190, y, 210, a, c)
+        box(410, y, 210, b, c)
+        y += 48
+    s.line([(20, 342), (620, 342)], color="#8c959f", width=1)
+    s.text(20, 366, "Shortcuts (each has an AND twin)", size=13, anchor="start", color=MUTED)
+    short = [
+        ("Absorption", "x + xy = x", "xy is swallowed"),
+        ("Drop the x'", "x + x'y = x + y", "x' disappears"),
+        ("Consensus", "xy + x'z + yz = xy + x'z", "yz is redundant"),
+    ]
+    y = 378
+    for name, rule, note in short:
+        s.text(20, y + 25, name, size=15, anchor="start", weight="bold")
+        box(190, y, 250, rule, "teal")
+        s.text(455, y + 24, note, size=13, anchor="start", color=MUTED)
+        y += 48
+    for x, c, lab in [(20, "orange", "kills a term"), (190, "teal", "shortcut"), (330, None, "tidy or rewrite")]:
+        stroke, fill = COL[c] if c else ("#8c959f", "#f6f8fa")
+        s.rect(x, 532, 14, 14, stroke=stroke, fill=fill, rx=3, width=1.5)
+        s.text(x + 22, 544, lab, size=13, anchor="start", color=MUTED)
+    save(s, "boolean-rules")
+
+
 if __name__ == "__main__":
-    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders()
+    kmaps(); gates(); circuits_two_level(); adders(); muxes(); decoders(); numbers(); ladders(); boolean_rules()
     print("ok", len(os.listdir(OUT)))
