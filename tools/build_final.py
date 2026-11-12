@@ -7,7 +7,7 @@ import json, os, re
 from final_q import *
 from final_lib import S
 
-VERSION = "2026-11-12a"
+VERSION = "2026-11-12c"
 OUT = os.path.join(ROOT, "docs", "final")
 
 PARTS = []
@@ -50,7 +50,7 @@ pp2b = [["Cause: the same input reaches the output by <b>two paths with differen
 
 PP3 = [[3, 1, 2, 0, 4], [7, 6, 5]]
 pp3, PP3R = p_counter(PP3, ABC, "pp-q3", twomode=True)
-pp3.insert(6, ["Fewest gates: spot the single-gate forms." + DD("JA = KA = B'C' = (B+C)' \\;\\text{(one NOR)}") + DD("KB = A' + C' = (AC)' \\;\\text{(one NAND)}") + DD("KC = AB + A'B' = (A ^ B)' \\;\\text{(one XNOR)}") + "<p>Total: NOR, OR, NAND, XNOR = <b>4 gates</b>. J<sub>C</sub> = A is just a wire.</p>",
+pp3.insert(8, ["Fewest gates: spot the single-gate forms." + DD("JA = KA = B'C' = (B+C)' \\;\\text{(one NOR)}") + DD("KB = A' + C' = (AC)' \\;\\text{(one NAND)}") + DD("KC = AB + A'B' = (A ^ B)' \\;\\text{(one XNOR)}") + "<p>Total: NOR, OR, NAND, XNOR = <b>4 gates</b>. J<sub>C</sub> = A is just a wire.</p>",
                "The question asks for the minimum number of external gates. De Morgan turns two-term sums of inverted letters into one NAND or NOR, and J<sub>A</sub> and K<sub>A</sub> share the same gate."])
 
 PP4Y, PP4Z = "AB + Ay'", "A + Y"
@@ -84,8 +84,8 @@ part(id="start", kind="info", tab="path", title="Start here", html=f"""
  ["5 · Flip-flops and excitation table", "inside Q2a and Q3", "Q2a, Q3"]])}
 <div class="warn"><b>Two warnings.</b> (1) This is one paper, so "how often" is thin evidence. (2) You remembered the lecturer saying this year has 5 questions: 1 combinational (maybe multiplexers) and the rest sequential. Multiplexers and sequence detectors were <b>not</b> on the 23/24 paper, so they are in the <b>More practice</b> tab under "Lecturer hinted". Do them after the exam path, not instead of it.</div>
 <h3>How to use this page</h3>
-<ol><li>Read the green <b>Learn it</b> box.</li><li>Try the question on paper.</li><li>Reveal the solution <b>one step at a time</b> (button or Space). Each step says why.</li><li>Mark it <b>Got it</b> or <b>Need to redo</b>. Redo the red ones tomorrow.</li><li>Finish with the worked paper, then the two mocks under time.</li></ol>
-<p class="keys">Keys: <kbd>Space</kbd> next step · <kbd>A</kbd> all steps · <kbd>J</kbd>/<kbd>K</kbd> next / previous question · <kbd>G</kbd> got it · <kbd>R</kbd> redo</p>
+<ol><li>One thing per screen. Read <b>Learn</b>, then each question.</li><li>Try the question on paper, then press <b>Next</b>: one step per screen, each with its why.</li><li>At the end mark <b>Got it</b> or <b>Need to redo</b>. Red dots are the ones to redo tomorrow.</li><li>Finish with the worked paper, then the two mocks under time.</li></ol>
+<p class="keys">Keys: <kbd>Space</kbd> or <kbd>→</kbd> next · <kbd>←</kbd> back · <kbd>J</kbd> / <kbd>K</kbd> skip question · <kbd>A</kbd> all steps · <kbd>G</kbd> got it · <kbd>R</kbd> redo</p>
 """)
 
 # ---------------------------------------------------------------- Topic 1

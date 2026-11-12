@@ -191,13 +191,15 @@ def p_counter(cycles, names, key, twomode=False):
     r = jk_counter(cycles, names, nb)
     fig_cycles(key + "-states", cycles, nb)
     head = ["".join(names), "next"] + [M(f"J{x}") + " " + M(f"K{x}") for x in names]
-    maps = []
+    kpairs = []
     for x in names:
+        maps = []
         for p in "JK":
             k = p + x
             on, dc = r["d"][k]
             maps.append((uni(k) + " = " + uni(r["eq"][k]), on, dc, r["cov"][k]))
-    fig_kmaps(key + "-kmaps", names, maps, per_row=2)
+        fig_kmaps(key + "-kmaps-" + x, names, maps, per_row=2, cell=52)
+        kpairs.append((x, key + "-kmaps-" + x))
     labels = [(r["eq"]["J" + x], r["eq"]["K" + x]) for x in names]
     fig_ff_row(key + "-circuit", "JK", labels, names, note="each label is the logic feeding that input · one common clock")
     nstates = len(r["nxt"])
@@ -210,10 +212,11 @@ def p_counter(cycles, names, key, twomode=False):
          + table(["Q → Q⁺", "J K"], [["0 → 0", "0 x"], ["0 → 1", "1 x"], ["1 → 0", "x 1"], ["1 → 1", "x 0"]], "tt small")
          + table(head, r["rows"]),
          "Present bit 0: only J matters (J = next bit). Present bit 1: only K matters (K = opposite of next bit). The other input is x."],
-        [f"K-map every J and K column (variables {', '.join(names)}):" + img(key + "-kmaps", "K-maps"),
-         "The x's are free. Circle them whenever that makes a group bigger."],
-        ["Logic functions:" + "".join(DD(f"J{x} = {r['eq']['J'+x]} \\qquad K{x} = {r['eq']['K'+x]}") for x in names),
-         "Each one is read straight off its map."],
+        *[[f"K-maps for flip-flop {x} (variables {', '.join(names)}):" + img(fk, "K-maps") + DD(f"J{x} = {r['eq']['J'+x]} \\qquad K{x} = {r['eq']['K'+x]}"),
+           ("The x's are free. Circle them whenever that makes a group bigger." if i == 0 else "Same again: copy the column into the map, group the 1s, use x's where they help.")]
+          for i, (x, fk) in enumerate(kpairs)],
+        ["All six logic functions together:" + "".join(DD(f"J{x} = {r['eq']['J'+x]} \\qquad K{x} = {r['eq']['K'+x]}") for x in names),
+         "This list is what the examiner marks. Write it out clearly before drawing."],
         ["Logic diagram: three JK flip-flops on one clock, with those functions on the inputs:" + img(key + "-circuit", "circuit"),
          "Synchronous = every flip-flop shares the clock, so all bits change on the same edge."],
     ]
