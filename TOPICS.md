@@ -27,7 +27,9 @@ Mid-term = Lectures 1–10 = **10%** of the module. No formula sheet, so learn t
 
 Expected shape (from the lecturer in class, not confirmed in writing): **5 questions: 1 combinational (probably multiplexers, Topic 12), 4 sequential.**
 
-**▶ [What to know and how to study](final-study-guide.md)** · **▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
+The 23/24 paper was different: 4 questions (K-map + NAND; ripple counter + hazards; JK counter; asynchronous circuit). See the cram site.
+
+**▶ [Cram site (exam path, worked 23/24 paper, 2 mocks)](https://albinjoby82-ops.github.io/DE_Lock-In/final/)** · **▶ [What to know and how to study](final-study-guide.md)** · **▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
 
 | # | Topic | Lecture | Weight | Notes | Done |
 |---|---|---|---|---|---|

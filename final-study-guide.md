@@ -1,5 +1,29 @@
 # Final exam: what to know and how to study it
 
+**▶ Cram site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** (exam path, worked 23/24 paper, 2 mocks)
+
+## Updated after the 23/24 past paper
+
+The real paper had **4 questions, 30 minutes each**, and it changes the priorities below:
+
+| Q | Asked | Weight |
+|---|---|---|
+| 1 | circuit → function, truth table, K-map, Σm / ΠM, two-level NAND | 25% |
+| 2a | 3-bit ripple count-down counter with D flip-flops, waveforms, frequency divider | 15% |
+| 2b | static hazards, hazard-free circuit | 10% |
+| 3 | synchronous JK state machine with two count loops | 25% |
+| 4 | asynchronous circuit: transition table, flow table, stability | 25% |
+
+**So the must-know list is now:** K-maps and NAND (mid-term Topics 7–9), flip-flops (13), ripple and synchronous counters (16), hazards and asynchronous circuits (20).
+
+**Not on that paper** but hinted for this year: multiplexers (12) and sequence detectors (15). Do them second.
+
+One paper is thin evidence. The lecturer's hint (5 questions, 1 combinational, rest sequential) may still be right for this year.
+
+---
+
+*The section below was written before the past paper turned up.*
+
 Final = Lectures 11–25 (Topics 13–21). Expected shape (from the lecturer in class, not confirmed in writing): **5 questions: 1 combinational (probably multiplexers), 4 sequential.** Check this against a past paper if you can get one.
 
 ## What you actually need to know

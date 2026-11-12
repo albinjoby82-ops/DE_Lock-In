@@ -2,6 +2,8 @@
 
 Digital Electronics (EEEN20050), learnt by **doing**, not reading. Mid-term = Lectures 1–10 (Topics 1–12). Final = Lectures 11–25 (Topics 13–21).
 
+**▶ Final exam cram site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** (built from the 23/24 paper; rebuild with `python3 tools/build_final.py`)
+
 **▶ Final exam: [notes 13–21](TOPICS.md#final-exam-lectures-1125) · [practice papers](final-exam-practice.md)**
 
 **▶ [Open the quiz site](https://albinjoby82-ops.github.io/DE_Lock-In/)** · [Topic tracker](TOPICS.md) · [Cheat sheet](cheat-sheet.md) · [Book questions + mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions) · [My questions](my-questions.md)
