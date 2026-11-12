@@ -27,7 +27,7 @@ Mid-term = Lectures 1–10 = **10%** of the module. No formula sheet, so learn t
 
 Expected shape (from the lecturer in class, not confirmed in writing): **5 questions: 1 combinational (probably multiplexers, Topic 12), 4 sequential.**
 
-**▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
+**▶ [What to know and how to study](final-study-guide.md)** · **▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
 
 | # | Topic | Lecture | Weight | Notes | Done |
 |---|---|---|---|---|---|
