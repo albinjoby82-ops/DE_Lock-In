@@ -46,6 +46,7 @@ window.QUIZ_REFS = {
   "2": "2-expression--truth-table",
   "3": "3-the-axioms-you-use",
   "4": "4-worked-simplification-slide-12",
+  "5": "5-hard-worked-problems-spot-the-rule",
   "exam drill": "exam-drill"
  },
  "07": {
@@ -102,5 +103,84 @@ window.QUIZ_REFS = {
   "4": "4-any-function-one-size-smaller-",
   "5": "5-demultiplexer",
   "exam drill": "exam-drill-slide-8"
+ },
+ "13": {
+  "file": "13-latches-flip-flops",
+  "1": "1-sr-latch-the-1-bit-memory",
+  "2": "2-adding-a-clock-the-gated-latch",
+  "3": "3-flip-flop--changes-only-on-a-clock-edge-",
+  "4": "4-the-three-flip-flops-you-must-know-cold-",
+  "5": "5-excitation-tables-the-tables-read-backwards",
+  "6": "6-asynchronous-reset",
+  "exam drill": "exam-drill"
+ },
+ "14": {
+  "file": "14-sequential-analysis",
+  "1": "1-the-method-",
+  "2": "2-worked-example-lecture-13-slides-818",
+  "3": "3-always-check-the-size",
+  "4": "4-with-d-flip-flops-it-is-even-shorter",
+  "exam drill": "exam-drill"
+ },
+ "15": {
+  "file": "15-sequential-design",
+  "1": "1-moore-and-mealy",
+  "2": "2-the-five-steps",
+  "3": "3-step-1-drawing-the-state-diagram-for-a-pattern-",
+  "4": "4-step-2-codes",
+  "5": "5-step-3-excitation-table--flip-flop-inputs-",
+  "6": "6-step-4-k-maps",
+  "7": "7-step-5-circuit",
+  "8": "8-same-design-with-d-flip-flops",
+  "9": "9-the-moore-version",
+  "10": "10-two-patterns-at-once-slides-3335",
+  "exam drill": "exam-drill"
+ },
+ "16": {
+  "file": "16-counters",
+  "1": "1-designing-a-synchronous-counter-",
+  "2": "2-unused-states-always-check-them-",
+  "3": "3-binary-ripple-counter",
+  "4": "4-bcd-decade-ripple-counter",
+  "exam drill": "exam-drill"
+ },
+ "17": {
+  "file": "17-registers",
+  "1": "1-parallel-load-register",
+  "2": "2-shift-register",
+  "3": "3-serial-transfer-and-serial-addition",
+  "4": "4-universal-shift-register",
+  "5": "5-ring-counter",
+  "6": "6-johnson-switch-tail-counter",
+  "exam drill": "exam-drill-slide-10-exercise"
+ },
+ "18": {
+  "file": "18-memory",
+  "1": "1-sizes--the-part-with-numbers",
+  "2": "2-ram-read-and-write",
+  "3": "3-sram-and-dram",
+  "4": "4-rom-and-non-volatile-memory"
+ },
+ "19": {
+  "file": "19-programmable-logic",
+  "1": "1-a-rom-is-a-truth-table",
+  "2": "2-prom-pal-pla-",
+  "3": "3-adding-flip-flops-cpld-and-fpga",
+  "4": "4-asic-or-fpga"
+ },
+ "20": {
+  "file": "20-asynchronous-logic",
+  "1": "1-the-two-names-for-the-feedback-wire",
+  "2": "2-transition-table-",
+  "3": "3-stability-and-fundamental-mode",
+  "4": "4-races",
+  "5": "5-hazards-"
+ },
+ "21": {
+  "file": "21-transistor-logic",
+  "1": "1-transistors-as-switches",
+  "2": "2-nmos-inverter-and-its-problem",
+  "3": "3-cmos-one-of-each-",
+  "4": "4-transmission-gate"
  }
 };

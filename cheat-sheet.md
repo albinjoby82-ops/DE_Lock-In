@@ -44,3 +44,25 @@ No formula sheet in the exam. This page is the whole module in one go. Read it t
 - Decoder: active-high → **OR** the Σm outputs. Active-low → **AND** the ΠM outputs. [11](notes/11-decoders-encoders.md)
 - Encoder: bit k = OR of inputs with bit k = 1. Priority: highest wins.
 - Mux: **Y = S'I₀ + SI₁**. n variables on n − 1 selects: each row pair → 0, 1, v, v'. [12](notes/12-multiplexers.md)
+
+## Sequential logic (final)
+
+| Q → Q⁺ | J K | D | T |
+|---|---|---|---|
+| 0 → 0 | 0 x | 0 | 0 |
+| 0 → 1 | 1 x | 1 | 1 |
+| 1 → 0 | x 1 | 0 | 1 |
+| 1 → 1 | x 0 | 1 | 0 |
+
+- **Q⁺ = D · Q⁺ = JQ' + K'Q · Q⁺ = T ⊕ Q.** JK: 00 hold, 01 reset, 10 set, 11 toggle. [13](notes/13-latches-flip-flops.md)
+- NOR SR latch: 11 banned. NAND latch: 00 banned. Latch = level, flip-flop = edge.
+- **Analysis:** equations → flip-flop inputs per row → next state (characteristic table). 2ⁿ circles, 2ᵐ arrows out of each. [14](notes/14-sequential-analysis.md)
+- **Design:** diagram → table → codes → excitation table → K-maps → circuit. Unused codes = don't cares. [15](notes/15-sequential-design.md)
+- **Detector states** = longest useful ending so far. After a match, the tail may start the next one.
+- Mealy: output on the arrow (in/out). Moore: output in the circle, one more state.
+- **Counters:** check every unused state returns. Ripple: T = 1, each Q clocks the next, n stages ÷ 2ⁿ. [16](notes/16-counters.md)
+- Universal shift register: 00 hold, 01 right, 10 left, 11 load. Ring: k states. **Johnson: 2k states**, feed back Q'. [17](notes/17-registers.md)
+- Memory: k address lines ↔ 2ᵏ words. SRAM 6T, DRAM 1T + C with refresh. [18](notes/18-memory.md)
+- PROM: fixed AND, prog OR. **PAL: prog AND, fixed OR.** PLA: both. [19](notes/19-programmable-logic.md)
+- Async: stable when Y = y. Critical race = result depends on which bit wins. Hazard fix = bridge adjacent 1s on the K-map. [20](notes/20-asynchronous-logic.md)
+- CMOS: NMOS on with 1, PMOS on with 0. NAND = NMOS series, PMOS parallel. NOR the opposite. [21](notes/21-transistor-logic.md)

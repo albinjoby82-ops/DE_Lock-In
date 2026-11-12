@@ -23,6 +23,26 @@ Mid-term = Lectures 1–10 = **10%** of the module. No formula sheet, so learn t
 
 **Skip:** course admin, chip photos (L1 10–29), CMOS transistor drawings (L6 7, just know the counts), ASCII table, the 4×4 multiplier wiring.
 
-**Final exam only (not here yet):** flip-flops, registers, counters, memory.
+## Final exam: Lectures 11–25
+
+Expected shape (from the lecturer in class, not confirmed in writing): **5 questions: 1 combinational (probably multiplexers, Topic 12), 4 sequential.**
+
+**▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
+
+| # | Topic | Lecture | Weight | Notes | Done |
+|---|---|---|---|---|---|
+| 13 | Latches and flip-flops | L11–12 | ●●● | [notes](notes/13-latches-flip-flops.md) | ☐ |
+| 14 | Analysing a sequential circuit | L13 | ●●● | [notes](notes/14-sequential-analysis.md) | ☐ |
+| 15 | Designing a sequential circuit ⭐ | L14–16 | ●●● | [notes](notes/15-sequential-design.md) | ☐ |
+| 16 | Counters | L17–18 | ●●● | [notes](notes/16-counters.md) | ☐ |
+| 17 | Registers, ring and Johnson counters | L19–20 | ●● | [notes](notes/17-registers.md) | ☐ |
+| 18 | Memory | L21 | ● | [notes](notes/18-memory.md) | ☐ |
+| 19 | Programmable logic | L22 | ● | [notes](notes/19-programmable-logic.md) | ☐ |
+| 20 | Asynchronous logic | L23–24 | ●● | [notes](notes/20-asynchronous-logic.md) | ☐ |
+| 21 | Transistor logic | L25 | ● | [notes](notes/21-transistor-logic.md) | ☐ |
+
+**Order if short on time:** 12 → 13 → 14 → 15 → 16 → practice Paper 1 → 17 → 20 → Paper 2 → 18, 19, 21.
+
+Topics 13–21 have notes and the practice paper only. The quiz site still covers Topics 1–12.
 
 **Progress:** 0 / 12

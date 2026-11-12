@@ -1,6 +1,8 @@
 # DE Lock-In
 
-Digital Electronics mid-term (Lectures 1–10), learnt by **doing**, not reading.
+Digital Electronics (EEEN20050), learnt by **doing**, not reading. Mid-term = Lectures 1–10 (Topics 1–12). Final = Lectures 11–25 (Topics 13–21).
+
+**▶ Final exam: [notes 13–21](TOPICS.md#final-exam-lectures-1125) · [practice papers](final-exam-practice.md)**
 
 **▶ [Open the quiz site](https://albinjoby82-ops.github.io/DE_Lock-In/)** · [Topic tracker](TOPICS.md) · [Cheat sheet](cheat-sheet.md) · [Book questions + mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions) · [My questions](my-questions.md)
 
@@ -20,7 +22,9 @@ Digital Electronics mid-term (Lectures 1–10), learnt by **doing**, not reading
 ## Repo map
 
 ```
-notes/NN-topic.md   the 12 topics (rule → diagram → apply question)
+notes/NN-topic.md   the 21 topics (rule → diagram → apply question)
+final-exam-practice.md   two mock finals (1 mux + 4 sequential) and a short-question bank
+docs/svg/seq/       sequential-logic diagrams for topics 13–21 (built by tools/build_svg_seq.py)
 docs/               the quiz site (GitHub Pages): data/NN.js = each topic's questions, gen.js = New numbers versions
 docs/svg/           every drawn diagram (built by tools/build_svg.py)
 docs/book/NN.js     book questions + worked solutions per topic (built by tools/build_book.py + book_ch1/3/4.py)
