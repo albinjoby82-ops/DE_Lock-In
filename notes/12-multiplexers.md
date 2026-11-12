@@ -131,4 +131,4 @@ Selects ABC, data in terms of D. Pairs (0,1)→D, (2,3)→D, (4,5)→D', (6,7)�
 [Mock mid-term](https://albinjoby82-ops.github.io/DE_Lock-In/#book-questions)  
 [All quizzes](https://albinjoby82-ops.github.io/DE_Lock-In/)
 
-That's the last topic. Do the [cheat sheet](../cheat-sheet.md) the night before.
+That's the last mid-term topic. The final continues at [13 · Latches and flip-flops](13-latches-flip-flops.md).
