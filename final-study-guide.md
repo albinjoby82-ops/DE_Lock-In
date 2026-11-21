@@ -1,6 +1,6 @@
 # Final exam: what to know and how to study it
 
-**▶ Cram site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** (exam path, worked 23/24 paper, 2 mocks)
+**▶ Final site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** The study path there (built from the slides, Lectures 4 to 25) replaces the plan below. Start at "Read me first".
 
 ## Updated after the 23/24 past paper
 

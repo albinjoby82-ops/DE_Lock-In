@@ -29,7 +29,7 @@ Expected shape (from the lecturer in class, not confirmed in writing): **5 quest
 
 The 23/24 paper was different: 4 questions (K-map + NAND; ripple counter + hazards; JK counter; asynchronous circuit). See the cram site.
 
-**▶ [Cram site (exam path, worked 23/24 paper, 2 mocks)](https://albinjoby82-ops.github.io/DE_Lock-In/final/)** · **▶ [What to know and how to study](final-study-guide.md)** · **▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
+**▶ [Final site: full study path from the slides, worked 23/24 paper, 3 mocks](https://albinjoby82-ops.github.io/DE_Lock-In/final/)** · **▶ [What to know and how to study](final-study-guide.md)** · **▶ [Final exam practice](final-exam-practice.md)**: two mock papers in that shape + short-question bank, all worked.
 
 | # | Topic | Lecture | Weight | Notes | Done |
 |---|---|---|---|---|---|

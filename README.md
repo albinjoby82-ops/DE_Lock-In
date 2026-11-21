@@ -2,7 +2,7 @@
 
 Digital Electronics (EEEN20050), learnt by **doing**, not reading. Mid-term = Lectures 1–10 (Topics 1–12). Final = Lectures 11–25 (Topics 13–21).
 
-**▶ Final exam cram site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** (built from the 23/24 paper; rebuild with `python3 tools/build_final.py`)
+**▶ Final exam site: https://albinjoby82-ops.github.io/DE_Lock-In/final/** Same layout as MATH Lock-In. A full study path built from the lecture slides (Lectures 4 to 25: 32 topics, each with notes, a check, worked questions and similar questions), then the worked 23/24 paper and three mocks. Rebuild with `python3 tools/build_final.py`.
 
 **▶ Final exam: [notes 13–21](TOPICS.md#final-exam-lectures-1125) · [practice papers](final-exam-practice.md)**
 
@@ -27,6 +27,9 @@ Digital Electronics (EEEN20050), learnt by **doing**, not reading. Mid-term = Le
 notes/NN-topic.md   the 21 topics (rule → diagram → apply question)
 final-exam-practice.md   two mock finals (1 mux + 4 sequential) and a short-question bank
 docs/svg/seq/       sequential-logic diagrams for topics 13–21 (built by tools/build_svg_seq.py)
+docs/final/         the final-exam site: index.html (page), data.js + fig/ (built, do not edit by hand)
+tools/final_path_a.py, final_path_b.py   the study path content, in slide order · final_papers.py the 23/24 paper and mocks
+tools/final_q.py, final_more.py, final_engine.py   question builders: every table, K-map and equation is computed and asserted
 docs/               the quiz site (GitHub Pages): data/NN.js = each topic's questions, gen.js = New numbers versions
 docs/svg/           every drawn diagram (built by tools/build_svg.py)
 docs/book/NN.js     book questions + worked solutions per topic (built by tools/build_book.py + book_ch1/3/4.py)

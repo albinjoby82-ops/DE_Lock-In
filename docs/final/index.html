@@ -1,31 +1,302 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DE Lock-In · Final exam</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<title>DE Lock-In · Final · EEEN20050</title>
 <link rel="stylesheet" href="vendor/katex.min.css">
-<link rel="stylesheet" href="final.css?v=6">
+<script defer src="vendor/katex.min.js"></script>
+<script defer src="vendor/auto-render.min.js"></script>
+<style>
+/* Same paper look as MATH Lock-In: white page, Computer Modern (KaTeX_Main), hairline rules, square corners */
+:root{--ink:#111;--mute:#666;--rule:#111;--hair:#d6d6d6;--acc:#1f4fbf;--ok:#1b7f45;--warn:#b5520a;--tint:#f5f5f5;--c:#1f4fbf;--ct:#eef3fd}
+.c1{--c:#1f4fbf;--ct:#eef3fd}.c2{--c:#0f8a80;--ct:#e8f6f4}.c3{--c:#7b3fc4;--ct:#f4eefc}.c4{--c:#c2410c;--ct:#fdf1ea}.c5{--c:#be185d;--ct:#fcedf3}.c6{--c:#15803d;--ct:#ecf7ef}
+*{box-sizing:border-box;border-radius:0}
+html{background:#fff}
+body{margin:0;background:#fff;color:var(--ink);font:19px/1.6 KaTeX_Main,"Latin Modern Roman","Computer Modern Serif","CMU Serif",Georgia,serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+a{color:var(--acc)}
+sub,sup{line-height:0}
+.sc{font-variant:small-caps;letter-spacing:.06em}
+.app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+
+/* ---------- contents ---------- */
+nav{border-right:1px solid var(--rule);position:sticky;top:0;height:100vh;overflow:auto;padding:28px 22px 40px;font-size:16px;line-height:1.35}
+nav h1{font-size:23px;font-weight:700;margin:0;letter-spacing:.01em}
+nav .sub{color:var(--mute);margin:2px 0 14px}
+.mode{display:flex;border:1px solid var(--rule);margin-bottom:12px}
+.mode button{flex:1;padding:6px 4px;font-size:14.5px;white-space:nowrap}
+.mode button+button{border-left:1px solid var(--rule)}
+.mode button.on{background:var(--acc);color:#fff}
+.prog{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:15px;margin-bottom:18px}
+.prog .bar{flex:1;height:3px;background:var(--hair)}
+.prog .bar i{display:block;height:100%;background:var(--ok)}
+.toc-h{font-weight:700;font-size:15px;border-bottom:1px solid var(--rule);padding-bottom:3px;margin:0 0 8px}
+.part{font-weight:700;margin:16px 0 4px;display:flex;gap:10px;color:var(--c);border-bottom:1px solid var(--c);padding-bottom:2px}
+.topic{margin:8px 0 2px;display:flex;gap:10px;color:var(--ink)}
+.num{min-width:2.1em;font-variant-numeric:tabular-nums;color:var(--mute)}
+.part .num,.topic .num{color:var(--c)}
+.star{color:var(--warn);font-size:11px;letter-spacing:1px;white-space:nowrap;margin-left:4px}
+.qlink{display:flex;align-items:baseline;gap:10px;width:100%;text-align:left;padding:2px 6px 2px 0}
+.qlink .num{min-width:3.4em;padding-left:1.1em;font-size:14.5px}
+.qlink .r{flex:1;font-size:15px}
+.qlink .m{width:1em;text-align:center;font-size:14px}
+.qlink:hover .r{text-decoration:underline}
+.qlink.ex .r{font-weight:700;color:var(--c)}
+.qlink.on{background:var(--c);color:#fff}
+.qlink.on .num{color:#fff;opacity:.8}
+.qlink.ex.on .r{color:#fff}
+.qlink:hover{background:var(--ct)}.qlink.on:hover{background:var(--c)}
+.qlink.done .m{color:var(--ok)}
+.qlink.again .m{color:var(--warn)}
+.qlink.on.done .m,.qlink.on.again .m{color:#fff}
+.qlink .nt{font-size:14px;color:var(--c)}
+.qlink.on .nt{color:#fff}
+.cut{font-size:14px;color:var(--mute);margin-top:22px;border-top:1px solid var(--hair);padding-top:10px}
+
+/* ---------- page ---------- */
+main{padding:34px clamp(18px,5vw,72px) 90px;min-width:0}
+.page{max-width:780px;margin:0 auto}
+.head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid var(--c);padding-bottom:4px;font-size:16px;color:var(--mute)}
+.head b{color:var(--c);font-weight:700}
+.head .sc{color:var(--c)}
+h2{font-size:30px;font-weight:700;margin:26px 0 4px;line-height:1.25}
+h2 .num{color:var(--c);margin-right:.6em}
+h3{font-size:21px;font-weight:700;margin:24px 0 2px}
+.src{color:var(--mute);font-size:16px;font-style:italic;margin-bottom:18px}
+p{margin:8px 0}
+ul,ol{padding-left:1.4em;margin:8px 0}
+li{margin:3px 0}
+.katex{font-size:1.08em}
+.katex-display{margin:.9em 0;overflow-x:auto;overflow-y:hidden;padding:3px 0}
+
+details.notes{border-left:3px solid var(--acc);background:#f3f6fd;padding:0 18px;margin:6px 0 26px}
+details.notes summary{cursor:pointer;padding:9px 0;font-weight:700;list-style:none;color:var(--acc)}
+details.notes summary::-webkit-details-marker{display:none}
+details.notes summary:before{content:"▸ ";font-weight:400}
+details.notes[open] summary:before{content:"▾ "}
+details.notes .body{padding:2px 0 14px}
+.check{border:1px solid #7b3fc4;border-left-width:3px;background:#fff;padding:10px 16px;margin:14px 0 4px}
+.check .h{font-weight:700;color:#7b3fc4}
+.check .b{border-color:#7b3fc4;color:#7b3fc4;display:block;margin-top:8px}
+.check .ca{border-top:1px solid var(--hair);margin-top:8px;padding-top:6px}
+
+.prob{margin-top:8px}
+.prob .lead{font-weight:700;color:var(--c)}
+.prob .ref{color:var(--mute);font-style:italic}
+.simtag{display:inline-block;border:1px solid var(--c);color:var(--c);background:var(--ct);font-size:15px;padding:1px 10px;margin-bottom:8px}
+.qtext{font-size:20px}
+.try{color:var(--mute);font-style:italic;margin-top:14px}
+.sol{margin-top:22px}
+.sol>.lab{font-style:italic;margin-bottom:4px;color:var(--c)}
+.step{display:grid;grid-template-columns:2.4em minmax(0,1fr);margin-top:16px}
+.step .n{font-weight:700;color:var(--c)}
+.why{color:#555;font-size:17.5px;margin-top:4px}
+.why i{color:var(--c)}
+.ans{border:1.5px solid var(--ok);background:#effaf3;padding:10px 18px;margin-top:20px}
+.ans .l{font-weight:700;margin-right:.4em;color:var(--ok)}
+.qed{color:var(--ok);text-align:right;margin-top:4px}
+
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.b{border:1px solid var(--rule);padding:6px 16px;font-size:16.5px;background:#fff}
+.b:hover{background:var(--tint)}
+.b.pri{background:var(--c);border-color:var(--c);color:#fff}
+.b.pri:hover{filter:brightness(.88);background:var(--c)}
+.b.ok{border-color:var(--ok);background:var(--ok);color:#fff}.b.ok:hover{background:var(--ok);filter:brightness(.9)}
+.b.warn{border-color:var(--warn);color:var(--warn)}
+.b.simb{border-color:var(--c);color:var(--c);margin-left:auto}
+.b.simb:hover{background:var(--ct)}
+.b:disabled{opacity:.35;cursor:default;background:#fff}
+
+.mynotes{margin-top:34px}
+.mynotes label{display:block;font-weight:700;color:var(--c);margin-bottom:6px}
+.mynotes textarea{display:block;width:100%;font:inherit;font-size:18px;line-height:1.5;color:var(--ink);background:#fffdf2;border:1px solid var(--hair);border-left:3px solid var(--c);padding:10px 14px;resize:vertical;min-height:84px}
+.mynotes textarea:focus{outline:none;border-color:var(--c)}
+.pager{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--c);margin-top:40px;padding-top:10px;font-size:16px}
+.pager button{text-align:left;max-width:48%}
+.pager button.nx{text-align:right;margin-left:auto}
+.pager small{display:block;color:var(--mute)}
+.pager button span{color:var(--c)}
+.pager button:hover span{text-decoration:underline}
+.pager button:disabled{visibility:hidden}
+.keys{color:var(--mute);font-size:14.5px;margin-top:18px}
+
+/* figures and tables: print-like */
+.fig{margin:14px 0;text-align:center;overflow-x:auto}
+.fig img{max-width:100%;height:auto;vertical-align:top}
+.tw{overflow-x:auto;margin:12px 0}
+table.tt{border-collapse:collapse;margin:0 auto;font-size:17px;line-height:1.4;border-top:1.5px solid #111;border-bottom:1.5px solid #111}
+.tt th{border-bottom:1px solid #111;font-weight:700;padding:4px 14px;text-align:center}
+.tt td{padding:3px 14px;text-align:center;border-top:1px solid #ececec}
+.tt td.l,.tt th.l{text-align:left}
+.tt.small{font-size:16px}
+.tt.flow td{min-width:62px;border-left:1px solid #ececec}
+.stable{display:inline-block;border:1.5px solid var(--acc);border-radius:1em!important;min-width:1.75em;padding:0 5px;color:var(--acc);font-weight:700}
+
+#menu{display:none}
+@media (max-width:880px){
+  .app{display:block}
+  nav{position:fixed;inset:0 12% 0 0;z-index:5;background:#fff;transform:translateX(-102%);transition:transform .2s;height:auto}
+  nav.open{transform:none;box-shadow:0 0 0 100vw #0006}
+  #menu{display:inline-block;margin-bottom:14px}
+  main{padding-top:18px}
+  h2{font-size:25px}
+  .head{font-size:14px}.head .sc{display:none}
+  .step{grid-template-columns:1.8em minmax(0,1fr)}
+  .tt th,.tt td{padding:3px 8px}
+}
+</style>
 </head>
 <body>
-<header class="bar">
-  <a class="home" href="../index.html" title="Mid-term site">DE Lock-In</a>
-  <nav class="tabs" id="tabs"></nav>
-  <span class="grow"></span>
-  <span class="prog" id="prog"></span>
-</header>
-<div class="layout">
-  <aside class="side" id="side"></aside>
-  <div class="stage">
-    <div class="head" id="head"></div>
-    <div class="screen" id="screen"><div class="card">Loading…</div></div>
-    <div class="foot" id="foot"></div>
-  </div>
+<div class="app">
+  <nav id="nav"></nav>
+  <main><div class="page">
+    <button class="b" id="menu">☰ Contents</button>
+    <div id="view"></div>
+  </div></main>
 </div>
-<script src="vendor/katex.min.js"></script>
-<script src="vendor/auto-render.min.js"></script>
-<script src="final.js?v=5"></script>
+<script src="data.js?v=a019785b"></script>
+<script>
+(function(){
+var KEY='delockin-final-v2', st={}, mode='path', D, list;
+var MODES=[['path','Study path'],['papers','Exam papers']];
+try{mode=localStorage.getItem(KEY+'-mode')||'path'}catch(e){}
+if(!window.DATA[mode])mode='path';
+// flatten every question into one numbered list: part.topic.question
+function load(){
+  D=window.DATA[mode];list=[];
+  D.forEach(function(p,pi){p.topics.forEach(function(t,ti){t.qs.forEach(function(q,qi){
+    list.push({p:p,t:t,q:q,pi:pi+1,ti:ti+1,qi:qi+1,num:(pi+1)+'.'+(ti+1)+'.'+(qi+1),first:qi===0});
+  })})});
+}
+load();
+try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+// carry progress over from the old layout of this page
+try{if(!localStorage.getItem(KEY)){var old=JSON.parse(localStorage.getItem('de-lockin-final-v1')||'{}').status||{};Object.keys(old).forEach(function(k){st[k]=old[k]==='ok'?'done':'again'})}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+var notes={};try{notes=JSON.parse(localStorage.getItem(KEY+'-notes'))||{}}catch(e){}
+function saveNotes(){try{localStorage.setItem(KEY+'-notes',JSON.stringify(notes))}catch(e){}}
+var cur=0, shown=0, sim=false;
+function find(id){for(var i=0;i<list.length;i++)if(list[i].q.id===id||(list[i].first&&list[i].t.id===id))return i;return -1}
+function restore(){cur=0;try{var h=localStorage.getItem(KEY+'-at-'+mode),k=+localStorage.getItem(KEY+'-ati-'+mode);if(list[k]&&list[k].q.id===h){cur=k;return}var i=find(h);if(i>=0)cur=i}catch(e){}}
+restore();
+(function(){var h=(location.hash||'').slice(1);if(!h)return;for(var m=0;m<MODES.length;m++){var keep=mode;mode=MODES[m][0];load();var i=find(h);if(i>=0){cur=i;return}mode=keep;load()}})();
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+function math(node){if(window.renderMathInElement)renderMathInElement(node,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}
+function tidy(node){var ts=node.querySelectorAll('table.tt');for(var k=0;k<ts.length;k++){var rows=ts[k].rows,wide={},i,j;for(i=0;i<rows.length;i++)for(j=0;j<rows[i].cells.length;j++)if(rows[i].cells[j].tagName==='TD'&&rows[i].cells[j].textContent.length>16)wide[j]=1;for(i=0;i<rows.length;i++)for(j=0;j<rows[i].cells.length;j++)if(wide[j])rows[i].cells[j].className='l'}}
+function isExam(q){return q.id.indexOf('pp-')===0}
+function short(ref){var s=ref.replace(/^Exam 23\/24 · /,'Exam 23/24 ').replace(/ · \d+%$/,'').replace(/^Slides? [\d–]+( exercise)?: /,'');return s.charAt(0).toUpperCase()+s.slice(1)}
+function mark(id){return st[id]==='done'?'✓':st[id]==='again'?'↺':''}
+function col(pi){return 'c'+((pi-1)%6+1)}
+function toggleSim(){if(!list[cur].q.sim)return;sim=!sim;shown=0;render();window.scrollTo(0,0)}
+function go(i){cur=Math.max(0,Math.min(list.length-1,i));shown=0;sim=false;document.getElementById('nav').classList.remove('open');render();window.scrollTo(0,0)}
+
+function nav(){
+  var n=document.getElementById('nav');var keep=n.scrollTop;n.innerHTML='';
+  var ids={},done=0;list.forEach(function(x){if(!x.q.page&&!ids[x.q.id]){ids[x.q.id]=1;if(st[x.q.id]==='done')done++}});var total=Object.keys(ids).length;
+  n.appendChild(el('h1','','DE Lock-In'));
+  n.appendChild(el('div','sub sc','eeen20050 · digital electronics · final'));
+  var ms=el('div','mode');
+  MODES.forEach(function(m){
+    var b=el('button',mode===m[0]?'on':'',m[1]);
+    b.onclick=function(){if(mode===m[0])return;mode=m[0];sim=false;try{localStorage.setItem(KEY+'-mode',mode)}catch(e){}load();restore();shown=0;render();window.scrollTo(0,0)};
+    ms.appendChild(b)});
+  n.appendChild(ms);
+  n.appendChild(el('div','prog','<span>'+done+' / '+total+'</span><span class="bar"><i style="width:'+(100*done/total)+'%"></i></span>'));
+  n.appendChild(el('div','toc-h sc','contents'));
+  var lastP=null,lastT=null;
+  list.forEach(function(x,i){
+    if(x.p!==lastP){lastP=x.p;n.appendChild(el('div','part '+col(x.pi),'<span class="num">'+x.pi+'</span><span>'+x.p.title+'</span>'))}
+    if(x.t!==lastT){lastT=x.t;n.appendChild(el('div','topic '+col(x.pi),'<span class="num">'+x.pi+'.'+x.ti+'</span><span>'+x.t.title+(x.t.pri?' <span class="star" title="priority">'+'★★★'.slice(0,x.t.pri)+'</span>':'')+'</span>'))}
+    var b=el('button','qlink '+col(x.pi)+(isExam(x.q)&&mode==='path'?' ex':'')+(i===cur?' on':'')+(st[x.q.id]?' '+st[x.q.id]:''),'<span class="num">'+x.num+'</span><span class="r">'+short(x.q.ref)+'</span>'+(notes[x.q.id]?'<span class="nt" title="You wrote a note">✎</span>':'')+'<span class="m">'+mark(x.q.id)+'</span>');
+    b.onclick=function(){go(i)};
+    n.appendChild(b);
+  });
+  if(mode==='path')n.appendChild(el('div','cut','<i>Built from the lecture slides, Lectures 4 to 25.</i> ★★★ = on the 23/24 paper or the biggest lecture block. <b>Bold</b> = a real exam part. Mid-term topics (number systems, adders) are on the <a href="../index.html">mid-term site</a>.'));
+  else n.appendChild(el('div','cut','<i>Do these last, on paper, against the clock.</i> The first is the real Autumn 23/24 paper. A and B copy its shape. C is the 5-question shape the lecturer hinted at.<br>Content version '+window.DATA.version+'.'));
+  n.scrollTop=keep;
+  var on=n.querySelector('.qlink.on');
+  if(on){var r=on.getBoundingClientRect(),nr=n.getBoundingClientRect();if(r.top<nr.top+40||r.bottom>nr.bottom-20)n.scrollTop+=r.top-nr.top-nr.height/3}
+}
+
+function render(){
+  try{localStorage.setItem(KEY+'-at-'+mode,list[cur].q.id);localStorage.setItem(KEY+'-ati-'+mode,cur)}catch(e){}
+  nav();
+  var x=list[cur], t=x.t, o=x.q, q=(sim&&o.sim)?o.sim:o, v=document.getElementById('view');v.innerHTML='';v.className=col(x.pi);
+  v.appendChild(el('div','head','<span class="sc">'+x.pi+' · '+x.p.title.toLowerCase()+'</span><span>'+(o.page?'':'Problem <b>'+(cur+1)+'</b> of '+list.length)+'</span>'));
+  v.appendChild(el('h2','','<span class="num">'+x.pi+'.'+x.ti+'</span>'+t.title));
+  v.appendChild(el('div','src',t.src));
+
+  if(o.page){
+    v.appendChild(el('div','pagebody',o.q));
+    var pr0=el('div','row');var s0=el('button','b pri','Start the path →');s0.onclick=function(){go(cur+1)};pr0.appendChild(s0);v.appendChild(pr0);
+    tidy(v);math(v);return;
+  }
+  // notes: open on the first question of a topic, closed after
+  if(t.learn){
+    var d=el('details','notes','<summary>'+(t.label||'Notes — learn it first')+'</summary>');
+    var db=el('div','body',t.learn);d.appendChild(db);
+    if(t.check){var c=el('div','check','<span class="h">Check.</span> '+t.check.q);
+      var cb=el('button','b','Show answer');var ca=el('div','ca',t.check.a);ca.style.display='none';
+      cb.onclick=function(){ca.style.display='block';cb.style.display='none'};c.appendChild(cb);c.appendChild(ca);db.appendChild(c)}
+    if(x.first&&!sim)d.open=true;
+    v.appendChild(d);
+  }
+
+  var pr=el('div','prob');
+  if(sim)pr.appendChild(el('div','simtag','Similar question · same method, new numbers'));
+  pr.appendChild(el('div','','<span class="lead">Problem '+x.num+(sim?'′':'')+'</span> <span class="ref">('+(sim?'like: '+o.ref:o.ref)+')</span>'));
+  pr.appendChild(el('div','qtext',q.q));
+  v.appendChild(pr);
+
+  var n=q.steps.length, all=shown>n;
+  if(shown===0)v.appendChild(el('div','try','Try it on paper first, then reveal one step at a time.'));
+  if(shown>0){
+    var sol=el('div','sol','<div class="lab">Solution.</div>');
+    q.steps.slice(0,shown).forEach(function(s,i){sol.appendChild(el('div','step','<span class="n">'+(i+1)+'.</span><div>'+s.b+(s.why?'<div class="why"><i>Why.</i> '+s.why+'</div>':'')+'</div>'))});
+    if(all){sol.appendChild(el('div','ans','<span class="l">Answer.</span>'+q.a));sol.appendChild(el('div','qed','∎'))}
+    v.appendChild(sol);
+  }
+  var row=el('div','row');
+  if(!all){
+    var b1=el('button','b pri',shown===0?'Show step 1':(shown<n?'Next step ('+(shown+1)+'/'+n+')':'Show answer'));
+    b1.onclick=function(){shown++;render()};row.appendChild(b1);
+    var b2=el('button','b','Full solution');b2.onclick=function(){shown=n+1;render()};row.appendChild(b2);
+  }else{
+    var g=el('button','b ok','✓ Got it');g.onclick=function(){st[o.id]='done';save();go(cur+1)};row.appendChild(g);
+    var a=el('button','b warn','↺ Redo later');a.onclick=function(){st[o.id]='again';save();go(cur+1)};row.appendChild(a);
+    var h=el('button','b','Hide solution');h.onclick=function(){shown=0;render()};row.appendChild(h);
+  }
+  if(o.sim){var sb=el('button','b simb',sim?'← Back to original':'Similar question ↻');sb.onclick=toggleSim;row.appendChild(sb)}
+  v.appendChild(row);
+
+  var nb=el('div','mynotes','<label for="note">✎ My notes on this question</label>');
+  var ta=document.createElement('textarea');ta.id='note';ta.rows=3;ta.placeholder='Type anything you want to remember here. It saves by itself.';ta.value=notes[o.id]||'';
+  function grow(){ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px'}
+  ta.oninput=function(){var had=!!notes[o.id];if(ta.value.trim())notes[o.id]=ta.value;else delete notes[o.id];saveNotes();grow();if(had!==!!notes[o.id])nav()};
+  nb.appendChild(ta);v.appendChild(nb);setTimeout(grow,0);
+  var pg=el('div','pager');
+  function lbl(i){var y=list[i];return '<span>'+y.num+' · '+y.t.title+'</span><small>'+short(y.q.ref)+'</small>'}
+  var pv=el('button','pv'+(cur>0?' '+col(list[cur-1].pi):''),cur>0?'<small>← Previous</small>'+lbl(cur-1):'');pv.disabled=cur===0;pv.onclick=function(){go(cur-1)};pg.appendChild(pv);
+  var nx=el('button','nx'+(cur<list.length-1?' '+col(list[cur+1].pi):''),cur<list.length-1?'<small>Next →</small>'+lbl(cur+1):'');nx.disabled=cur===list.length-1;nx.onclick=function(){go(cur+1)};pg.appendChild(nx);
+  v.appendChild(pg);
+  v.appendChild(el('div','keys','Space: next step · A: full solution · '+(o.sim?'S: similar question · ':'')+'← / →: previous / next problem'));
+  tidy(v);math(v);
+  if(shown>0){var last=v.querySelector('.ans')||v.querySelectorAll('.step')[shown-1];if(last&&last.scrollIntoView)last.scrollIntoView({block:'nearest',behavior:'smooth'})}
+}
+document.getElementById('menu').onclick=function(){document.getElementById('nav').classList.toggle('open')};
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.metaKey||e.ctrlKey||e.altKey)return;
+  var o=list[cur].q, n=((sim&&o.sim)?o.sim:o).steps.length;
+  if(e.key==='ArrowRight')go(cur+1);
+  else if(e.key==='ArrowLeft')go(cur-1);
+  else if(o.page){if(e.key===' '){e.preventDefault();go(cur+1)}}
+  else if(e.key===' '){e.preventDefault();if(shown<=n){shown++;render()}}
+  else if(e.key==='a'||e.key==='A'){shown=n+1;render()}
+  else if(e.key==='s'||e.key==='S')toggleSim();
+});
+window.addEventListener('load',render);
+})();
+</script>
 </body>
 </html>
