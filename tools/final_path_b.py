@@ -48,7 +48,7 @@ put(EX["pp-2a"])
 
 B = bcd_ripple()
 brow = lambda i: [i, " ".join(map(str, B[i])), B[i][0] * 8 + B[i][1] * 4 + B[i][2] * 2 + B[i][3]]
-topic("k3", "BCD ripple counter", "Lectures 17–18, slides 17–20", pri=1,
+topic("k3", "BCD ripple counter", "Lectures 17–18, slides 17–20", pri=2,
       learn=f"""<p>A <b>BCD (decade) counter</b> counts 0000 to 1001 (0 to 9), then goes back to 0000. Four falling-edge JK flip-flops Q<sub>8</sub>Q<sub>4</sub>Q<sub>2</sub>Q<sub>1</sub>.</p>
 {table(["Flip-flop", "Clocked by", "J", "K", "So it…"], [["Q<sub>1</sub>", "count pulses", "1", "1", "toggles every pulse"], ["Q<sub>2</sub>", "Q<sub>1</sub>", "<b>Q<sub>8</sub>'</b>", "1", "toggles when Q<sub>1</sub> falls, but only while Q<sub>8</sub> = 0"], ["Q<sub>4</sub>", "Q<sub>2</sub>", "1", "1", "toggles when Q<sub>2</sub> falls"], ["Q<sub>8</sub>", "Q<sub>1</sub>", "<b>Q<sub>2</sub>Q<sub>4</sub></b>", "1", "sets when Q<sub>1</sub> falls with Q<sub>2</sub> = Q<sub>4</sub> = 1, clears on the next fall of Q<sub>1</sub>"]])}
 <p><b>More digits:</b> chain decade counters, one per decimal digit. Each decade's Q<sub>8</sub> clocks the next: it falls on 9 → 0, which is the carry.</p>""",
@@ -78,7 +78,7 @@ def loadq(start, ops):
              ["Edge by edge:" + table(["Edge", "Load", "Inputs", "Contents"], rows), "With Load = 0 the inputs are ignored completely."]], "Ends holding " + r)
 
 
-topic("r1", "Registers and parallel load", "Lecture 19, slides 2–7", pri=1,
+topic("r1", "Registers and parallel load", "Lecture 19, slides 2–7", pri=2,
       learn="""<p>A <b>register</b> = a group of flip-flops sharing one clock, one bit each. n flip-flops store an n-bit word. Gates around them decide <b>how</b> new data gets in.</p>
 <p><b>Parallel load:</b> all bits go in at once, on one clock edge. A common asynchronous <b>clear</b> wipes it to 0000.</p>
 <p>A plain D register reloads on <b>every</b> edge. A <b>Load</b> input fixes that: Load = 1 loads the inputs, Load = 0 feeds each Q back to its own D so the word is kept.</p>""",
@@ -110,7 +110,7 @@ def shdet(pat):
              ["AND the outputs, inverting the ones that should be 0:" + DD("Z = " + e), "One AND gate, no state diagram. It costs more flip-flops than a state machine (4 against 2 for 1001)."]], M("Z = " + e))
 
 
-topic("r2", "Shift registers", "Lecture 19, slides 8–12", pri=2,
+topic("r2", "Shift registers", "Lecture 19, slides 8–12", pri=3,
       learn=f"""<p>Flip-flops in a chain: each Q feeds the next D. <b>Every clock edge, every bit moves one place.</b> A new bit enters at the serial input. The last bit leaves at the serial output.</p>
 {img(seq("shift-register"), "shift register", True)}
 <p>A <b>shift control</b> (like Load) lets the register ignore the clock when it should not shift.</p>""",
@@ -147,7 +147,7 @@ def sadd(a, b):
              [f"After {n} edges A holds the sum: <b>{A}</b>" + (" with a final carry of 1." if c else "."), f"{int(a, 2)} + {int(b, 2)} = {int(a, 2) + int(b, 2)}. ✓ A parallel adder needs {n} full adders and one step. This needs 1 full adder and {n} clock edges."]], f"A = {A}" + (", carry 1" if c else ""))
 
 
-topic("r3", "Serial transfer and serial addition", "Lecture 19, slides 13–16", pri=2,
+topic("r3", "Serial transfer and serial addition", "Lecture 19, slides 13–16", pri=3,
       learn="""<p><b>Parallel transfer:</b> all bits move at once, in one clock edge.<br><b>Serial transfer:</b> one bit per edge, from one shift register into another. n bits take n edges.</p>
 <p>To stop the first register losing its word, connect its output back to <b>its own input</b>.</p>
 <p><b>Serial adder:</b> two shift registers feed <b>one full adder</b>, one bit pair per clock, least significant bit first. A <b>D flip-flop holds the carry</b> for the next bit. The sum shifts back into register A.</p>""",
@@ -167,7 +167,7 @@ def usr(start, ops):
              [table(["Edge", "s<sub>1</sub>s<sub>0</sub>", "Operation", "Input", "Contents"], rows), "Shift right: the serial bit enters at the left. Shift left: it enters at the right."]], "Ends holding " + r)
 
 
-topic("r4", "Universal shift register", "Lecture 19, slides 17–19", pri=1,
+topic("r4", "Universal shift register", "Lecture 19, slides 17–19", pri=2,
       learn=f"""<p>One register that can do everything: clear, hold, shift right, shift left, parallel load, with serial and parallel inputs and outputs.</p>
 <p>In front of <b>each</b> flip-flop sits a <b>4-to-1 mux</b>. Two select lines s<sub>1</sub>s<sub>0</sub> choose what it loads. A 4-bit register needs 4 flip-flops and 4 muxes.</p>
 {img(seq("universal-stage"), "one stage", True)}
@@ -179,7 +179,7 @@ J4, J3 = johnson(4), johnson(3)
 D4, D3 = johnson_decode(J4, list("ABCE")), johnson_decode(J3, ABC)
 assert D4 == ["A'E'", "AB'", "BC'", "CE'", "AE", "A'B", "B'C", "C'E"]  # slide 8
 jrows = lambda J, Dd: [[f"t<sub>{i}</sub>", " ".join(s), M(d)] for i, (s, d) in enumerate(zip(J, Dd))]
-topic("r5", "Ring counter and Johnson counter", "Lecture 20", pri=2,
+topic("r5", "Ring counter and Johnson counter", "Lecture 20", pri=3,
       learn=f"""<p><b>Ring counter:</b> a shift register joined into a circle (last output → first input) holding <b>a single 1</b>. 1000 → 0100 → 0010 → 0001 → 1000. Each output is high for one clock in turn: ready-made <b>timing signals</b>.</p>
 {img(seq("ring-counter"), "ring counter", True)}
 <p>Cost: <b>n flip-flops give only n states.</b> Alternative for 2ⁿ timing signals: an n-bit binary counter + an n-to-2ⁿ decoder.</p>
@@ -269,7 +269,7 @@ topic("y2", "Two state variables", "Lectures 23–24, slides 13–16", pri=2,
       check=("Row 01 has the entry 11 under x = 0. Stable?", "<b>No.</b> 11 ≠ 01. The circuit will move to row 11."))
 q("as2-1", "Slide 15: two feedback loops", *as2("xy1 + x'y2", "xy1' + x'y2", [(0, 1), (1, 0)]), sim=as2("x'y1 + xy2", "x'y1' + xy2", [(0, 0), (1, 1)]))
 
-topic("y3", "From a flow table to a circuit", "Lectures 23–24, slide 17", pri=2,
+topic("y3", "From a flow table to a circuit", "Lectures 23–24, slide 17", pri=3,
       learn="""<p>The reverse direction (design): you are given the <b>flow table</b> and must produce the circuit.</p>
 <ol><li><b>Assign binary numbers</b> to the states (a = 0, b = 1). The flow table becomes a transition table.</li><li>The transition table <b>is a K-map</b> of Y. Simplify it.</li><li>Make a second map for the <b>output</b> z and simplify.</li><li><b>Draw</b> the logic, with Y fed back as y.</li></ol>""",
       check=("In a flow table, what does a circled letter mean?", "A <b>stable</b> state: the next state is the same as the present state for that input."))
@@ -287,7 +287,7 @@ def race(col):
     return ("<p>Part of a transition table is shown (only the entries that matter). The circuit is stable in 00 with x = 0, then x changes to 1. List the possible transitions. Is there a race, and is it critical?</p>" + tt2(tab), st, a)
 
 
-topic("y4", "Races", "Lectures 23–24, slides 24–29", pri=2,
+topic("y4", "Races", "Lectures 23–24, slides 24–29", pri=3,
       learn=f"""<p><b>Race:</b> <b>two or more state variables</b> must change after one input change. The feedback paths have unequal delays, so you cannot know which changes first.</p>
 <p>00 → 11 might really go 00 → <b>10</b> → 11 or 00 → <b>01</b> → 11.</p>
 {table(["", "Final stable state", ""], [["<b>Non-critical race</b>", "the same whichever variable wins", "harmless"], ["<b>Critical race</b>", "<b>different</b> depending on which wins", "must be removed"]])}

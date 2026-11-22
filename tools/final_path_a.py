@@ -8,31 +8,42 @@ part("Start here")
 topic("plan", "The plan", "Built from the 2026/27 lecture slides (Lectures 1 to 25) and the Autumn 23/24 paper")
 q("plan-1", "Read me first", f"""
 <p><b>What this is.</b> Every final-exam topic in the order to study it. Each topic has a short <b>Notes</b> box that teaches it from zero, a check question, then questions with step-by-step solutions. The slide examples and exercises are in here as questions.</p>
-<h3>What the exam looked like (Autumn 23/24: 4 questions, 30 minutes each)</h3>
+<h3>What the exam should look like</h3>
+<p>From a classmate's note of what the lecturer said: <b>5 questions. 1 on combinational logic (they think multiplexers). The other 4 on sequential logic.</b> It is second-hand ("I believe he said"), so treat it as likely, not certain.</p>
+{table(["Question", "Most likely from", "Where"], [
+ ["1 · combinational", "<b>Multiplexers</b>: put a function on a mux, build a big mux from small ones", "2.5 (back-up: 2.6 decoders, 2.3 K-maps)"],
+ ["2 to 5 · sequential", "Flip-flops and analysing a clocked circuit (L11–13)", "Part 3, 4.1"],
+ ["", "Sequence detectors, Mealy and Moore (L14–16)", "4.2 to 4.4"],
+ ["", "Counters: synchronous, ripple, BCD (L17–18)", "Part 5"],
+ ["", "Registers, ring and Johnson counters (L19–20)", "Part 6"],
+ ["", "Asynchronous circuits: tables, races, hazards (L23–24)", "Part 7"]])}
+<p>The slides have <b>five</b> sequential blocks and the exam has <b>four</b> sequential questions. So no block is safe to skip.</p>
+<h3>The only past paper (Autumn 23/24)</h3>
+<p>Set by a different lecturer: 4 questions, 30 minutes each. It is still the only real paper, so do it, but the 5-question shape comes first.</p>
 {table(["Q", "Asked", "Where"], [
- ["1", "Circuit → function, truth table, K-map, Σm / ΠM, two-level NAND", "Part 2"],
+ ["1", "Circuit → function, truth table, K-map, Σm / ΠM, two-level NAND", "2.1 to 2.4"],
  ["2(a)", "3-bit ripple count-down counter with D flip-flops, waveforms, frequency divider", "5.2"],
  ["2(b)", "Cause of static hazards, hazard-free circuit", "7.5"],
  ["3", "Synchronous JK state machine with two count loops", "5.1"],
  ["4", "Asynchronous circuit: transition table, flow table, stability", "7.1"]])}
-<p>You remembered the lecturer saying this year is <b>5 questions: 1 combinational (maybe multiplexers), 4 sequential</b>. So the path covers both shapes.</p>
 <h3>The path</h3>
 {table(["Part", "Slides", "After it you can", "Priority"], [
- ["2 · Combinational logic", "L4–6, 9, 10", "read a circuit, K-map it, build it from NAND / NOR, a mux or a decoder", "★★★"],
+ ["2 · Combinational logic", "L4–6, 9, 10", "put a function on a multiplexer or decoder, K-map it, build it from NAND / NOR", "★★★ multiplexers and K-maps, ★★ the rest"],
  ["3 · Latches and flip-flops", "L11–12", "trace any latch or flip-flop, write the excitation table from memory", "★★★"],
  ["4 · Clocked circuits", "L13–16", "analyse a circuit, design a sequence detector (Mealy and Moore)", "★★★"],
  ["5 · Counters", "L17–18", "design any synchronous counter, build ripple and BCD counters", "★★★"],
- ["6 · Registers", "L19–20", "trace shift registers, serial adder, ring and Johnson counters", "★★"],
+ ["6 · Registers", "L19–20", "trace shift registers, serial adder, ring and Johnson counters", "★★★"],
  ["7 · Asynchronous logic", "L23–24", "transition and flow tables, stability, races, hazards", "★★★"],
  ["8 · Memory, PLDs, transistors", "L21, 22, 25", "sizes and facts: RAM, ROM, PAL / PLA, FPGA, CMOS gates", "★"]])}
-<p>★★★ = on the 23/24 paper or the biggest lecture block. ★★ = taught in full, not on that paper. ★ = facts, short questions at most.</p>
+<p>★★★ = fits the 5-question shape: multiplexers, or a main sequential-logic method. ★★ = a tool those questions use, or a smaller part of the same lectures. ★ = facts only, neither a combinational nor a sequential question.</p>
 <h3>How to study it</h3>
 <ol><li><b>Go in order.</b> Parts 3 to 5 build on each other: flip-flop tables → state tables → counters.</li>
 <li>Read the Notes box, answer the check, then <b>try each question on paper</b> before revealing steps (Space = next step).</li>
 <li>Press <b>Similar question</b> (S) and do it again with new numbers. Mark <b>Got it</b> only if you could redo it from a blank page.</li>
 <li>Questions in <b>bold</b> in the contents are the real 23/24 exam parts.</li>
-<li>Finish with <b>Exam papers</b>: the real paper, then the mocks against the clock.</li></ol>
-<p><b>Short on time?</b> Do 2.3, 2.4, 3.3, 3.4, 4.3, 5.1, 5.2, 7.1, 7.5, then the papers. That is everything the 23/24 paper used, plus sequence detectors.</p>
+<li>Finish with <b>Exam papers</b>: the two 5-question mocks first, then the real 23/24 paper.</li></ol>
+<p><b>Short on time?</b> Do 2.5, 3.3, 3.4, 4.1, 4.2, 4.3, 5.1, 5.2, 6.2, 6.5, 7.1, then the 5-question mocks. That is multiplexers plus the main method from each of the five sequential blocks.</p>
+<p><b>Homework 2</b> is due after the final (same note), so it can wait until the exam is done.</p>
 <p><b>Not here:</b> number systems, binary arithmetic, codes and adders (Lectures 1 to 3, 7 to 8). They were the mid-term and are on the <a href="../index.html">mid-term site</a>.</p>
 """, [], "", page=True)
 
@@ -49,7 +60,7 @@ def circ(key, tree, names=ABC):
     return (img(key, "circuit") + "<p>(a) Write the Boolean function F. (b) Give its truth table.</p>", st, M("F = " + T_tex(tree)) + " · $" + sigma(ms) + "$")
 
 
-topic("c1", "Circuit → Boolean function → truth table", "Lecture 4 · 23/24 Q1(a), (b)", pri=3,
+topic("c1", "Circuit → Boolean function → truth table", "Lecture 4 · 23/24 Q1(a), (b)", pri=2,
       learn=f"""<p>Every gate is a tiny rule. Read the circuit <b>left to right</b>, writing each gate's output on its wire.</p>
 {img(ex("gates"), "gate symbols", True)}
 {table(["Gate", "Output is 1 when…", "Written"], [["AND", "all inputs are 1", M("AB")], ["OR", "any input is 1", M("A+B")], ["NOT", "input is 0", M("A'")], ["NAND", "<b>not</b> all inputs are 1", M("(AB)'")], ["NOR", "<b>no</b> input is 1", M("(A+B)'")]])}
@@ -71,7 +82,7 @@ def mm(e, names):
     return (f"<p>Express {M('F = ' + e)} as a sum of minterms and as a product of maxterms (shorthand).</p>", st, "$" + sigma(ms) + " = " + pi([m for m in range(1 << n) if m not in ms]) + "$")
 
 
-topic("c2", "Sum of minterms, product of maxterms", "Lectures 4–5 · 23/24 Q1(c)", pri=3,
+topic("c2", "Sum of minterms, product of maxterms", "Lectures 4–5 · 23/24 Q1(c)", pri=2,
       learn=f"""<p>Number the truth-table rows 0, 1, 2 … from the top.</p>
 <p><b>Minterm</b> {M("m_i")}: an AND of all the variables that is 1 <b>only on row i</b>.<br><b>Maxterm</b> {M("M_i")}: an OR of all the variables that is 0 <b>only on row i</b>.</p>
 $$F = \\Sigma m(\\text{{rows where }} F = 1) \\qquad F = \\Pi M(\\text{{rows where }} F = 0)$$
@@ -112,7 +123,7 @@ def nor(names, ms, key):
     return ("<p>Implement $F(" + ", ".join(names) + ") = " + sigma(ms) + "$ with two-level <b>NOR</b> gates.</p>", st, M("F = " + pos))
 
 
-topic("c4", "Two-level NAND and NOR circuits", "Lecture 6 · 23/24 Q1(d)", pri=3,
+topic("c4", "Two-level NAND and NOR circuits", "Lecture 6 · 23/24 Q1(d)", pri=2,
       learn=f"""<p>Any sum of products becomes NAND-NAND with no extra thought:</p>
 $$F = AB + CD = \\big((AB)' \\cdot (CD)'\\big)'$$
 {img(ex("nand-transform"), "AND-OR to NAND-NAND", True)}
@@ -130,7 +141,7 @@ def mux(names, ms):
     return ("<p>Implement $F(" + ", ".join(names) + ") = " + sigma(ms) + f"$ with one {1 << (len(names) - 1)}-to-1 multiplexer.</p>", st, a)
 
 
-topic("c5", "Multiplexers", "Lecture 10 · not on 23/24 · lecturer hinted", pri=2,
+topic("c5", "Multiplexers", "Lecture 10 · the likely combinational question (lecturer's hint)", pri=3,
       learn=f"""<p>A <b>multiplexer</b> is a switch: the <b>select</b> lines form a number, and that number picks which <b>data</b> input reaches the output. Select 0 → input 0.</p>
 {img(ex("mux4-block"), "4-to-1 mux", True)}
 <p><b>Any function of n variables fits on a mux with n − 1 selects</b> (slides 7 and 9):</p>
@@ -148,7 +159,7 @@ q("h1-4", "Bigger muxes from smaller ones", "<p>(a) How many 4-to-1 multiplexers
        [["(a) 8 inputs → 4 muxes, then 2, then 1. Total <b>7</b>. Level 1 uses S<sub>0</sub>, level 2 uses S<sub>1</sub>, the last mux uses S<sub>2</sub>.", "Each level halves the number of lines."], ["(b) 64 = 2<sup>6</sup> → <b>6</b>.", ""]], "7 muxes · 6 select lines"))
 
 FA = {"S": [1, 2, 4, 7], "C": [3, 5, 6, 7]}
-topic("c6", "Decoders as minterm generators", "Lecture 9 · not on 23/24", pri=1,
+topic("c6", "Decoders as minterm generators", "Lecture 9 · back-up if the combinational question is not multiplexers", pri=2,
       learn=f"""<p>An <b>n-to-2ⁿ decoder</b> has n inputs and 2ⁿ outputs. Exactly <b>one</b> output is 1: the one whose number equals the input.</p>
 <p>So output i <b>is minterm i</b>. To build any function: decoder + <b>one OR gate</b> over the minterms you want.</p>
 {table(["Decoder type", "Each output is a", "Collect with", "Function form"], [["active-high", "minterm", "OR gate", "Σm"], ["active-low (bubbles on outputs)", "maxterm", "AND gate", "ΠM"]])}
@@ -264,7 +275,7 @@ q("exc-1", "Inputs for a wanted sequence", *exq([0, 1, 1, 0, 0, 1]), sim=exq([1,
 
 # ===================================================================== 3 · clocked circuits
 part("Clocked circuits: analysis and design")
-topic("s1", "Analysing a clocked circuit", "Lecture 13 · not on 23/24", pri=2,
+topic("s1", "Analysing a clocked circuit", "Lecture 13 · sequential logic", pri=3,
       learn=f"""<p><b>Analysis:</b> circuit → equations → <b>state table</b> → <b>state diagram</b>. Always the same three steps (slide 11):</p>
 <ol><li>Read the Boolean expression for each flip-flop input and for the output.</li><li>For every present state and input, work out the flip-flop input values.</li><li>Use the characteristic table to get the next state.</li></ol>
 <p><b>State</b> = what the flip-flops hold now. <b>State equations</b> give the next state directly, for example A(t+1) = Ax + Bx.</p>
@@ -319,7 +330,7 @@ topic("s3", "Designing the circuit: JK and D flip-flops", "Lectures 14–16, sli
 q("h2-3", "Slides 12–20: 1001 with JK flip-flops", *det("1001", "JK", "h2-3", sample="1001001"), sim=det("101", "JK", "h2-1", sample="10101"))
 q("d-1", "Slides 21–24: 1001 with D flip-flops", *det("1001", "D", "d-1", sample="1001001"), sim=det("110", "D", "h2-2", sample="1101100"))
 
-topic("s4", "The Moore version", "Lectures 14–16, slides 26–32", pri=2,
+topic("s4", "The Moore version", "Lectures 14–16, slides 26–32", pri=3,
       learn=f"""<p>In a <b>Moore</b> machine the output depends on the state only, so it is written <b>inside the circle</b> (state/output). You need a state that <b>means</b> "the full pattern has just been seen".</p>
 {img(seq("fsm-1001-moore"), "Moore 1001", True)}
 <p>For 1001 that is a fifth state E with output 1. From E: a 0 gives …10 → C. A 1 gives …11 → B.</p>

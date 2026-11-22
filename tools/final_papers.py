@@ -14,7 +14,7 @@ def qt(n, what, first=False):
 _pid = [""]
 
 # ----------------------------------------------------------------- the real paper
-part("Autumn 23/24 · the real paper")
+part("Autumn 23/24 · the real paper (4 questions)")
 _pid[0] = "pp"
 qt(1, "Combinational logic · 25% · 30 minutes", True)
 for k in ("pp-1a", "pp-1b", "pp-1c", "pp-1d"):
@@ -72,15 +72,15 @@ def mock(mid, title, tree, twolevel, rip, haz, hazexp, cycles, Y, z, ytree, f0):
     q(mid + "-4c", "Q4(c) · 40%", f4 + "<p>Check whether there is a stability issue. If so, explain where.</p>", qa[1:3] + qc, ("Oscillates when AB = " + ", ".join(bits(info[0][i], 2) for i in info[2])) if info[2] else "No stability issue")
 
 
-mock("mA", "Mock A · same shape as 23/24", ("OR", ("NOR", "X", "Y"), ("NAND", ("OR", ("NOT", "X"), "Z"), "Y")), "NAND", (3, "D", False),
+mock("mA", "4-question mock A · shape of 23/24", ("OR", ("NOR", "X", "Y"), ("NAND", ("OR", ("NOT", "X"), "Z"), "Y")), "NAND", (3, "D", False),
      "D(A'B + AC) + B'D'", "A'BD + ACD + B'D'", [[2, 0, 5, 3, 6], [7, 1, 4]],
      "AB' + By", "A'y", ("OR", ("AND", "A", ("NOT", "B")), ("AND", "B", "y")), None)
-mock("mB", "Mock B · same shape as 23/24", ("AND", ("NAND", "X", "Z"), ("OR", ("NOT", "Y"), ("AND", "X", ("NOT", "Z")))), "NOR", (4, "T", True),
+mock("mB", "4-question mock B · shape of 23/24", ("AND", ("NAND", "X", "Z"), ("OR", ("NOT", "Y"), ("AND", "X", ("NOT", "Z")))), "NOR", (4, "T", True),
      "A(B'+CD') + A'D(B+C')", "AB' + ACD' + A'BD + A'C'D", [[0, 3, 5, 6], [7, 4, 2, 1]],
      "AB + (A^B)y'", "A + y", ("OR", ("AND", "A", "B"), ("AND", ("XOR", "A", "B"), ("NOT", "y"))), (1.6, "MHz"))
 
 # ----------------------------------------------------------------- mock in the hinted shape
-part("Mock C · 5 questions, 1 combinational + 4 sequential")
+part("5-question mock 1 · the hinted shape")
 _pid[0] = "mC"
 RC = RULES.replace("equal marks", "equal marks → about <b>24 minutes each</b>")
 topic("mC-q1", "Question 1", "Multiplexers · 20%", learn=RC)["label"] = "Rules"
@@ -111,3 +111,39 @@ r5, ra = p_race({0: 3, 1: 1, 3: 3, 2: 3})
 tab5 = {(0, 0): 0, (0, 1): 3, (1, 1): 1, (3, 1): 3, (2, 1): 3}
 q("mC-5c", "Q5(c) · 30%", "<p>Explain the difference between a critical and a non-critical race. In this partial transition table the circuit is stable in 00 with x = 0 and x changes to 1. Which kind of race is it?</p>" + tt2(tab5),
   [["A race happens when two or more state variables must change after one input change. <b>Non-critical:</b> the final stable state is the same whichever changes first. <b>Critical:</b> the final state depends on the order.", "Unequal delays in the feedback paths decide the order, and you cannot control them."]] + r5, ra)
+
+# ----------------------------------------------------------------- second mock in the hinted shape
+from final_path_a import lff, exq, det  # noqa: E402
+from final_path_b import sadd, asy  # noqa: E402
+
+part("5-question mock 2 · the hinted shape")
+_pid[0] = "mD"
+topic("mD-q1", "Question 1", "Multiplexers · 20%", learn=RC)["label"] = "Rules"
+SM, CM = [1, 2, 4, 7], [3, 5, 6, 7]
+ms_, as_ = p_mux(XYZ, SM)
+mc_, ac_ = p_mux(XYZ, CM)
+q("mD-1a", "Q1(a) · 70%", "<p>A full adder has inputs X, Y, Z and outputs S (sum) and C (carry). Implement S and C with two 4-to-1 multiplexers.</p>",
+  [["Truth table first. S = 1 when an odd number of inputs are 1. C = 1 when two or more are 1:" + "$$S = " + sigma(SM) + " \\qquad C = " + sigma(CM) + "$$", "X + Y + Z is 0, 1, 2 or 3, written in binary as C S."],
+   ms_[0], ["<b>Sum mux.</b> " + ms_[1][0], ms_[1][1]], ["<b>Sum mux.</b> " + ms_[2][0], "Both muxes share the select lines X and Y. Only the data inputs differ."],
+   ["<b>Carry mux.</b> " + mc_[1][0], mc_[1][1]], ["<b>Carry mux.</b> " + mc_[2][0], "One inverter for Z' serves both muxes."]],
+  "S: " + as_ + " · C: " + ac_)
+q("mD-1b", "Q1(b) · 30%", "<p>Explain how a multiplexer and a demultiplexer are used together in a communication system.</p>",
+  [["The <b>multiplexer</b> is at the sending end. Its select lines pick one of many inputs and put it on the single shared line (the channel).", "A multiplexer is a many-to-one switch."],
+   ["The <b>demultiplexer</b> is at the receiving end. It does the opposite: it sends the one line to the output chosen by its select lines.", "A demultiplexer is a one-to-many switch."],
+   ["Both step through the select values together, so input 0 reaches output 0, input 1 reaches output 1, and so on. Many users share one channel, as in mobile phones.", "The channel can be a cable or free space in a wireless system (Lecture 10, slide 11)."]],
+  "Mux at the sender (many → one line), demux at the receiver (one line → many), switched together so many users share one channel")
+topic("mD-q2", "Question 2", "Latches and flip-flops · 20%")
+q("mD-2a", "Q2(a) · 50%", *lff("111000111101100001100111", "mD-q2"))
+q("mD-2b", "Q2(b) · 50%", *exq([0, 0, 1, 0, 1, 1]))
+topic("mD-q3", "Question 3", "Sequence detector · 20%")
+q("mD-3", "Q3 · 100%", *det("110", "JK", "mD-q3", moore=True, sample="1101100"))
+topic("mD-q4", "Question 4", "Counter design · 20%")
+s4d, R4d = p_counter([[1, 2, 4, 5, 7]], ABC, "mD-q4")
+q("mD-4", "Q4 · 100%", "<p>Design a synchronous counter that goes through the states 001 → 010 → 100 → 101 → 111 → back to 001, using JK flip-flops. Check what happens from the unused states.</p>", s4d, EQ3(R4d))
+topic("mD-q5", "Question 5", "Registers and asynchronous logic · 20%")
+q("mD-5a", "Q5(a) · 40%", *sadd("0111", "0101"))
+q("mD-5b", "Q5(b) · 60%", *asy("mD-q5", "Ay' + By", "A'y", ("OR", ("AND", "A", ("NOT", "y")), ("AND", "B", "y"))))
+
+# the hinted 5-question shape first, then the real paper and the mocks that copy it
+PAPERS.sort(key=lambda p: ["5-question mock 1", "5-question mock 2", "Autumn 23/24", "4-question mock A", "4-question mock B"].index(next(k for k in ["5-question mock 1", "5-question mock 2", "Autumn 23/24", "4-question mock A", "4-question mock B"] if p["title"].startswith(k))))
+

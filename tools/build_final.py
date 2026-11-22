@@ -16,7 +16,7 @@ sys.path.insert(0, HERE)
 import final_site as site  # noqa: E402
 import final_path_a, final_path_b, final_papers  # noqa: E402,F401
 
-VERSION = "2026-11-21a"
+VERSION = "2026-11-22a"
 data = dict(version=VERSION, module="EEEN20050 Digital Electronics", path=site.PATH, papers=site.PAPERS)
 
 # unicode super/subscripts have no glyph in the page font: turn them into real <sup>/<sub>

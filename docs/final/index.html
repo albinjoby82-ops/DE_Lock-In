@@ -155,7 +155,7 @@ table.tt{border-collapse:collapse;margin:0 auto;font-size:17px;line-height:1.4;b
     <div id="view"></div>
   </div></main>
 </div>
-<script src="data.js?v=a019785b"></script>
+<script src="data.js?v=d60b7c8b"></script>
 <script>
 (function(){
 var KEY='delockin-final-v2', st={}, mode='path', D, list;
@@ -212,8 +212,8 @@ function nav(){
     b.onclick=function(){go(i)};
     n.appendChild(b);
   });
-  if(mode==='path')n.appendChild(el('div','cut','<i>Built from the lecture slides, Lectures 4 to 25.</i> ★★★ = on the 23/24 paper or the biggest lecture block. <b>Bold</b> = a real exam part. Mid-term topics (number systems, adders) are on the <a href="../index.html">mid-term site</a>.'));
-  else n.appendChild(el('div','cut','<i>Do these last, on paper, against the clock.</i> The first is the real Autumn 23/24 paper. A and B copy its shape. C is the 5-question shape the lecturer hinted at.<br>Content version '+window.DATA.version+'.'));
+  if(mode==='path')n.appendChild(el('div','cut','<i>Built from the lecture slides, Lectures 4 to 25.</i> ★★★ = fits the hinted exam: multiplexers, or a main sequential-logic method. <b>Bold</b> = a real exam part. Mid-term topics (number systems, adders) are on the <a href="../index.html">mid-term site</a>.'));
+  else n.appendChild(el('div','cut','<i>Do these last, on paper, against the clock.</i> The two 5-question mocks follow the hint from class: 1 on multiplexers, 4 on sequential logic. Then the real Autumn 23/24 paper (4 questions, a different lecturer) and two mocks in its shape.<br>Content version '+window.DATA.version+'.'));
   n.scrollTop=keep;
   var on=n.querySelector('.qlink.on');
   if(on){var r=on.getBoundingClientRect(),nr=n.getBoundingClientRect();if(r.top<nr.top+40||r.bottom>nr.bottom-20)n.scrollTop+=r.top-nr.top-nr.height/3}
