@@ -2,6 +2,7 @@
 [what, why]; all tables, maps and equations are computed from the question."""
 from final_lib import *
 from final_lib import S
+from final_draw import *
 
 
 def lits(c, names):
@@ -201,7 +202,8 @@ def p_counter(cycles, names, key, twomode=False):
         fig_kmaps(key + "-kmaps-" + x, names, maps, per_row=2, cell=52)
         kpairs.append((x, key + "-kmaps-" + x))
     labels = [(r["eq"]["J" + x], r["eq"]["K" + x]) for x in names]
-    fig_ff_row(key + "-circuit", "JK", labels, names, note="each label is the logic feeding that input · one common clock")
+    fig_seq(key + "-circuit", "JK", [(x, {"J": r["eq"]["J" + x], "K": r["eq"]["K" + x]}) for x in names],
+            note=f"same name = same wire · {names[0]}' = the Q' output of flip-flop {names[0]}")
     nstates = len(r["nxt"])
     steps = [
         ["Draw the state diagram:" + img(key + "-states", "states"),
@@ -217,8 +219,8 @@ def p_counter(cycles, names, key, twomode=False):
           for i, (x, fk) in enumerate(kpairs)],
         ["All six logic functions together:" + "".join(DD(f"J{x} = {r['eq']['J'+x]} \\qquad K{x} = {r['eq']['K'+x]}") for x in names),
          "This list is what the examiner marks. Write it out clearly before drawing."],
-        ["Logic diagram: three JK flip-flops on one clock, with those functions on the inputs:" + img(key + "-circuit", "circuit"),
-         "Synchronous = every flip-flop shares the clock, so all bits change on the same edge."],
+        ["Logic diagram. Draw three JK flip-flops on one clock. Then turn each function into gates on its input: <b>one AND gate per product term, one OR gate if there are two or more terms</b>. A single letter is just a wire:" + img(key + "-circuit", "circuit"),
+         "Label each gate input with the letter it comes from instead of drawing long wires. A dashed letter such as B' is taken from that flip-flop's Q' output, so no NOT gates are needed. Synchronous = every flip-flop shares the clock."],
     ]
     if r["unused"]:
         t = "".join("<li>" + " → ".join(bits(x, nb) for x in path) + (" ✓ back in the count" if ok else " ✗ never returns") + "</li>" for path, ok in r["trace"])

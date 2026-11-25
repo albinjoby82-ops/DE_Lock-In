@@ -58,7 +58,7 @@ def fig_fsm(name, labels, edges, subs=None, title="State diagram"):
 
 
 # ------------------------------------------------------------ multiplexer / decoder
-def p_mux(names, ms):
+def p_mux(names, ms, key=None, out="F"):
     nsel, d = len(names) - 1, names[-1]
     rows, data = [], []
     for i in range(1 << nsel):
@@ -80,10 +80,14 @@ def p_mux(names, ms):
          f"0, 0 → F is 0 whatever {d} is. 1, 1 → F is 1. 0, 1 → F copies {d}. 1, 0 → F is the inverse of {d}."],
         ["Data inputs I<sub>0</sub> … I<sub>" + str((1 << nsel) - 1) + "</sub>: <b>" + ", ".join(data) + "</b>", "One NOT gate makes the inverted variable if it is needed."],
     ]
+    if key:
+        fig_mux(key + "-mux", names[:-1], data, out)
+        steps.append(["Draw it. A box for the mux, the select variables underneath, and each data input wired to 0, 1, " + d + " or " + d + "':" + img(key + "-mux", "multiplexer circuit"),
+                      f"0 means connect to ground, 1 means connect to the supply. The first select variable ({names[0]}) is the most significant select line."])
     return steps, ", ".join(data)
 
 
-def p_decoder(names, outs):
+def p_decoder(names, outs, key=None):
     """outs: {name: minterm list}. Decoder + one OR gate per output."""
     n = len(names)
     rows = [list(bits(m, n)) + [str(int(m in ms)) for ms in outs.values()] for m in range(1 << n)]
@@ -95,6 +99,9 @@ def p_decoder(names, outs):
          + ul(f"{k} = OR of decoder outputs {', '.join(map(str, ms))}" for k, ms in outs.items()),
          "Each decoder output is one minterm, so a decoder is a <b>minterm generator</b>. OR the minterms you want."],
     ]
+    if key:
+        fig_decoder(key + "-dec", names, outs)
+        steps.append(["Draw it:" + img(key + "-dec", "decoder circuit"), f"The first input ({names[0]}) is the most significant. Decoder output m<sub>i</sub> is 1 only on row i."])
     return steps
 
 
@@ -384,6 +391,11 @@ def p_detector(pats, kind, key, moore=False, order=None, letters=None, design=Tr
             outs.append(str(ev(R["eqs"]["Y"], {f"Q{b}": (st2 >> b) & 1 for b in range(nb)}) if moore else z))
             st = st2
         steps.append([f"Check with the input {' '.join(sample)}: output {' '.join(outs)}.", "Run a short input through your table before you draw anything. " + ("A Moore output shows up one clock after the last bit." if moore else "The 1s must line up with the last bit of each match.")])
+    pn = {"JK": ("J", "K"), "D": ("D",), "T": ("T",)}[kind]
+    fig_seq(key + "-ckt", kind, [(f"Q{b}", {p: R["eqs"][f"{p}{b}"] for p in pn}) for b in reversed(range(nb))],
+            extra=[(k, R["eqs"][k]) for k in ("Z", "Y") if k in R["eqs"]], note="same name = same wire · X' = X through a NOT gate")
+    steps.append([f"Build it. {nb} {kind} flip-flop{'s' if nb > 1 else ''} on one clock. Turn each equation into gates on its input: <b>one AND gate per product term, one OR gate if there are two or more terms</b>:" + img(key + "-ckt", "logic diagram"),
+                  "This is the logic diagram the question asks for. Label each gate input with its signal name instead of drawing long wires. A single letter is just a wire, and 1 means tie the input high."])
     ans = " · ".join(M(f"{k} = {v}") for k, v in R["eqs"].items())
     return steps, R, ans
 

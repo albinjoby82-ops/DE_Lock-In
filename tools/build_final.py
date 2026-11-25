@@ -2,9 +2,11 @@
 
 Run: python3 tools/build_final.py
 
-Content lives in final_path_a.py, final_path_b.py (the study path, slide order)
-and final_papers.py (23/24 paper + mocks). Builders are in final_q.py and
-final_more.py; every answer is computed and asserted there.
+Content lives in final_path_a.py, final_path_b.py (the study path, slide order),
+final_path_c.py (design questions in words + extra practice on every topic)
+and final_papers.py (23/24 paper + mocks). Builders are in final_q.py,
+final_more.py and final_design.py; circuit drawings in final_draw.py.
+Every answer is computed and asserted there.
 """
 import glob, hashlib, json, os, re, sys
 
@@ -14,9 +16,9 @@ for f in glob.glob(os.path.join(OUT, "fig", "*.svg")):  # figures are all redraw
     os.remove(f)
 sys.path.insert(0, HERE)
 import final_site as site  # noqa: E402
-import final_path_a, final_path_b, final_papers  # noqa: E402,F401
+import final_path_a, final_path_b, final_path_c, final_papers  # noqa: E402,F401
 
-VERSION = "2026-11-22a"
+VERSION = "2026-11-25a"
 data = dict(version=VERSION, module="EEEN20050 Digital Electronics", path=site.PATH, papers=site.PAPERS)
 
 # unicode super/subscripts have no glyph in the page font: turn them into real <sup>/<sub>

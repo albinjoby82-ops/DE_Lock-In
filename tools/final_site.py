@@ -3,22 +3,45 @@ worked 23/24 paper (computed once, used inside topics and as a paper)."""
 from final_more import *
 
 PATH, PAPERS = [], []
-_cur = {"parts": PATH}
+_cur = {"parts": PATH, "t": None}
 XYZ, ABC, ABCD = list("XYZ"), list("ABC"), list("ABCD")
 
 
 def use(target):
     _cur["parts"] = target
+    _cur["t"] = None
 
 
 def part(title):
     _cur["parts"].append(dict(title=title, topics=[]))
+    _cur["t"] = None
 
 
-def topic(id, title, src, learn="", check=None, pri=0):
+def topic(id, title, src, learn="", check=None, pri=0, after=None):
+    """New topic at the end of the current part, or straight after the study-path topic `after`."""
     t = dict(id=id, title=title, src=src, learn=learn, check=dict(q=check[0], a=check[1]) if check else None, pri=pri, qs=[])
-    _cur["parts"][-1]["topics"].append(t)
+    if after:
+        p = next(p for p in PATH if any(x["id"] == after for x in p["topics"]))
+        p["topics"].insert([x["id"] for x in p["topics"]].index(after) + 1, t)
+    else:
+        _cur["parts"][-1]["topics"].append(t)
+    _cur["t"] = t
     return t
+
+
+def at(id):
+    """Go back to an existing study-path topic, so that q() adds more questions to it."""
+    _cur["t"] = next(t for p in PATH for t in p["topics"] if t["id"] == id)
+    return _cur["t"]
+
+
+def _add(item):
+    """Append to the current topic, but keep the real exam parts (pp-…) as its last questions."""
+    qs = _cur["t"]["qs"]
+    k = len(qs)
+    while k and qs[k - 1]["id"].startswith("pp-") and not item["id"].startswith("pp-"):
+        k -= 1
+    qs.insert(k, item)
 
 
 def mk(prompt, steps, a):
@@ -31,13 +54,13 @@ def q(id, ref, prompt, steps, a, sim=None, page=False):
         it["sim"] = mk(*sim)
     if page:
         it["page"] = True
-    _cur["parts"][-1]["topics"][-1]["qs"].append(it)
+    _add(it)
     return it
 
 
 def put(item):
     """Show an existing item (an exam part) inside the current topic as well."""
-    _cur["parts"][-1]["topics"][-1]["qs"].append(item)
+    _add(item)
 
 
 def ex(n):

@@ -11,9 +11,9 @@ q("plan-1", "Read me first", f"""
 <h3>What the exam should look like</h3>
 <p>From a classmate's note of what the lecturer said: <b>5 questions. 1 on combinational logic (they think multiplexers). The other 4 on sequential logic.</b> It is second-hand ("I believe he said"), so treat it as likely, not certain.</p>
 {table(["Question", "Most likely from", "Where"], [
- ["1 · combinational", "<b>Multiplexers</b>: put a function on a mux, build a big mux from small ones", "2.5 (back-up: 2.6 decoders, 2.3 K-maps)"],
+ ["1 · combinational", "<b>Multiplexers</b>: put a function on a mux, build a big mux from small ones", "2.5, then 2.7 (back-up: 2.6 decoders, 2.3 K-maps)"],
  ["2 to 5 · sequential", "Flip-flops and analysing a clocked circuit (L11–13)", "Part 3, 4.1"],
- ["", "Sequence detectors, Mealy and Moore (L14–16)", "4.2 to 4.4"],
+ ["", "Sequence detectors, Mealy and Moore (L14–16)", "4.2 to 4.5"],
  ["", "Counters: synchronous, ripple, BCD (L17–18)", "Part 5"],
  ["", "Registers, ring and Johnson counters (L19–20)", "Part 6"],
  ["", "Asynchronous circuits: tables, races, hazards (L23–24)", "Part 7"]])}
@@ -28,21 +28,29 @@ q("plan-1", "Read me first", f"""
  ["4", "Asynchronous circuit: transition table, flow table, stability", "7.1"]])}
 <h3>The path</h3>
 {table(["Part", "Slides", "After it you can", "Priority"], [
- ["2 · Combinational logic", "L4–6, 9, 10", "put a function on a multiplexer or decoder, K-map it, build it from NAND / NOR", "★★★ multiplexers and K-maps, ★★ the rest"],
+ ["2 · Combinational logic", "L4–6, 9, 10", "put a function on a multiplexer or decoder, K-map it, build it from NAND / NOR, <b>design a circuit from a description in words</b>", "★★★ multiplexers, K-maps and design questions, ★★ the rest"],
  ["3 · Latches and flip-flops", "L11–12", "trace any latch or flip-flop, write the excitation table from memory", "★★★"],
- ["4 · Clocked circuits", "L13–16", "analyse a circuit, design a sequence detector (Mealy and Moore)", "★★★"],
+ ["4 · Clocked circuits", "L13–16", "analyse a circuit, design a sequence detector (Mealy and Moore), <b>design any clocked circuit from words</b>", "★★★"],
  ["5 · Counters", "L17–18", "design any synchronous counter, build ripple and BCD counters", "★★★"],
  ["6 · Registers", "L19–20", "trace shift registers, serial adder, ring and Johnson counters", "★★★"],
  ["7 · Asynchronous logic", "L23–24", "transition and flow tables, stability, races, hazards", "★★★"],
  ["8 · Memory, PLDs, transistors", "L21, 22, 25", "sizes and facts: RAM, ROM, PAL / PLA, FPGA, CMOS gates", "★"]])}
 <p>★★★ = fits the 5-question shape: multiplexers, or a main sequential-logic method. ★★ = a tool those questions use, or a smaller part of the same lectures. ★ = facts only, neither a combinational nor a sequential question.</p>
+<h3>Design questions: what the exam really asks</h3>
+<p>The real paper says <b>“Design a…”</b> three times. A design question gives you <b>words</b> and wants a <b>drawn circuit</b>. Knowing the ideas is not enough: you have to run the whole chain yourself, on paper.</p>
+$$\\text{{words}} \\;\\to\\; \\text{{table}} \\;\\to\\; \\text{{K-map}} \\;\\to\\; \\text{{equation}} \\;\\to\\; \\text{{drawing}}$$
+<ul><li><b>2.7</b> is the chain for gates, multiplexers and decoders. <b>4.5</b> is the chain for flip-flop circuits. Both start from a description in words.</li>
+<li>Every design solution on this site now ends with the <b>logic diagram</b>: the gates and flip-flops as you would draw them in the exam.</li>
+<li>Questions called <b>“Design in words”</b> are this type. Questions called <b>“More practice”</b> are extra goes at each topic.</li></ul>
 <h3>How to study it</h3>
-<ol><li><b>Go in order.</b> Parts 3 to 5 build on each other: flip-flop tables → state tables → counters.</li>
-<li>Read the Notes box, answer the check, then <b>try each question on paper</b> before revealing steps (Space = next step).</li>
+<ol><li><b>Paper first, always.</b> The exam is hand-written. Do the whole question on paper, <b>including the drawing</b>, before you reveal a step (Space = next step).</li>
+<li>On a phone, <b>tap any diagram</b> to see it full size. Tap again to shrink it.</li>
+<li><b>Go in order.</b> Parts 3 to 5 build on each other: flip-flop tables → state tables → counters.</li>
+<li>Read the Notes box and answer the check before the first question of a topic.</li>
 <li>Press <b>Similar question</b> (S) and do it again with new numbers. Mark <b>Got it</b> only if you could redo it from a blank page.</li>
 <li>Questions in <b>bold</b> in the contents are the real 23/24 exam parts.</li>
 <li>Finish with <b>Exam papers</b>: the two 5-question mocks first, then the real 23/24 paper.</li></ol>
-<p><b>Short on time?</b> Do 2.5, 3.3, 3.4, 4.1, 4.2, 4.3, 5.1, 5.2, 6.2, 6.5, 7.1, then the 5-question mocks. That is multiplexers plus the main method from each of the five sequential blocks.</p>
+<p><b>Short on time?</b> Do 2.5, 2.7, 3.3, 3.4, 4.1, 4.2, 4.3, 4.5, 5.1, 5.2, 6.2, 6.5, 7.1, then the 5-question mocks. That is multiplexers, the two design-question topics, and the main method from each of the five sequential blocks.</p>
 <p><b>Homework 2</b> is due after the final (same note), so it can wait until the exam is done.</p>
 <p><b>Not here:</b> number systems, binary arithmetic, codes and adders (Lectures 1 to 3, 7 to 8). They were the mid-term and are on the <a href="../index.html">mid-term site</a>.</p>
 """, [], "", page=True)
@@ -136,8 +144,8 @@ q("t4-5", "Two-level NOR", *nor(ABC, [0, 1, 5, 7], "t4-5"), sim=nor(XYZ, [2, 3, 
 put(EX["pp-1d"])
 
 
-def mux(names, ms):
-    st, a = p_mux(names, ms)
+def mux(names, ms, key):
+    st, a = p_mux(names, ms, key)
     return ("<p>Implement $F(" + ", ".join(names) + ") = " + sigma(ms) + f"$ with one {1 << (len(names) - 1)}-to-1 multiplexer.</p>", st, a)
 
 
@@ -150,8 +158,8 @@ topic("c5", "Multiplexers", "Lecture 10 · the likely combinational question (le
 <p><b>Bigger from smaller:</b> a 16-to-1 mux = four 4-to-1 muxes sharing the low selects + one more 4-to-1 choosing between them.</p>
 <p><b>Demultiplexer:</b> the reverse. One input goes to the one output picked by the selects.</p>""",
       check=("How many variables can one 8-to-1 mux implement?", "<b>4.</b> Three on the selects, the fourth on the data inputs."))
-q("h1-2", "Slide 7: a 4-to-1 mux", *mux(list("xyz"), [1, 2, 6, 7]), sim=mux(list("xyz"), [1, 2, 4, 7]))
-q("h1-1", "Slide 8: an 8-to-1 mux", *mux(ABCD, [1, 3, 4, 11, 12, 13, 14, 15]), sim=mux(ABCD, [0, 1, 3, 4, 8, 9, 15]))
+q("h1-2", "Slide 7: a 4-to-1 mux", *mux(list("xyz"), [1, 2, 6, 7], "h1-2"), sim=mux(list("xyz"), [1, 2, 4, 7], "h1-2s"))
+q("h1-1", "Slide 8: an 8-to-1 mux", *mux(ABCD, [1, 3, 4, 11, 12, 13, 14, 15], "h1-1"), sim=mux(ABCD, [0, 1, 3, 4, 8, 9, 15], "h1-1s"))
 q("h1-4", "Bigger muxes from smaller ones", "<p>(a) How many 4-to-1 multiplexers build a 16-to-1 multiplexer, and which select lines go where? (b) How many select lines does a 32-to-1 multiplexer need?</p>",
   [["(a) First level: 16 inputs ÷ 4 = <b>4</b> muxes, all sharing the two low select bits. Second level: <b>1</b> mux picks between those four outputs using the two high select bits. Total <b>5</b>.", "Each level of 4-to-1 muxes uses up two select bits. 16 inputs need 4 select bits, so two levels."],
    ["(b) 2<sup>n</sup> inputs need n select lines. 32 = 2<sup>5</sup> → <b>5</b>.", "The selects must be able to count from 0 to 31."]], "5 muxes · 5 select lines",
@@ -167,10 +175,10 @@ topic("c6", "Decoders as minterm generators", "Lecture 9 · back-up if the combi
 <p><b>Encoder</b> = decoder backwards (2ⁿ lines in, n-bit number out). A <b>priority encoder</b> reports the highest-numbered input that is 1.</p>""",
       check=("A 3-to-8 decoder has input 101. Which output is 1?", "<b>Output 5.</b> 101 in binary is 5."))
 q("dec-1", "Slide 6: full adder from a decoder", "<p>Implement a full adder (inputs X, Y, Z, outputs sum S and carry C) with a 3-to-8 decoder and OR gates.</p>",
-  [["A full adder adds three bits. S is 1 when an <b>odd</b> number of inputs are 1. C is 1 when <b>two or more</b> are 1.", "X + Y + Z can be 0, 1, 2 or 3, written in binary as C S."]] + p_decoder(XYZ, FA),
+  [["A full adder adds three bits. S is 1 when an <b>odd</b> number of inputs are 1. C is 1 when <b>two or more</b> are 1.", "X + Y + Z can be 0, 1, 2 or 3, written in binary as C S."]] + p_decoder(XYZ, FA, "dec-1"),
   "$S = " + sigma(FA["S"]) + "$ · $C = " + sigma(FA["C"]) + "$",
   sim=("<p>Implement a full subtractor (X − Y − Z, outputs difference D and borrow B) with a 3-to-8 decoder and OR gates.</p>",
-       [["D is 1 when an odd number of inputs are 1 (same as a sum). B is 1 when you have to borrow: when Y + Z is bigger than X.", "Row 0 1 1: 0 − 1 − 1 needs a borrow. Row 1 1 1: 1 − 2 needs a borrow."]] + p_decoder(XYZ, {"D": [1, 2, 4, 7], "B": [1, 2, 3, 7]}),
+       [["D is 1 when an odd number of inputs are 1 (same as a sum). B is 1 when you have to borrow: when Y + Z is bigger than X.", "Row 0 1 1: 0 − 1 − 1 needs a borrow. Row 1 1 1: 1 − 2 needs a borrow."]] + p_decoder(XYZ, {"D": [1, 2, 4, 7], "B": [1, 2, 3, 7]}, "dec-1s"),
        "$D = " + sigma([1, 2, 4, 7]) + "$ · $B = " + sigma([1, 2, 3, 7]) + "$"))
 q("dec-2", "Slide 12: active-low decoder", "<p>The same full adder is built with an <b>active-low</b> 3-to-8 decoder. Which gate collects the outputs, and which decoder outputs feed the gate for S?</p>",
   [["An active-low decoder output is 0 only on its own row: that is a <b>maxterm</b>.", "Inverting a minterm gives the maxterm with the same number."],

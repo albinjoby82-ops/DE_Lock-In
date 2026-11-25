@@ -84,7 +84,7 @@ part("5-question mock 1 · the hinted shape")
 _pid[0] = "mC"
 RC = RULES.replace("equal marks", "equal marks → about <b>24 minutes each</b>")
 topic("mC-q1", "Question 1", "Multiplexers · 20%", learn=RC)["label"] = "Rules"
-m1, a1 = p_mux(ABCD, [0, 2, 5, 6, 7, 9, 12, 13])
+m1, a1 = p_mux(ABCD, [0, 2, 5, 6, 7, 9, 12, 13], "mC-q1")
 q("mC-1a", "Q1(a) · 70%", "<p>Implement $F(A, B, C, D) = " + sigma([0, 2, 5, 6, 7, 9, 12, 13]) + "$ using one 8-to-1 multiplexer.</p>", m1, a1)
 q("mC-1b", "Q1(b) · 30%", "<p>How many 2-to-1 multiplexers are needed to build an 8-to-1 multiplexer? Which select line goes to which level?</p>",
   [["8 inputs → 4 muxes, then 2, then 1: <b>7</b>.", "Each level halves the number of lines."], ["Level 1 uses the lowest select S<sub>0</sub>, level 2 uses S<sub>1</sub>, the last mux uses S<sub>2</sub>.", "The low bit chooses within a pair, the high bit chooses between halves."]], "7")

@@ -124,6 +124,9 @@ details.notes .body{padding:2px 0 14px}
 /* figures and tables: print-like */
 .fig{margin:14px 0;text-align:center;overflow-x:auto}
 .fig img{max-width:100%;height:auto;vertical-align:top}
+.fig img{cursor:zoom-in}
+.fig.zoom{text-align:left}
+.fig.zoom img{max-width:none;cursor:zoom-out}
 .tw{overflow-x:auto;margin:12px 0}
 table.tt{border-collapse:collapse;margin:0 auto;font-size:17px;line-height:1.4;border-top:1.5px solid #111;border-bottom:1.5px solid #111}
 .tt th{border-bottom:1px solid #111;font-weight:700;padding:4px 14px;text-align:center}
@@ -155,7 +158,7 @@ table.tt{border-collapse:collapse;margin:0 auto;font-size:17px;line-height:1.4;b
     <div id="view"></div>
   </div></main>
 </div>
-<script src="data.js?v=d60b7c8b"></script>
+<script src="data.js?v=dd86fb54"></script>
 <script>
 (function(){
 var KEY='delockin-final-v2', st={}, mode='path', D, list;
@@ -285,6 +288,8 @@ function render(){
   if(shown>0){var last=v.querySelector('.ans')||v.querySelectorAll('.step')[shown-1];if(last&&last.scrollIntoView)last.scrollIntoView({block:'nearest',behavior:'smooth'})}
 }
 document.getElementById('menu').onclick=function(){document.getElementById('nav').classList.toggle('open')};
+// tap a diagram to see it at full size (it scrolls sideways); tap again to fit it back
+document.getElementById('view').addEventListener('click',function(e){var t=e.target;if(t.tagName==='IMG'&&t.parentNode.classList.contains('fig')&&t.naturalWidth>t.parentNode.clientWidth+4||t.tagName==='IMG'&&t.parentNode.classList.contains('zoom'))t.parentNode.classList.toggle('zoom')});
 document.addEventListener('keydown',function(e){
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.metaKey||e.ctrlKey||e.altKey)return;
   var o=list[cur].q, n=((sim&&o.sim)?o.sim:o).steps.length;
