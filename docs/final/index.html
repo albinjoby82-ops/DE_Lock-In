@@ -18,7 +18,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 a{color:var(--acc)}
 sub,sup{line-height:0}
 .sc{font-variant:small-caps;letter-spacing:.06em}
-.app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+.app{display:grid;grid-template-columns:344px 1fr;min-height:100vh}
 
 /* ---------- contents ---------- */
 nav{border-right:1px solid var(--rule);position:sticky;top:0;height:100vh;overflow:auto;padding:28px 22px 40px;font-size:16px;line-height:1.35}
@@ -32,12 +32,26 @@ nav .sub{color:var(--mute);margin:2px 0 14px}
 .prog .bar{flex:1;height:3px;background:var(--hair)}
 .prog .bar i{display:block;height:100%;background:var(--ok)}
 .toc-h{font-weight:700;font-size:15px;border-bottom:1px solid var(--rule);padding-bottom:3px;margin:0 0 8px}
-.part{font-weight:700;margin:16px 0 4px;display:flex;gap:10px;color:var(--c);border-bottom:1px solid var(--c);padding-bottom:2px}
-.topic{margin:8px 0 2px;display:flex;gap:10px;color:var(--ink)}
+.part{font-weight:700;margin:10px 0 2px;display:flex;gap:8px;align-items:baseline;width:100%;text-align:left;color:var(--c);border-bottom:1px solid var(--c);padding:5px 4px 4px 0}
+.topic{margin:1px 0;display:flex;gap:8px;align-items:baseline;width:100%;text-align:left;color:var(--ink);padding:5px 4px 5px 0}
+.part:hover,.topic:hover{background:var(--ct)}
+.part .tl,.topic .tl{flex:1;min-width:0}
+.chev{width:.9em;font-size:12px;font-weight:400;color:var(--c)}
+.cnt{font-weight:400;font-size:13.5px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cnt.all{color:var(--ok);font-weight:700}
+.topic.cur .tl{font-weight:700}
+.topic.open{border-bottom:1px solid var(--hair)}
+.cont{display:block;width:100%;text-align:left;border:1px solid var(--acc);color:var(--acc);padding:7px 10px;margin:0 0 16px;font-size:15px;line-height:1.3}
+.cont:hover{background:#eef3fd}
+.cont small{display:block;color:var(--mute);font-size:13.5px}
+.fold{display:flex;gap:14px;font-size:13.5px;color:var(--mute);margin:-2px 0 4px}
+.fold button{color:var(--acc)}
+.fold button:hover{text-decoration:underline}
 .num{min-width:2.1em;font-variant-numeric:tabular-nums;color:var(--mute)}
 .part .num,.topic .num{color:var(--c)}
 .star{color:var(--warn);font-size:11px;letter-spacing:1px;white-space:nowrap;margin-left:4px}
 .qlink{display:flex;align-items:baseline;gap:10px;width:100%;text-align:left;padding:2px 6px 2px 0}
+.qlink{padding:4px 6px 4px 0}
 .qlink .num{min-width:3.4em;padding-left:1.1em;font-size:14.5px}
 .qlink .r{flex:1;font-size:15px}
 .qlink .m{width:1em;text-align:center;font-size:14px}
@@ -180,6 +194,9 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 var notes={};try{notes=JSON.parse(localStorage.getItem(KEY+'-notes'))||{}}catch(e){}
 function saveNotes(){try{localStorage.setItem(KEY+'-notes',JSON.stringify(notes))}catch(e){}}
 var cur=0, shown=0, sim=false;
+// side menu: only the part and topic you are in are unfolded (click a part or topic to fold / unfold it)
+var openP={}, openT={};
+function sync(){openP={};openT={};openP[list[cur].pi]=1;openT[list[cur].t.id]=1}
 function find(id){for(var i=0;i<list.length;i++)if(list[i].q.id===id||(list[i].first&&list[i].t.id===id))return i;return -1}
 function restore(){cur=0;try{var h=localStorage.getItem(KEY+'-at-'+mode),k=+localStorage.getItem(KEY+'-ati-'+mode);if(list[k]&&list[k].q.id===h){cur=k;return}var i=find(h);if(i>=0)cur=i}catch(e){}}
 restore();
@@ -192,7 +209,7 @@ function short(ref){var s=ref.replace(/^Exam 23\/24 · /,'Exam 23/24 ').replace(
 function mark(id){return st[id]==='done'?'✓':st[id]==='again'?'↺':''}
 function col(pi){return 'c'+((pi-1)%6+1)}
 function toggleSim(){if(!list[cur].q.sim)return;sim=!sim;shown=0;render();window.scrollTo(0,0)}
-function go(i){cur=Math.max(0,Math.min(list.length-1,i));shown=0;sim=false;document.getElementById('nav').classList.remove('open');render();window.scrollTo(0,0)}
+function go(i){cur=Math.max(0,Math.min(list.length-1,i));shown=0;sim=false;sync();document.getElementById('nav').classList.remove('open');render();window.scrollTo(0,0)}
 
 function nav(){
   var n=document.getElementById('nav');var keep=n.scrollTop;n.innerHTML='';
@@ -202,20 +219,38 @@ function nav(){
   var ms=el('div','mode');
   MODES.forEach(function(m){
     var b=el('button',mode===m[0]?'on':'',m[1]);
-    b.onclick=function(){if(mode===m[0])return;mode=m[0];sim=false;try{localStorage.setItem(KEY+'-mode',mode)}catch(e){}load();restore();shown=0;render();window.scrollTo(0,0)};
+    b.onclick=function(){if(mode===m[0])return;mode=m[0];sim=false;try{localStorage.setItem(KEY+'-mode',mode)}catch(e){}load();restore();sync();shown=0;render();window.scrollTo(0,0)};
     ms.appendChild(b)});
   n.appendChild(ms);
   n.appendChild(el('div','prog','<span>'+done+' / '+total+'</span><span class="bar"><i style="width:'+(100*done/total)+'%"></i></span>'));
+  // how much of each part and topic is done
+  var ps={},ts={};
+  list.forEach(function(x){if(x.q.page)return;var a=ps[x.pi]||(ps[x.pi]={n:0,d:0}),c=ts[x.t.id]||(ts[x.t.id]={n:0,d:0});a.n++;c.n++;if(st[x.q.id]==='done'){a.d++;c.d++}});
+  function cnt(s){return s?'<span class="cnt'+(s.d===s.n?' all':'')+'">'+(s.d===s.n?'✓':s.d+'/'+s.n)+'</span>':''}
+  var nextI=-1;for(var k=0;k<list.length;k++){if(!list[k].q.page&&st[list[k].q.id]!=='done'){nextI=k;break}}
+  if(nextI>=0&&nextI!==cur){var cb=el('button','cont','<b>Continue →</b> '+list[nextI].num+'<small>'+list[nextI].t.title+'</small>');cb.onclick=function(){go(nextI)};n.appendChild(cb)}
   n.appendChild(el('div','toc-h sc','contents'));
+  var fo=el('div','fold'),fa=el('button','','Unfold all'),fc=el('button','','Fold all');
+  fa.onclick=function(){list.forEach(function(x){openP[x.pi]=1});nav()};
+  fc.onclick=function(){sync();nav()};
+  fo.appendChild(fa);fo.appendChild(fc);n.appendChild(fo);
   var lastP=null,lastT=null;
   list.forEach(function(x,i){
-    if(x.p!==lastP){lastP=x.p;n.appendChild(el('div','part '+col(x.pi),'<span class="num">'+x.pi+'</span><span>'+x.p.title+'</span>'))}
-    if(x.t!==lastT){lastT=x.t;n.appendChild(el('div','topic '+col(x.pi),'<span class="num">'+x.pi+'.'+x.ti+'</span><span>'+x.t.title+(x.t.pri?' <span class="star" title="priority">'+'★★★'.slice(0,x.t.pri)+'</span>':'')+'</span>'))}
+    if(x.p!==lastP){lastP=x.p;
+      var pb=el('button','part '+col(x.pi),'<span class="chev">'+(openP[x.pi]?'▾':'▸')+'</span><span class="num">'+x.pi+'</span><span class="tl">'+x.p.title+'</span>'+cnt(ps[x.pi]));
+      pb.onclick=function(){if(openP[x.pi])delete openP[x.pi];else openP[x.pi]=1;nav()};
+      n.appendChild(pb)}
+    if(!openP[x.pi])return;
+    if(x.t!==lastT){lastT=x.t;
+      var tb=el('button','topic '+col(x.pi)+(list[cur].t===x.t?' cur':'')+(openT[x.t.id]?' open':''),'<span class="chev">'+(openT[x.t.id]?'▾':'▸')+'</span><span class="num">'+x.pi+'.'+x.ti+'</span><span class="tl">'+x.t.title+(x.t.pri?' <span class="star" title="priority">'+'★★★'.slice(0,x.t.pri)+'</span>':'')+'</span>'+cnt(ts[x.t.id]));
+      tb.onclick=function(){if(openT[x.t.id]){delete openT[x.t.id];nav()}else if(list[cur].t===x.t){openT[x.t.id]=1;nav()}else go(i)};
+      n.appendChild(tb)}
+    if(!openT[x.t.id])return;
     var b=el('button','qlink '+col(x.pi)+(isExam(x.q)&&mode==='path'?' ex':'')+(i===cur?' on':'')+(st[x.q.id]?' '+st[x.q.id]:''),'<span class="num">'+x.num+'</span><span class="r">'+short(x.q.ref)+'</span>'+(notes[x.q.id]?'<span class="nt" title="You wrote a note">✎</span>':'')+'<span class="m">'+mark(x.q.id)+'</span>');
     b.onclick=function(){go(i)};
     n.appendChild(b);
   });
-  if(mode==='path')n.appendChild(el('div','cut','<i>Built from the lecture slides, Lectures 4 to 25.</i> ★★★ = fits the hinted exam: multiplexers, or a main sequential-logic method. <b>Bold</b> = a real exam part. Mid-term topics (number systems, adders) are on the <a href="../index.html">mid-term site</a>.'));
+  if(mode==='path')n.appendChild(el('div','cut','<i>Click a part to unfold it. Click a topic to go to it.</i> ★★★ = fits the hinted exam: multiplexers, or a main sequential-logic method. <b>Bold</b> = a real exam part. Mid-term topics (number systems, adders) are on the <a href="../index.html">mid-term site</a>.'));
   else n.appendChild(el('div','cut','<i>Do these last, on paper, against the clock.</i> The two 5-question mocks follow the hint from class: 1 on multiplexers, 4 on sequential logic. Then the real Autumn 23/24 paper (4 questions, a different lecturer) and two mocks in its shape.<br>Content version '+window.DATA.version+'.'));
   n.scrollTop=keep;
   var on=n.querySelector('.qlink.on');
@@ -300,7 +335,7 @@ document.addEventListener('keydown',function(e){
   else if(e.key==='a'||e.key==='A'){shown=n+1;render()}
   else if(e.key==='s'||e.key==='S')toggleSim();
 });
-window.addEventListener('load',render);
+window.addEventListener('load',function(){sync();render()});
 })();
 </script>
 </body>
